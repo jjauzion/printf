@@ -6,52 +6,35 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/18 18:06:49 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/19 20:23:13 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 #include <stdio.h>
-
-int		ft_testprintf(const char *s, ...)
-{
-	va_list		ap;
-	char		c;
-	int			i;
-	
-	va_start(ap, s);
-	while (*s)
-	{
-		if (*s != '%')
-			ft_putchar(*s);
-		else
-		{
-			s++;
-			if (*s == 'c')
-			{
-				c = va_arg(ap, int);
-				ft_putchar(c);
-			}
-			if (*s == 'i')
-			{
-				i = va_arg(ap, int);
-				ft_putnbr(i);
-			}
-		}
-		s++;
-	}
-	va_end(ap);
-	return (1);
-}
 
 int		main ()
 {
 
 	printf("-------------TEST PRINTF-------------\n");
 	printf("\n--> Test 01 : nb arg > 10\n");
-	printf("arg 0 : %i ; arg 1 : %i ; arg 2 : %i ; arg 3 : %i ; arg 4 : %i ; arg 5 : %i ; arg 6 : %i ; arg 7 : %i ; arg 8 : %i ; arg 9 : %i ; arg 10 : %i\n", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+	printf("PRINTF:\t\targ 0 : %i ; arg 1 : %i ; arg 2 : %i ; arg 3 : %i ; arg 4 : %i ; arg 5 : %i ; arg 6 : %i ; arg 7 : %i ; arg 8 : %i ; arg 9 : %i ; arg 10 : %i\n", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+	ft_printf("FT_PRINTF:\targ 0 : %i ; arg 1 : %i ; arg 2 : %i ; arg 3 : %i ; arg 4 : %i ; arg 5 : %i ; arg 6 : %i ; arg 7 : %i ; arg 8 : %i ; arg 9 : %i ; arg 10 : %i\n", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
+	printf("\n--> Test 02 : simple padding\n");
+	printf("printf:\t\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
+	ft_printf("ft_printf:\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
+	printf("printf:\t\t|%0-5d|\n", 2);
+	ft_printf("ft_printf:\t|%0-5d|\n", 2);
+
+	printf("\n--> Test 05 : simple %%i et %%u\n");
+	printf("printf:\n\tchaine de test %i suite %u\n", 2, 3);
+	ft_printf("ft_printf:\n\tchaine de test %i suite %u\n", 2, 3);
+	printf("printf:\n\tchaine de test %i suite %u\n", -2, -3);
+	ft_printf("ft_printf:\n\tchaine de test %i suite %u\n", -2, -3);
+	printf("\n-------------END TEST PRINTF-------------\n");
+
+/*	
 	printf("\n--> Test 02 : long attribute and repetion\n");
 	printf("%+++++++++++------+2i\n", 2);
 
@@ -59,12 +42,25 @@ int		main ()
 	printf("test 03 : |%2$-+*1$d| ; |%1$d|\n", 10, 2);
 	printf("test 03bis : |%i| ;  |%*d|\n", 10, 2, 8);
 
-
-	ft_printf("\n\tchaine de test %5$#+-432.lld suite%i", 'b');
-	ft_printf("\n\ntest 03 : |%2$-+1d| ; |%1$d|\n", 10, 2);
-	printf("\n-------------END TEST PRINTF-------------\n");
-	ft_testprintf("coucou %i ca marche %c marche aussi\n", 1, '*');
-/*
+	printf("\n--> Test 04 : diouxX\n");
+	printf("10 into -> o : %1$o ; u : %1$u ; x : %1$x ; X : %1$X ; i : %1$i ; d : %1$d\n", 10);
+	printf("-10 into -> o : %1$o ; u : %1$u ; x : %1$x ; X : %1$X ; i : %1$i ; d : %1$d\n", -10);
+//	printf("4567 |%-10]5d| plip\n", 12);
+//	printf("4567 |%10]5d| plip\n", 12);
+    printf("|%10.5d|\n", -12);
+    printf("|%10d|\n", -12);
+    printf("|%010d|\n", -12); 
+    printf("|%-10.5d|\n", -12);
+//  printf("|%-010.5d|\n", -12);
+    printf("%%.5d -12 -> |%.5d|\n", -12);
+    printf("%%.5d +12 -> |%.5d|\n", 12);
+    printf("%%.0d +12 -> |%.0d|\n", 12);
+    printf("%%.0d + 0 -> |%.0d|\n", 0);
+    printf("%%d 5 -> |%d|\n", 512);
+    printf("%%hd 5 -> |%hd|\n", 512);
+    printf("%%ld 5 -> |%ld|\n", 512);
+    printf("%%+u 14 -> |%+u|\n", 14);
+*//*
 	char			*s;
 	double			nbr;
 	int				nbr2;

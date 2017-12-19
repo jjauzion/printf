@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:33:10 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/18 18:06:47 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/19 13:36:47 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,17 @@ const char	*ft_parse(const char *format, t_spec *spec)
 	int		tmp;
 
 	format++;
+	spec->attribute = ft_get_attribute(&format);
 	tmp = ft_get_digit(&format);
-	if (*format == '$')
+	if (spec->attribute[0] == '\0')
 	{
-		spec->arg_id = tmp;
-		format++;
-		spec->attribute = ft_get_attribute(&format);
-		tmp = ft_get_digit(&format);
+		if (*format == '$')
+		{
+			spec->arg_id = tmp;
+			format++;
+			spec->attribute = ft_get_attribute(&format);
+			tmp = ft_get_digit(&format);
+		}
 	}
 	spec->width = tmp;
 	spec->precision = ft_get_precision(&format);

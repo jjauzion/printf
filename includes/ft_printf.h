@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftprintf.h                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 11:39:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/18 17:31:02 by jjauzion         ###   ########.fr       */
+/*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
+/*   Updated: 2017/12/19 20:18:21 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,17 @@ typedef struct	s_specifier
 	char	c_specifier;
 }				t_spec;
 
+typedef struct	s_type
+{
+	char	*type;
+	char*	(*fct)(va_list ap, t_spec spec);
+}				t_type;
+
 int			ft_printf(const char *format, ...);
 const char	*ft_parse(const char *format, t_spec *spec);
 int			ft_count_specifier(const char *str);
+void		ft_get_param(va_list ap, t_spec spec, int count);
+char		*int_arg(va_list ap, t_spec spec);
+char		*ft_padding(char **arg, t_spec spec);
 
 #endif
