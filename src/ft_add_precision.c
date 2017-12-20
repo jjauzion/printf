@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_add_precision.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 18:25:20 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/20 19:13:18 by jjauzion         ###   ########.fr       */
+/*   Created: 2017/12/20 13:07:39 by jjauzion          #+#    #+#             */
+/*   Updated: 2017/12/20 16:27:46 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void		*ft_realloc(void **src, size_t len, size_t size)
+char	*ft_add_precision(char **arg, t_spec spec)
 {
-	void	*dst;
+	int		len;
 
-	if (!(dst = ft_memalloc(len + size)))
-		return (NULL);
-	dst = ft_memcpy(dst, *src, len + 1);
-	free(*src);
-	*src = NULL;
-	return (dst);
+	len = ft_strlen(*arg);
+	if (len >= spec.precision)
+		return (*arg);
+
 }

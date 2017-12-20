@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/19 20:23:13 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/20 20:35:36 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,57 @@ int		main ()
 
 	printf("-------------TEST PRINTF-------------\n");
 	printf("\n--> Test 01 : nb arg > 10\n");
-	printf("PRINTF:\t\targ 0 : %i ; arg 1 : %i ; arg 2 : %i ; arg 3 : %i ; arg 4 : %i ; arg 5 : %i ; arg 6 : %i ; arg 7 : %i ; arg 8 : %i ; arg 9 : %i ; arg 10 : %i\n", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-	ft_printf("FT_PRINTF:\targ 0 : %i ; arg 1 : %i ; arg 2 : %i ; arg 3 : %i ; arg 4 : %i ; arg 5 : %i ; arg 6 : %i ; arg 7 : %i ; arg 8 : %i ; arg 9 : %i ; arg 10 : %i\n", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+	printf("PRINTF:\narg 0 : %i ; arg 1 : %i ; arg 2 : %i ; arg 3 : %i ; arg 4 : %i ; arg 5 : %i ; arg 6 : %i ; arg 7 : %i ; arg 8 : %i ; arg 9 : %i ; arg 10 : %i\n", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+	ft_printf("FT_PRINTF:\narg 0 : %i ; arg 1 : %i ; arg 2 : %i ; arg 3 : %i ; arg 4 : %i ; arg 5 : %i ; arg 6 : %i ; arg 7 : %i ; arg 8 : %i ; arg 9 : %i ; arg 10 : %i\n", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 	printf("\n--> Test 02 : simple padding\n");
-	printf("printf:\t\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
-	ft_printf("ft_printf:\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
-	printf("printf:\t\t|%0-5d|\n", 2);
-	ft_printf("ft_printf:\t|%0-5d|\n", 2);
+	printf("2.0 printf:\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
+	ft_printf("2.0 ft_printf:\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
 
-	printf("\n--> Test 05 : simple %%i et %%u\n");
-	printf("printf:\n\tchaine de test %i suite %u\n", 2, 3);
-	ft_printf("ft_printf:\n\tchaine de test %i suite %u\n", 2, 3);
-	printf("printf:\n\tchaine de test %i suite %u\n", -2, -3);
-	ft_printf("ft_printf:\n\tchaine de test %i suite %u\n", -2, -3);
+	printf("2.1 printf:\t|%+0d| ; |%+2d| ; |%0+5d|\n", 2, 2, 2);
+	ft_printf("2.1 ft_printf:\t|%+0d| ; |%+2d| ; |%0+5d|\n", 2, 2, 2);
+	
+	printf("2.2 printf:\t|%+5d| ; |%-+5d| ; |%+-+-+-+--5d|\n", 2, 2, 2);
+	ft_printf("2.2 ft_printf:\t|%+5d| ; |%-+5d| ; |%+-+-+-+--5d|\n", 2, 2, 2);
+	
+	printf("2.3 printf:\t|% d| ; |%0 5d| ; |%- 5d|\n", 2, 2, 2);
+	ft_printf("2.3 ft_printf:\t|% d| ; |%0 5d| ; |%- 5d|\n", 2, 2, 2);
+	
+	printf("2.4 printf:\t|%5d| ; |%05d| ; |%-5d|\n", -2, -2, -2);
+	ft_printf("2.4 ft_printf:\t|%5d| ; |%05d| ; |%-5d|\n", -2, -2, -2);
+	
+	printf("2.5 printf:\t|%+5d| ; |%+05d| ; |%+-5d|\n", -2, -2, -2);
+	ft_printf("2.5 ft_printf:\t|%+5d| ; |%+05d| ; |%+-5d|\n", -2, -2, -2);
+	
+	printf("2.6 printf:\t+d : |%+d| ;  +5d : |%+5d| ; +-5d : |%+-5d| ; +05d : |%+05d|\n", 0, 0, 0, 0);
+	ft_printf("2.6 ft_printf:\t+d : |%+d| ;  +5d : |%+5d| ; +-5d : |%+-5d| ; +05d : |%+05d|\n", 0, 0, 0, 0);
+
+//	printf("printf:\t\t|%5s| ; |%05s| ; |%-5s|\n", "-2", "-2", "-2");
+//	printf("printf:\t\t|%0-5d|\n", 2);
+//	ft_printf("ft_printf:\t|%0-5d|\n", 2);
+
+	printf("\n--> Test 03 : simple %%i et %%u\n");
+	printf("printf:\n\tchaine de test %i suite %i\n", 2, -2);
+	ft_printf("ft_printf:\n\tchaine de test %i suite %i\n", 2, -2);
+	printf("printf:\n\tchaine de test %u suite %u\n", 3, -3);
+	ft_printf("ft_printf:\n\tchaine de test %u suite %u\n", 3, -3);
+/*
+	printf("\n--> Test 04 : test precision\n");
+	printf("printf:\n.5i : |%.5i| ;  i : |%i|\n", 2, 2);
+	printf("printf:\n2.5i : |%2.5i| ;  2i : |%2i|\n", 2, 2);
+	printf("printf:\n0.5i : |%0.5i| ;  0i : |%0i|\n", 2, 2);
+	printf("printf:\n10.5i : |%10.5i| ;  5.5i : |%5.5i|\n", 2, 2);
+	printf("printf:\n+10.5i : |%+10.5i| ;  +-10.5i : |%+-10.5i|\n", 2, 2);
+	printf("printf:\n+10.5i : |%+10.5i| ;  +-10.5i : |%+-10.5i|\n", -2, -2);
+	printf("printf:\nf : |%f| ;  .5f : |%.5f|\n", 2.123456789, 2.123456789);
+	printf("printf:\nf : |%f| ;  .0f : |%.0f|\n", 2., 2.123456789);
+	printf("printf:\n#f : |%#f| ;  #.0f : |%#.0f|\n", 2., 2.123456789);
+	printf("printf:\nf : |%f| ;  .5f : |%.5f|\n", 2.1, 2.1);
+	printf("printf:\n10f : |%10f| ;  10.3f : |%10.3f|\n", 2.1, 2.1);
+	printf("printf:\n010f : |%010f| ;  010.3f : |%010.3f|\n", 2.1, 2.1);
+	printf("printf:\n1f : |%1f| ;  02.5f : |%02.5f|\n", 2.1, 2.1);
+	printf("printf:\ng : |%g| ;  .5g : |%.5g|\n", 2.123456789, 2.123456789);
+*/
 	printf("\n-------------END TEST PRINTF-------------\n");
 
 /*	
