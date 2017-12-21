@@ -52,8 +52,14 @@ int		main ()
 	ft_printf("ft_printf:\n\tchaine de test %i suite %i\n", 2, -2);
 	printf("printf:\n\tchaine de test %u suite %u\n", 3, -3);
 	ft_printf("ft_printf:\n\tchaine de test %u suite %u\n", 3, -3);
+
+	printf("\n--> Test 04 : test %%f\n");
+	printf("4.1 printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123456789, 2., 0.01, 0., 0.0000001);
+	ft_printf("4.1 ft_printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123456789, 2., 0.01, 0., 0.0000001);
+	printf("4.2 printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123455789, 2.999999, 2.9999999, 9.9999999, 0.4444444);
+	ft_printf("4.2 ft_printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123455789, 2.999999, 2.9999999, 9.9999999, 0.4444444);
 /*
-	printf("\n--> Test 04 : test precision\n");
+	printf("\n--> Test 05 : test precision\n");
 	printf("printf:\n.5i : |%.5i| ;  i : |%i|\n", 2, 2);
 	printf("printf:\n2.5i : |%2.5i| ;  2i : |%2i|\n", 2, 2);
 	printf("printf:\n0.5i : |%0.5i| ;  0i : |%0i|\n", 2, 2);
@@ -70,6 +76,17 @@ int		main ()
 	printf("printf:\ng : |%g| ;  .5g : |%.5g|\n", 2.123456789, 2.123456789);
 */
 	printf("\n-------------END TEST PRINTF-------------\n");
+
+	double	testd;
+	float	testf;
+	char	*tests;
+
+	testd = 0.999999;
+	testf = 0.01;
+	tests = ft_dtoa((double)testd, 5);
+	printf("tests = %s ; testd = %.5f ; testf = %.5f\n", tests, testd, testf);
+	tests = ft_dtoa((double)testd, 6);
+	printf("tests = %s ; testd = %f ; testf = %f\n", tests, testd, testf);
 
 /*	
 	printf("\n--> Test 02 : long attribute and repetion\n");

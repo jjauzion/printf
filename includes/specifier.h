@@ -15,7 +15,7 @@
 
 t_type g_type[] =
 {
-	{"bdiouxX", int_arg},
+	{"bdiouxXf", int_arg},
 /*	{ "DOU", dou_arg },
 	{ "Cc", c_arg },
 	{ "s", s_arg },

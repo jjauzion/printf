@@ -112,6 +112,7 @@ char	*ft_generate_field(char **arg, t_spec spec)
 	if (sign == '-')
 		ft_shift_string(*arg, '\0', 'l', 0);
 	width = ft_width(*arg, spec, sign);
+//realloc only if width != len ?
 	if (!(*arg = (char *)ft_realloc((void **)arg, len, width - len + 1)))
 		return (NULL);
 	if (ft_strchr(spec.attribute, '-'))

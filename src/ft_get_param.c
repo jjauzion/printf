@@ -29,6 +29,11 @@ char		*int_arg(va_list ap, t_spec spec)
 		var.u = (unsigned int)va_arg(ap, int);
 		res = ft_uitoa(var.u);
 	}
+	else if (spec.c_specifier == 'f')
+	{
+		var.f = (float)va_arg(ap, double);
+		res = ft_dtoa(var.f, spec.precision);
+	}
 	return (res);
 }
 
@@ -42,7 +47,11 @@ void		ft_get_param(va_list ap, t_spec spec, int count)
 	while (!ft_strchr(g_type[i].type, (int)spec.c_specifier))
 		i++;
 	arg = g_type[i].fct(ap, spec);
+//ft_putstr("1 arg = ");
+//ft_putendl(arg); 
 	arg = ft_generate_field(&arg, spec);
+//ft_putstr("2 arg = ");
+//ft_putendl(arg); 
 	ft_putstr(arg);
 	ft_strdel(&arg);
 }

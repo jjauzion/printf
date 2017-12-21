@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 SRCS = src/ft_printf.c src/ft_parse.c src/ft_count_specifier.c src/ft_get_param.c\
-	   src/ft_padding.c\
+	   src/ft_generate_field.c\
 	   main.c
 
 OBJS = $(SRCS:.c=.o)

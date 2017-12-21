@@ -55,7 +55,7 @@ char		*ft_get_attribute(const char **format)
 int			ft_get_precision(const char **format)
 {
 	if (**format != '.')
-		return (0);
+		return (6);
 	(*format)++;
 	return (ft_get_digit(format));
 }

@@ -92,5 +92,6 @@ char			*ft_strcnew(size_t size, char c);
 int				ft_sqrt(int nb, char *option);
 char			*ft_uitoa(unsigned int n);
 void			*ft_realloc(void **src, size_t len, size_t size);
+char			*ft_dtoa(double nbr, int precision);
 
 #endif
