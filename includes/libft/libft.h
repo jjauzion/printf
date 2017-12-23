@@ -93,5 +93,7 @@ int				ft_sqrt(int nb, char *option);
 char			*ft_uitoa(unsigned int n);
 void			*ft_realloc(void **src, size_t len, size_t size);
 char			*ft_dtoa(double nbr, int precision);
+double			ft_round_up(double nbr, int precision);
+long long int		ft_power(int nbr, int power);
 
 #endif
