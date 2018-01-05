@@ -56,10 +56,12 @@ int		main ()
 	printf("\n--> Test 04 : test %%f\n");
 	printf("4.1 printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123456789, 2., 0.01, 0., 0.0000001);
 	ft_printf("4.1 ft_printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123456789, 2., 0.01, 0., 0.0000001);
-	printf("4.2 printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123455789, 2.999999, 2.9999999, 9.9999999, 0.4444444);
-	ft_printf("4.2 ft_printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123455789, 2.999999, 2.9999999, 9.9999999, 0.4444444);
+	printf("4.2 printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123455789, 2.999999, 2.9999999, 9.9999999, 0.5555555);
+	ft_printf("4.2 ft_printf:\t|%f| ; |%f| ; |%f| ; |%f| ; |%f|\n", 2.123455789, 2.999999, 2.9999999, 9.9999999, 0.5555555);
 	printf("4.3 printf:\t|%.0f| ; |%.0f| ; |%.0f| ; |%.0f| ; |%.0f|\n", 0., 2.999999, 2.123456789, 9.9999999, 0.4444444);
 	ft_printf("4.3 ft_printf:\t|%.0f| ; |%.0f| ; |%.0f| ; |%.0f| ; |%.0f|\n", 0., 2.999999, 2.123456789, 9.9999999, 0.4444444);
+	printf("4.4 printf:\t|%.2f| ; |%.1f| ; |%.8f| ; |%.10f| ; |%.6f|\n", 0., 2.999999, 2.123456789, 9.9999999, 0.5555555);
+	ft_printf("4.4 ft_printf:\t|%.2f| ; |%.1f| ; |%.8f| ; |%.10f| ; |%.6f|\n", 0., 2.999999, 2.123456789, 9.9999999, 0.5555555);
 /*
 	printf("\n--> Test 05 : test precision\n");
 	printf("printf:\n.5i : |%.5i| ;  i : |%i|\n", 2, 2);
@@ -78,19 +80,31 @@ int		main ()
 	printf("printf:\ng : |%g| ;  .5g : |%.5g|\n", 2.123456789, 2.123456789);
 */
 	printf("\n-------------END TEST PRINTF-------------\n");
-/*
+
 	double	testd;
 	float	testf;
 	char	*tests;
 
 	testd = 0.999999;
 	testd = 2.123456789;
-	testf = 0.01;
-	tests = ft_dtoa((double)testd, 5);
-	printf("tests = %s ; testd = %.5f ; testf = %.5f\n", tests, testd, testf);
+	testf = 2.123456789;
+	tests = ft_dtoa((double)testf, 8);
+	printf("tests = %s ; testd = %.8f ; testf = %.8f\n", tests, testd, testf);
+	tests = ft_dtoa((double)testd, 8);
+	printf("tests = %s ; testd = %.8f\n", tests, testd);
+	testd = 0.5555555555;
+	tests = ft_dtoa((double)testd, 8);
+	printf("tests = %s ; testd = %.7f\n", tests, testd);
+	testd = 2.999999;
+	printf("\n>>>>>>>>>>>>>>>>>>>>>>\n");
+	printf("testd = %.7f\n", testd);
+	printf("testd = %.8f\n", testd);
+	printf("testd = %.9f\n", testd);
+	printf("testd = %.15f\n", testd);
+	printf("testd = %.50f\n", testd);
 	tests = ft_dtoa((double)testd, 6);
-	printf("tests = %s ; testd = %f ; testf = %f\n", tests, testd, testf);
-*/
+	printf("tests = %s ; testd = %f\n", tests, testd);
+
 /*	
 	printf("\n--> Test 02 : long attribute and repetion\n");
 	printf("%+++++++++++------+2i\n", 2);

@@ -31,8 +31,8 @@ char		*int_arg(va_list ap, t_spec spec)
 	}
 	else if (spec.c_specifier == 'f')
 	{
-		var.f = (float)va_arg(ap, double);
-		res = ft_dtoa(var.f, spec.precision);
+		var.d = (double)va_arg(ap, double);
+		res = ft_dtoa(var.d, spec.precision);
 	}
 	return (res);
 }
