@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/19 15:53:57 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/06 18:18:49 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,9 @@ int		ft_printf(const char *format, ...)
 	t_spec	*spec;
 	int		cpt;
 	va_list	ap;
-//	va_list	copy;
 	int		count;
 
 	va_start(ap, format);
-//	va_copy(copy, ap);
 	count = ft_count_specifier(format);
 	spec = ft_init_spec(count);
 	cpt = 0;
@@ -78,13 +76,11 @@ int		ft_printf(const char *format, ...)
 			spec[cpt].arg_id = cpt;
 			if (!(format = ft_parse(format, &spec[cpt])))
 				return (-1);
-//			ft_print_spec(spec[cpt]);
-//			va_copy(copy, ap);
 			ft_get_param(ap, spec[cpt], count);
-//			va_end(copy);
 			cpt++;
 		}
 	}
 	va_end(ap);
+	free(spec);
 	return (666);
 }
