@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/20 20:35:43 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/06 17:13:15 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ char		*int_arg(va_list ap, t_spec spec)
 	{
 		var.i = (int)va_arg(ap, int);
 		res = ft_itoa(var.i);
+		res = ft_add_precision(&res, spec);
 	}
 	else if (spec.c_specifier == 'u')
 	{
 		var.u = (unsigned int)va_arg(ap, int);
 		res = ft_uitoa(var.u);
+		res = ft_add_precision(&res, spec);
 	}
 	else if (spec.c_specifier == 'f')
 	{

@@ -2,8 +2,8 @@
 
 double		ft_round_up(double nbr, int precision)
 {
-	int		n;
-	int		i;
+	int			n;
+	int			i;
 	double		real;
 	double		ret;
 

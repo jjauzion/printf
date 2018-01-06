@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:33:10 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/19 13:36:47 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/06 17:46:52 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char		*ft_get_attribute(const char **format)
 int			ft_get_precision(const char **format)
 {
 	if (**format != '.')
-		return (6);
+		return (-1);
 	(*format)++;
 	return (ft_get_digit(format));
 }
@@ -130,6 +130,8 @@ const char	*ft_parse(const char *format, t_spec *spec)
 	spec->l_modifier = ft_get_lmodifier(&format);
 	if (!(spec->c_specifier = ft_get_cspecifier(&format)))
 		return (NULL);
+	if (ft_strchr("fFgGeE", spec->c_specifier) && (spec->precision < 0))
+			spec->precision = 6;
 	format++;
 	return (format);
 }

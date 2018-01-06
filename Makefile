@@ -6,12 +6,12 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 16:49:48 by jjauzion          #+#    #+#              #
-#    Updated: 2017/12/19 20:05:54 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/06 16:32:25 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = src/ft_printf.c src/ft_parse.c src/ft_count_specifier.c src/ft_get_param.c\
-	   src/ft_generate_field.c\
+	   src/ft_generate_field.c src/ft_add_precision.c\
 	   main.c
 
 OBJS = $(SRCS:.c=.o)

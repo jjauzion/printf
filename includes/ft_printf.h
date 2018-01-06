@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/20 18:58:51 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/06 16:31:51 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void				ft_get_param(va_list ap, t_spec spec, int count);
 char				*int_arg(va_list ap, t_spec spec);
 void				ft_padding(char *arg, char option, char sign, int width);
 char				*ft_generate_field(char **arg, t_spec spec);
+char				*ft_add_precision(char **nbr, t_spec spec);
 
 #endif

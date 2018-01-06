@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/19 18:26:55 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/05 18:29:16 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# define ABS(Value) (Value < 0) ? -Value : Value
 
 typedef struct	s_list
 {
