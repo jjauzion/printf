@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/06 18:08:46 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/07 13:30:19 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		main ()
 {
 
 /* TEST FLOAT */
-/*	printf("\n\n-------------TEST DTOA-------------\n");
+	printf("\n\n-------------TEST DTOA-------------\n");
 	double	testd;
 	float	testf;
 	char	*tests;
@@ -27,9 +27,11 @@ int		main ()
 	testf = 2.123456789;
 	tests = ft_dtoa((double)testf, 8);
 	printf("tests = %s ; testd = %.8f ; testf = %.8f\n", tests, testd, testf);
+	ft_strdel(&tests);
 	tests = ft_dtoa((double)testd, 8);
 	printf("tests = %s ; testd = %.8f\n", tests, testd);
 	testd = 0.5555555555;
+	ft_strdel(&tests);
 	tests = ft_dtoa((double)testd, 8);
 	printf("tests = %s ; testd = %.7f\n", tests, testd);
 	testd = 2.999999000000000;
@@ -40,6 +42,7 @@ int		main ()
 	printf("testd = %.15f\n", testd);
 	printf("testd = %.16f\n", testd);
 	printf("testd = %.50f\n", testd);
+	ft_strdel(&tests);
 	tests = ft_dtoa((double)testd, 6);
 	printf("tests = %s ; testd = %f\n", tests, testd);
 	printf("\n-------------END TEST DTOA-------------\n\n");
@@ -106,7 +109,7 @@ int		main ()
 	printf("\n--> Test 06 : precision + width with int\n");
 	printf("6.1 printf:\t|%2.0d| ; |%2.2d| ; |%2.3d| ; |%5.3d|\n", 2, 2, 2, 2);
 	ft_printf("6.1 ft_printf:\t|%2.0d| ; |%2.2d| ; |%2.3d| ; |%5.3d|\n", 2, 2, 2, 2);
-*/	printf("6.2 printf:\t|%-2.0d| ; |%-2.2d| ; |%-2.3d| ; |%-5.3d|\n", 2, 2, 2, 2);
+	printf("6.2 printf:\t|%-2.0d| ; |%-2.2d| ; |%-2.3d| ; |%-5.3d|\n", 2, 2, 2, 2);
 	ft_printf("6.2 ft_printf:\t|%-2.0d| ; |%-2.2d| ; |%-2.3d| ; |%-5.3d|\n", 2, 2, 2, 2);
 
 	printf("\n-------------END TEST PRINTF-------------\n");

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:33:10 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/06 17:46:52 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/07 12:33:54 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char		*ft_get_lmodifier(const char **format)
 	if (!(ptr = ft_strchr(valid_modifier, (int)(**format))))
 	{
 		ft_strdel(&valid_modifier);
-		return (NULL);
+		return (modifier);
 	}
 	modifier[0] = *ptr;
 	(*format)++;

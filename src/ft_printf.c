@@ -6,13 +6,13 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/06 18:18:49 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/07 13:31:30 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_spec(t_spec spec)
+void		ft_print_spec(t_spec spec)
 {
 	ft_putstr("arg id = ");
 	ft_putnbr(spec.arg_id);
@@ -34,7 +34,7 @@ void	ft_print_spec(t_spec spec)
 	ft_putstr("\n");
 }
 
-t_spec	*ft_init_spec(int size)
+static t_spec	*ft_init_spec(int size)
 {
 	t_spec	*spec;
 	int		i;
@@ -53,7 +53,20 @@ t_spec	*ft_init_spec(int size)
 	return (spec);
 }
 
-int		ft_printf(const char *format, ...)
+static void		ft_delspec(t_spec **spec, int size)
+{
+	int	i;
+
+	i = -1;
+	while (++i < size)
+	{
+		ft_strdel(&((*spec)[i]).attribute);
+		ft_strdel(&((*spec)[i]).l_modifier);
+	}
+	free(*spec);
+}
+
+int				ft_printf(const char *format, ...)
 {
 	t_spec	*spec;
 	int		cpt;
@@ -81,6 +94,6 @@ int		ft_printf(const char *format, ...)
 		}
 	}
 	va_end(ap);
-	free(spec);
+	ft_delspec(&spec, count);
 	return (666);
 }
