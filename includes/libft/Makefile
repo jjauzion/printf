@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:02:24 by jjauzion          #+#    #+#              #
-#    Updated: 2017/12/19 18:27:11 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/07 19:04:33 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_strlen.c ft_strdup.c f
 	   ft_itoa.c ft_strrev.c ft_putstr.c ft_putendl.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 	   ft_memmove.c ft_memchr.c ft_memcmp.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c\
 	   ft_islower.c ft_isupper.c ft_strcapitalize.c ft_strcnew.c ft_sqrt.c ft_uitoa.c ft_realloc.c ft_dtoa.c\
-           ft_round_up.c ft_power.c
+	   ft_round_up.c ft_power.c ft_uitoa_base.c ft_strremap.c ft_strremapi.c
 
 OBJS = $(SRCS:.c=.o)
 

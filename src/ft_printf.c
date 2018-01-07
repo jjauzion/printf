@@ -6,13 +6,13 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 13:31:30 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/07 19:56:13 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_print_spec(t_spec spec)
+void			ft_print_spec(t_spec spec)
 {
 	ft_putstr("arg id = ");
 	ft_putnbr(spec.arg_id);

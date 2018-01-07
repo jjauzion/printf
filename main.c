@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 13:30:19 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/07 19:58:51 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,52 @@ int		main ()
 	ft_printf("6.1 ft_printf:\t|%2.0d| ; |%2.2d| ; |%2.3d| ; |%5.3d|\n", 2, 2, 2, 2);
 	printf("6.2 printf:\t|%-2.0d| ; |%-2.2d| ; |%-2.3d| ; |%-5.3d|\n", 2, 2, 2, 2);
 	ft_printf("6.2 ft_printf:\t|%-2.0d| ; |%-2.2d| ; |%-2.3d| ; |%-5.3d|\n", 2, 2, 2, 2);
+
+	printf("\n--> Test 07 : test string\n");
+	printf("7.1 printf:\t|%s| ; |%-s|\n", "chaine de test", "-s");
+	ft_printf("7.1 ft_printf:\t|%s| ; |%-s|\n", "chaine de test", "-s");
+	printf("7.2 printf:\t|%-12s| ; |%-.5s|\n", "**:)**", "-s");
+	ft_printf("7.2 ft_printf:\t|%-12s| ; |%-.5s|\n", "**:)**", "-s");
+//	printf("7.3 printf:\t|%+-12s| ; |%0-10.5s|\n", "**:)**", "-s");
+//	ft_printf("7.3 ft_printf:\t|%+-12s| ; |%0-10.5s|\n", "**:)**", "-s");
+	printf("7.4 printf:\t|%-12s| ; |%1s|\n", "", "s#$-s");
+	ft_printf("7.4 ft_printf:\t|%-12s| ; |%1s|\n", "", "s#$-s");
+
+	printf("\n--> Test 08 : test hexa\n");
+	printf("8.1 printf:\t|%x| ; |%X|\n", 12, 12);
+	ft_printf("8.1 ft_printf:\t|%x| ; |%X|\n", 12, 12);
+	printf("8.2 printf:\t|%x| ; |%X|\n", -12, -8);
+	ft_printf("8.2 ft_printf:\t|%x| ; |%X|\n", -12, -8);
+	printf("8.3 printf:\t|%x| ; |%X|\n", 0, -1);
+	ft_printf("8.3 ft_printf:\t|%x| ; |%X|\n", 0, -1);
+//	printf("8.4 printf:\t|%X| ; |%X| ; |%X|\n", 4294967295, -1, -2);
+//	ft_printf("8.4 ft_printf:\t|%X| ; |%X| ; |%X|\n", 4294967295, -1, -2);
+	printf("8.5 printf:\t|%.10x| ; |%.1x|\n", 45612, 45612);
+	ft_printf("8.5 ft_printf:\t|%.10x| ; |%.1x|\n", 45612, 45612);
+	printf("8.6 printf:\t|%15x| ; |%1x|\n", 45612, 45612);
+	ft_printf("8.6 ft_printf:\t|%15x| ; |%1x|\n", 45612, 45612);
+//	printf("8.7 printf:\t|%-15x| ; |%+1x|\n", 45612, 45612);
+//	ft_printf("8.7 ft_printf:\t|%-15x| ; |%+1x|\n", 45612, 45612);
+//	printf("8.8 printf:\t|%015x| ; |%0-15x|\n", 45612, 45612);
+//	ft_printf("8.8 ft_printf:\t|%015x| ; |%0-15x|\n", 45612, 45612);
+
+	printf("\n--> Test 09 : test octal\n");
+	printf("9.1 printf:\t|%o| ; |%o| ; |%o|\n", 12, 2, 0);
+	ft_printf("9.1 ft_printf:\t|%o| ; |%o| ; |%o|\n", 12, 2, 0);
+	printf("9.2 printf:\t|%o| ; |%o| ; |%o|\n", -12, -7, -0);
+	ft_printf("9.2 ft_printf:\t|%o| ; |%o| ; |%o|\n", -12, -7, -0);
+	printf("9.3 printf:\t|%o| ; |%o|\n", 0, -1);
+	ft_printf("9.3 ft_printf:\t|%o| ; |%o|\n", 0, -1);
+//	printf("9.4 printf:\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
+//	ft_printf("9.4 ft_printf:\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
+	printf("9.5 printf:\t|%.10o| ; |%.1o|\n", 45612, 45612);
+	ft_printf("9.5 ft_printf:\t|%.10o| ; |%.1o|\n", 45612, 45612);
+	printf("9.6 printf:\t|%15o| ; |%1o|\n", 45612, 45612);
+	ft_printf("9.6 ft_printf:\t|%15o| ; |%1o|\n", 45612, 45612);
+//	printf("9.7 printf:\t|%-15o| ; |%+1o|\n", 45612, 45612);
+//	ft_printf("9.7 ft_printf:\t|%-15o| ; |%+1o|\n", 45612, 45612);
+//	printf("9.8 printf:\t|%015o| ; |%0-15o|\n", 45612, 45612);
+//	ft_printf("9.8 ft_printf:\t|%015o| ; |%0-15o|\n", 45612, 45612);
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 

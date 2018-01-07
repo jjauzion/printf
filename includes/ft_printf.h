@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/06 16:31:51 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/07 19:50:21 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,23 @@ int					ft_printf(const char *format, ...);
 const char			*ft_parse(const char *format, t_spec *spec);
 int					ft_count_specifier(const char *str);
 void				ft_get_param(va_list ap, t_spec spec, int count);
-char				*int_arg(va_list ap, t_spec spec);
 void				ft_padding(char *arg, char option, char sign, int width);
-char				*ft_generate_field(char **arg, t_spec spec);
 char				*ft_add_precision(char **nbr, t_spec spec);
+char				*ft_generate_field(char **arg, t_spec spec);
+
+char				ft_get_sign(char *arg, t_spec spec);
+void				ft_shift_string(char *arg, char c, char option, int width);
+void				ft_apply_sign(char *arg, char sign, int width);
+int					ft_width(char *arg, t_spec spec, char sign);
+void				ft_padding(char *arg, char option, char sign, int width);
+char				ft_get_cspecifier(const char **format);
+char				*ft_get_lmodifier(const char **format);
+int					ft_get_precision(const char **format);
+char				*ft_get_attribute(const char **format);
+int					ft_get_digit(const char **str);
+
+char				*int_arg(va_list ap, t_spec spec);
+char				*int_base_arg(va_list ap, t_spec spec);
+char				*s_arg(va_list ap, t_spec spec);
 
 #endif

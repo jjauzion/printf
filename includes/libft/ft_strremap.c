@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_strremap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 12:22:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 18:48:03 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/07 18:48:50 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/07 18:51:18 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 //	Applique la fonction f à chaque caractère de la chaine de caractères 
-//	passée en paramètre pour créer une nouvelle chaine “fraiche” 
-//	(avec malloc(3)) résultant des applications successives de f.
+//	passée en paramètre en modifiant cette derniere.
 */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+char	*ft_strremap(char *s, char (*f)(char))
 {
 	size_t	len;
 	size_t	i;
-	char	*str;
 
 	if (!s || !f)
 		return (NULL);
 	len = ft_strlen(s);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
 	i = 0;
 	while (i < len)
 	{
-		str[i] = f(s[i]);
+		s[i] = f(s[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (s);
 }

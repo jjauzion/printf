@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dtoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/07 18:25:59 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/07 18:27:11 by jjauzion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char		*ft_dtoa(double nbr, int precision)
+char			*ft_dtoa(double nbr, int precision)
 {
-	int		n;
+	int			n;
 	double		real;
-	char	*mynum;
-	int		len;
-	int		i;
+	char		*mynum;
+	int			len;
+	int			i;
 
 //printf("\n>------------------\navant : %.50f ; precision = %d\n", nbr, precision);
 	nbr = ft_round_up(nbr, precision);
