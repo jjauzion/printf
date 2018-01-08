@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 19:04:14 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/08 12:12:30 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,7 @@ void				*ft_realloc(void **src, size_t len, size_t size);
 char				*ft_dtoa(double nbr, int precision);
 double				ft_round_up(double nbr, int precision);
 long long int		ft_power(int nbr, int power);
+char				*ft_str_del_char(char **str, char c);
+int					ft_count_cinstr(const char *str, char c);
 
 #endif

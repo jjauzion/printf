@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strremap.c                                      :+:      :+:    :+:   */
+/*   ft_count_cinstr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/07 18:48:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/08 12:17:36 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/08 12:00:45 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/08 12:04:10 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	Applique la fonction f à chaque caractère de la chaine de caractères
-**	passée en paramètre en modifiant cette derniere.
-*/
-
 #include "libft.h"
 
-char	*ft_strremap(char *s, char (*f)(char))
+int		ft_count_cinstr(const char *str, char c)
 {
-	size_t	len;
-	size_t	i;
+	int		count;
+	int		i;
 
-	if (!s || !f)
-		return (NULL);
-	len = ft_strlen(s);
-	i = 0;
-	while (i < len)
+	if (!str)
+		return (-1);
+	count = 0;
+	i = -1;
+	while (str[++i])
 	{
-		s[i] = f(s[i]);
-		i++;
+		if (str[i] == c)
+			count++;
 	}
-	return (s);
+	return (count);
 }

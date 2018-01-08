@@ -6,14 +6,14 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 12:22:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 18:48:03 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/08 12:16:46 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-//	Applique la fonction f à chaque caractère de la chaine de caractères 
-//	passée en paramètre pour créer une nouvelle chaine “fraiche” 
-//	(avec malloc(3)) résultant des applications successives de f.
+**	Applique la fonction f à chaque caractère de la chaine de caractères
+**	passée en paramètre pour créer une nouvelle chaine “fraiche”
+**	(avec malloc(3)) résultant des applications successives de f.
 */
 
 #include "libft.h"

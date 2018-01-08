@@ -6,12 +6,14 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 19:58:51 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/08 17:19:29 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <wchar.h>
+#include <locale.h>
 
 int		main ()
 {
@@ -105,6 +107,8 @@ int		main ()
 	ft_printf("5.3 ft_printf:\t|%.2u| ; |%.2u| ; |%.2u|\n", 2, 20, -2);
 	printf("5.4 printf:\t|%.0u| ; |%.1d| ; |%.7d| ; |%.20u|\n", 21, 21, 452, -2);
 	ft_printf("5.4 ft_printf:\t|%.0u| ; |%.1d| ; |%.7d| ; |%.20u|\n", 21, 21, 452, -2);
+	printf("5.5 printf:\t|%04.d| ; |%04.5d| ; |%+04.d| ; |%00.0d|\n", 21, 21, 21, -2);
+	ft_printf("5.5 ft_printf:\t|%04.d| ; |%04.5d| ; |%+04.d| ; |%00.0d|\n", 21, 21, 21, -2);
 
 	printf("\n--> Test 06 : precision + width with int\n");
 	printf("6.1 printf:\t|%2.0d| ; |%2.2d| ; |%2.3d| ; |%5.3d|\n", 2, 2, 2, 2);
@@ -121,6 +125,10 @@ int		main ()
 //	ft_printf("7.3 ft_printf:\t|%+-12s| ; |%0-10.5s|\n", "**:)**", "-s");
 	printf("7.4 printf:\t|%-12s| ; |%1s|\n", "", "s#$-s");
 	ft_printf("7.4 ft_printf:\t|%-12s| ; |%1s|\n", "", "s#$-s");
+	printf("7.5 printf:\t|%-.12s| ; |%.3s|\n", "(-_-)'", "s#$-s");
+	ft_printf("7.5 ft_printf:\t|%-.12s| ; |%.3s|\n", "(-_-)'", "s#$-s");
+	printf("7.6 printf:\t|%-9.12s| ; |%9.3s| ; |%7.s| ; |%3s|\n", "(-_-)'", "s#$-s", "coucou", "coucou");
+	ft_printf("7.6 ft_printf:\t|%-9.12s| ; |%9.3s| ; |%7.s| ; |%3s|\n", "(-_-)'", "s#$-s", "coucou", "coucou");
 
 	printf("\n--> Test 08 : test hexa\n");
 	printf("8.1 printf:\t|%x| ; |%X|\n", 12, 12);
@@ -139,6 +147,10 @@ int		main ()
 //	ft_printf("8.7 ft_printf:\t|%-15x| ; |%+1x|\n", 45612, 45612);
 //	printf("8.8 printf:\t|%015x| ; |%0-15x|\n", 45612, 45612);
 //	ft_printf("8.8 ft_printf:\t|%015x| ; |%0-15x|\n", 45612, 45612);
+	printf("8.9 printf:\t|%#15x| ; |%#-15x|\n", 45612, 45612);
+	ft_printf("8.9 ft_printf:\t|%#15x| ; |%#-15x|\n", 45612, 45612);
+	printf("8.10 printf:\t|%2.6X| ; |%0.6X| ; |%0.X| ; |%010.X|\n", 128641, 128641, 128641, 128641);
+	ft_printf("8.10 ft_printf:\t|%2.6X| ; |%0.6X| ; |%0.X| ; |%010.X|\n", 128641, 128641, 128641, 128641);
 
 	printf("\n--> Test 09 : test octal\n");
 	printf("9.1 printf:\t|%o| ; |%o| ; |%o|\n", 12, 2, 0);
@@ -157,6 +169,38 @@ int		main ()
 //	ft_printf("9.7 ft_printf:\t|%-15o| ; |%+1o|\n", 45612, 45612);
 //	printf("9.8 printf:\t|%015o| ; |%0-15o|\n", 45612, 45612);
 //	ft_printf("9.8 ft_printf:\t|%015o| ; |%0-15o|\n", 45612, 45612);
+	printf("9.9 printf:\t|%#15o| ; |%#-15o|\n", 45612, 45612);
+	ft_printf("9.9 ft_printf:\t|%#15o| ; |%#-15o|\n", 45612, 45612);
+	printf("9.10 printf:\t|%2.8o| ; |%0.8o| ; |%0.o| ; |%010.o|\n", 128641, 128641, 128641, 128641);
+	ft_printf("9.10 ft_printf:\t|%2.8o| ; |%0.8o| ; |%0.o| ; |%010.o|\n", 128641, 128641, 128641, 128641);
+
+	printf("\n--> Test 10 : test char\n");
+	printf("10.1 printf:\t|%c| ; |%-c|\n", 'a', '0');
+	ft_printf("10.1 ft_printf:\t|%c| ; |%-c|\n", 'a', '0');
+//	printf("10.2 printf:\t|%4.5c| ; |%-5.3c|\n", 'a', 'b');
+//	ft_printf("10.2 ft_printf:\t|%4.5c| ; |%-5.3c|\n", 'a', 'b');
+//	printf("10.3 printf:\t|%04.5c| ; |%0c|\n", 'a', 'b');
+//	ft_printf("10.3 ft_printf:\t|%04.5c| ; |%0c|\n", 'a', 'b');
+
+	printf("\n--> Test 11 : test length modifier\n");
+//	printf("11.1 printf:\t|%hf|\n", 2147483647.);
+
+	printf("\n--> Test 12 : test UNICODE\n");
+/*
+	wchar_t	c;
+	c = 0;
+	while (c++ < 512)
+	{
+		wprintf(L"11.1 printf:\t|%lc|\n", c);
+	}
+*/
+char* l = setlocale(LC_ALL, "en_US.UTF-8"); 
+
+if (l == NULL) 
+	    printf("Locale not set\n"); 
+else
+	    printf("Locale set to %s\n", l); 
+	printf("%C\n", 945);
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 

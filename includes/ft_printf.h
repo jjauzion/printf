@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 19:50:21 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/08 14:15:48 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,13 @@ char				*ft_get_lmodifier(const char **format);
 int					ft_get_precision(const char **format);
 char				*ft_get_attribute(const char **format);
 int					ft_get_digit(const char **str);
+char				*ft_hashtag_attribute(char **arg, t_spec spec);
+void				ft_padding(char *arg, char option, char sign, int width);
 
 char				*int_arg(va_list ap, t_spec spec);
 char				*int_base_arg(va_list ap, t_spec spec);
 char				*s_arg(va_list ap, t_spec spec);
+char				*c_arg(va_list ap, t_spec spec);
+char				*pct_arg(va_list ap, t_spec spec);
 
 #endif

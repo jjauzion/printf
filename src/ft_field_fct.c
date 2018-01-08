@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:35:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 19:33:41 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/08 11:12:23 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,4 @@ int		ft_width(char *arg, t_spec spec, char sign)
 		return (spec.width);
 	else
 		return (len);
-}
-
-void	ft_padding(char *arg, char option, char sign, int width)
-{
-	int		len;
-	char	c;
-	int		nb2pad;
-
-	if (!arg || !(option == ' ' || option == '0' || option == '-'))
-		return ;
-	len = ft_strlen(arg);
-	c = (option == '-') ? ' ' : option;
-	nb2pad = width;
-	if (option != '-')
-	{
-		if (option == '0')
-			nb2pad = (sign) ? nb2pad - 1 : nb2pad;
-		arg = ft_strrev(arg);
-	}
-	while (len < nb2pad)
-		arg[len++] = c;
-	if (option != '-')
-		arg = ft_strrev(arg);
-	ft_apply_sign(arg, sign, width);
 }

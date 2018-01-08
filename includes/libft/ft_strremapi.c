@@ -6,13 +6,13 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:02:37 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 19:05:34 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/08 12:18:07 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-//	Applique la fonction f à chaque caractère de la chaine de caractères 
-//	passée en paramètre en modifiant cette derniere.
+**	Applique la fonction f à chaque caractère de la chaine de caractères
+**	passée en paramètre en modifiant cette derniere.
 */
 
 #include "libft.h"

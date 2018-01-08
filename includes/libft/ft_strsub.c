@@ -6,9 +6,17 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:01:59 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/11/13 18:28:07 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/08 12:18:39 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	Alloue (avec malloc(3)) et retourne la copie “fraiche” d’un tronçon de la
+**	chaine de caractères passée en paramètre. Le tronçon commence à l’index
+**	"start" et à pour longueur "len". Si "start" et "len" ne désignent pas un
+**	tronçon de chaine valide, le comportement est indéterminé.
+**	Si l’allocation échoue, la fonction renvoie NULL.
+*/
 
 #include "libft.h"
 
