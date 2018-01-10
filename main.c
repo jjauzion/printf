@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/08 17:19:29 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/10 19:19:50 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,21 +186,19 @@ int		main ()
 //	printf("11.1 printf:\t|%hf|\n", 2147483647.);
 
 	printf("\n--> Test 12 : test UNICODE\n");
-/*
-	wchar_t	c;
-	c = 0;
-	while (c++ < 512)
-	{
-		wprintf(L"11.1 printf:\t|%lc|\n", c);
-	}
-*/
 char* l = setlocale(LC_ALL, "en_US.UTF-8"); 
-
 if (l == NULL) 
 	    printf("Locale not set\n"); 
 else
 	    printf("Locale set to %s\n", l); 
-	printf("%C\n", 945);
+	printf("13.1 printf:\t%C\n", 945);
+//	ft_printf("13.1 ft_printf:\t%C\n", 945);
+	printf("13.2 printf:\t|%S| ; |%25S| ; |%-25S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	printf("13.3 printf:\t|%ls| ; |%.2ls| ; |%-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+
+	printf("\n--> Test 13 : test %%\n");
+	printf("13.1 printf:\t%%5d %%d OK?\n");
+	ft_printf("13.1 ft_printf:\t%%5d %%d OK?\n");
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 

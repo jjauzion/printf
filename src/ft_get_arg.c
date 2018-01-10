@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:42:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/08 14:17:15 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/10 19:19:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,15 @@ char		*s_arg(va_list ap, t_spec spec)
 		else
 			res = ft_strdup(var.s);
 	}
-	res = ft_generate_field(&res, spec);
+/*	if (spec.c_specifier == 'S')
+	{
+		var.s = (char*)va_arg(ap, char*);
+		if (spec.precision >= 0)
+			res = ft_strsub(var.s, 0, spec.precision);
+		else
+			res = ft_strdup(var.s);
+	}
+*/	res = ft_generate_field(&res, spec);
 	return (res);
 }
 
@@ -95,6 +103,11 @@ char		*c_arg(va_list ap, t_spec spec)
 	if (spec.c_specifier == 'c')
 	{
 		var.c = (char)va_arg(ap, int);
+		res = ft_strcnew(1, var.c);
+	}
+	if (spec.c_specifier == 'C')
+	{
+		var.i = (int)va_arg(ap, int);
 		res = ft_strcnew(1, var.c);
 	}
 	res = ft_generate_field(&res, spec);

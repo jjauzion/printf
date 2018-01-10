@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/08 12:12:30 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/10 18:41:16 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <locale.h>
 
 # define ABS(Value) (Value < 0) ? -Value : Value
 
@@ -103,5 +104,7 @@ double				ft_round_up(double nbr, int precision);
 long long int		ft_power(int nbr, int power);
 char				*ft_str_del_char(char **str, char c);
 int					ft_count_cinstr(const char *str, char c);
+void				ft_putwchar(int c);
+void				ft_putwstr(int str[9]);
 
 #endif
