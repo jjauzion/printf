@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/10 19:19:50 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 14:41:25 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,10 +195,17 @@ else
 //	ft_printf("13.1 ft_printf:\t%C\n", 945);
 	printf("13.2 printf:\t|%S| ; |%25S| ; |%-25S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 	printf("13.3 printf:\t|%ls| ; |%.2ls| ; |%-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+//	printf("13.4 printf:\t|%0ls| ; |%#25ls| ; |%0-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	printf("13.5 printf:\t|%-5C| ; |%7lc|\n", 945, L'只');
+	printf("13.6 printf:\t|%-5C| ; |%7lc|\n", 945, L'只');
 
 	printf("\n--> Test 13 : test %%\n");
 	printf("13.1 printf:\t%%5d %%d OK?\n");
 	ft_printf("13.1 ft_printf:\t%%5d %%d OK?\n");
+
+	printf("\n--> Test xx : test bug\n");
+	ft_printf("string with nothing special ; just plain text :)\n");
+	ft_printf("wrong specifier : %r \n");
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 
