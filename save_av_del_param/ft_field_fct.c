@@ -6,13 +6,13 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:35:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 19:37:03 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/08 11:12:23 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	ft_get_sign(t_spec spec)
+char	ft_get_sign(char *arg, t_spec spec)
 {
 	char	sign;
 
@@ -23,7 +23,7 @@ char	ft_get_sign(t_spec spec)
 		sign = ' ';
 	if (ft_strchr(spec.attribute, '+'))
 		sign = '+';
-	if (spec.field[0] == '-')
+	if (arg[0] == '-')
 		sign = '-';
 	return (sign);
 }
@@ -67,11 +67,11 @@ void	ft_apply_sign(char *arg, char sign, int width)
 		arg[i - 1] = sign;
 }
 
-int		ft_width(t_spec spec, char sign)
+int		ft_width(char *arg, t_spec spec, char sign)
 {
 	int		len;
 
-	len = ft_strlen(spec.field);
+	len = ft_strlen(arg);
 	len = (sign) ? len + 1 : len;
 	if (spec.width > len)
 		return (spec.width);

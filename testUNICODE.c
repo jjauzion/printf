@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_param.c                                     :+:      :+:    :+:   */
+/*   testmain.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 19:46:29 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/10 18:42:24 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/10 18:42:43 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "specifier.h"
+#include "libft.h"
 
-void	ft_get_param(va_list ap, t_spec *spec, int cpt)
+int		main(void)
 {
-	int		i;
-
-	i = 0;
-	while (!ft_strchr(g_type[i].type, (int)spec[cpt].c_specifier))
-		i++;
-	g_type[i].fct(ap, &spec[cpt]);
+		ft_putwstr(L"test \x3B1 ok\n");
+		ft_putwstr(L"我是一只猫。\n");
 }

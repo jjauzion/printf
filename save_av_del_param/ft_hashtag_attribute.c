@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_param.c                                     :+:      :+:    :+:   */
+/*   ft_hashtag_attribute.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 19:46:29 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/08 10:30:13 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/08 10:59:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "specifier.h"
 
-void	ft_get_param(va_list ap, t_spec *spec, int cpt)
+char		*ft_hashtag_attribute(char **arg, t_spec spec)
 {
-	int		i;
+	char	*res;
 
-	i = 0;
-	while (!ft_strchr(g_type[i].type, (int)spec[cpt].c_specifier))
-		i++;
-	g_type[i].fct(ap, &spec[cpt]);
+	if (spec.c_specifier == 'o')
+		res = ft_strjoin("0", *arg);
+	if (spec.c_specifier == 'x')
+		res = ft_strjoin("0x", *arg);
+	if (spec.c_specifier == 'X')
+		res = ft_strjoin("0X", *arg);
+	ft_strdel(arg);
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 18:08:38 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 20:04:11 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main ()
 {
 
 /* TEST FLOAT */
-	printf("\n\n-------------TEST DTOA-------------\n");
+/*	printf("\n\n-------------TEST DTOA-------------\n");
 	double	testd;
 	float	testf;
 	char	*tests;
@@ -197,7 +197,8 @@ else
 	printf("13.3 printf:\t|%ls| ; |%.2ls| ; |%-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 //	printf("13.4 printf:\t|%0ls| ; |%#25ls| ; |%0-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 	printf("13.5 printf:\t|%-7C| ; |%7lc|\n", 945, L'只');
-	printf("13.6 printf:\t|%2$-7C| ; |%2$7lc|\n", 945, L'只');
+	printf("13.6 printf:\t|%2$-7C| ; |%1$7lc|\n", 945, L'只');
+	printf("13.7 printf:\t|%2$-7C| ; |%2$7lc|\n", 945, L'只');
 
 	printf("\n--> Test 13 : test %%\n");
 	printf("13.1 printf:\t%%5d %%d OK?\n");
@@ -211,9 +212,14 @@ else
 //	ft_printf("%s%c%d%ls", "Uniquement des specifier.", ' ', 7, L"c'est pas si compliqué\n");
 
 //	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
-
+*/
 	printf("\n-------------END TEST PRINTF-------------\n");
 
+	printf("2.0 printf:\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
+	ft_printf("2.0 ft_printf:\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
+
+	printf("8.1 printf:\t|%x| ; |%X|\n", 12, 12);
+	ft_printf("8.1 ft_printf:\t|%x| ; |%X|\n", 12, 12);
 	while (1)
 	{}
 

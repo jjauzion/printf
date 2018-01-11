@@ -6,64 +6,68 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:42:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 20:03:43 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 19:03:45 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		int_arg(va_list ap, t_spec *spec)
+char		*int_arg(va_list ap, t_spec spec)
 {
 	t_var	var;
+	char	*res;
 
-	spec->field = NULL;
-	if (spec->c_specifier == 'i' || spec->c_specifier == 'd')
+	res = NULL;
+	if (spec.c_specifier == 'i' || spec.c_specifier == 'd')
 	{
 		var.i = (int)va_arg(ap, int);
-		spec->field = ft_itoa(var.i);
-		ft_add_precision(spec);
+		res = ft_itoa(var.i);
+		res = ft_add_precision(&res, spec);
 	}
-	else if (spec->c_specifier == 'u')
+	else if (spec.c_specifier == 'u')
 	{
 		var.u = (unsigned int)va_arg(ap, int);
-		spec->field = ft_uitoa(var.u);
-		ft_add_precision(spec);
+		res = ft_uitoa(var.u);
+		res = ft_add_precision(&res, spec);
 	}
-	else if (spec->c_specifier == 'f')
+	else if (spec.c_specifier == 'f')
 	{
 		var.d = (double)va_arg(ap, double);
-		spec->field = ft_dtoa(var.d, spec->precision);
+		res = ft_dtoa(var.d, spec.precision);
 	}
-	ft_generate_field(spec);
+	res = ft_generate_field(&res, spec);
+	return (res);
 }
 
-void		int_base_arg(va_list ap, t_spec *spec)
+char		*int_base_arg(va_list ap, t_spec spec)
 {
 	t_var	var;
+	char	*res;
 
-	spec->field = NULL;
-	if (spec->c_specifier == 'o')
+	res = NULL;
+	if (spec.c_specifier == 'o')
 	{
 		var.u = (unsigned int)va_arg(ap, int);
-		spec->field = ft_uitoa_base(var.u, 8);
-		ft_add_precision(spec);
+		res = ft_uitoa_base(var.u, 8);
+		res = ft_add_precision(&res, spec);
 	}
-	else if (spec->c_specifier == 'x')
+	else if (spec.c_specifier == 'x')
 	{
 		var.u = (unsigned int)va_arg(ap, int);
-		spec->field = ft_uitoa_base(var.u, 16);
-		ft_add_precision(spec);
+		res = ft_uitoa_base(var.u, 16);
+		res = ft_add_precision(&res, spec);
 	}
-	else if (spec->c_specifier == 'X')
+	else if (spec.c_specifier == 'X')
 	{
 		var.u = (unsigned int)va_arg(ap, int);
-		spec->field = ft_uitoa_base(var.u, 16);
-		spec->field = ft_strremapi(spec->field, &ft_toupper);
-		ft_add_precision(spec);
+		res = ft_uitoa_base(var.u, 16);
+		res = ft_strremapi(res, &ft_toupper);
+		res = ft_add_precision(&res, spec);
 	}
-	ft_generate_field(spec);
+	res = ft_generate_field(&res, spec);
+	return (res);
 }
-/*
+
 char		*s_arg(va_list ap, t_spec spec)
 {
 	t_var	var;
@@ -78,7 +82,15 @@ char		*s_arg(va_list ap, t_spec spec)
 		else
 			res = ft_strdup(var.s);
 	}
-	res = ft_generate_field(&res, spec);
+/*	if (spec.c_specifier == 'S')
+	{
+		var.s = (char*)va_arg(ap, char*);
+		if (spec.precision >= 0)
+			res = ft_strsub(var.s, 0, spec.precision);
+		else
+			res = ft_strdup(var.s);
+	}
+*/	res = ft_generate_field(&res, spec);
 	return (res);
 }
 
@@ -101,9 +113,13 @@ char		*c_arg(va_list ap, t_spec spec)
 	res = ft_generate_field(&res, spec);
 	return (res);
 }
-*/
-void		pct_arg(va_list ap, t_spec *spec)
+
+char		*pct_arg(va_list ap, t_spec spec)
 {
+	char	*res;
+
 	(void)ap;
-	spec->field = ft_strdup("%");
+	(void)spec;
+	res = ft_strdup("%");
+	return (res);
 }

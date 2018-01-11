@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/10 18:41:16 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 18:36:25 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,6 @@ long long int		ft_power(int nbr, int power);
 char				*ft_str_del_char(char **str, char c);
 int					ft_count_cinstr(const char *str, char c);
 void				ft_putwchar(int c);
-void				ft_putwstr(int str[9]);
+void				ft_putwstr(int *str);
 
 #endif

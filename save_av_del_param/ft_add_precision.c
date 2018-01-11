@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:37:53 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 19:58:44 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/06 17:59:48 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ static void	ft_copy_w_zero(char *dst, char *src, int sign, int nb_zero)
 	dst[i] = '\0';
 }
 
-void		ft_add_precision(t_spec *spec)
+char		*ft_add_precision(char **nbr, t_spec spec)
 {
 	int		sign;
 	int		len;
 	char	*ret;
 
-	sign = (spec->field[0] == '-') ? 1 : 0;
-	len = (sign) ? ft_strlen(spec->field) - 1 : ft_strlen(spec->field);
-	if (len >= spec->precision)
-		return ;
-	if (!(ret = ft_strnew(spec->precision + sign)))
-		return ;
-	ft_copy_w_zero(ret, spec->field, sign, spec->precision - len);
-	free(spec->field);
-	spec->field = ret;
+	sign = ((*nbr)[0] == '-') ? 1 : 0;
+	len = (sign) ? ft_strlen(*nbr) - 1 : ft_strlen(*nbr);
+	if (len >= spec.precision)
+		return (*nbr);
+	if (!(ret = ft_strnew(spec.precision + sign)))
+		return (NULL);
+	ft_copy_w_zero(ret, *nbr, sign, spec.precision - len);
+	ft_strdel(nbr);
+	return (ret);
 }
