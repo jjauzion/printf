@@ -6,13 +6,13 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 17:35:28 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/10 18:40:13 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 14:07:02 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putwstr(int str[9])
+void	ft_putwstr(int str[])
 {
 	if (!str)
 		return ;
