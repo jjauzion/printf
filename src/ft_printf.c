@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/10 19:19:47 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:12:15 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,29 @@ static void		ft_delspec(t_spec **spec, int size)
 	i = -1;
 	while (++i < size)
 	{
-		ft_strdel(&((*spec)[i]).attribute);
-		ft_strdel(&((*spec)[i]).l_modifier);
+		if ((*spec)[i].attribute && (*spec)[i].l_modifier)
+		{
+			ft_strdel(&((*spec)[i]).attribute);
+			ft_strdel(&((*spec)[i]).l_modifier);
+		}
 	}
 	free(*spec);
+}
+
+static void		ft_printf_closure(t_spec **spec, char ***plain_str, char ***param, int nb_param)
+{
+	int	i;
+
+	ft_delspec(spec, nb_param);
+	i = -1;
+	while (++i < nb_param)
+	{
+		ft_strdel(&(*plain_str)[i]);
+		ft_strdel(&(*param)[i]);
+	}
+	ft_strdel(&(*plain_str)[i]);
+	free(*plain_str);
+	free(*param);
 }
 
 int				ft_printf(const char *format, ...)
@@ -72,28 +91,44 @@ int				ft_printf(const char *format, ...)
 	int		cpt;
 	va_list	ap;
 	int		count;
+	char	**plain_str;
+	char	**param;
+	int		i;
 
 	va_start(ap, format);
 	count = ft_count_specifier(format);
+	plain_str = (char**)malloc(sizeof(char*) * (count + 1));
+	param = (char**)malloc(sizeof(char*) * (count));
+	if (!plain_str || !param)
+		return (-1);
+	cpt = -1;
+	while (++cpt < count + 1)
+	{
+		if (!(plain_str[cpt] = ft_strnew(ft_strlen(format))))
+			return (-1);
+	}
 	spec = ft_init_spec(count);
 	cpt = 0;
 	while (*format)
 	{
-		if (*format != '%')
+		i = 0;
+		while (*format && *format != '%')
 		{
-			ft_putchar(*format);
+			plain_str[cpt][i] = *format;
 			format++;
+			i++;
 		}
-		else
+		if (*format == '%')
 		{
 			spec[cpt].arg_id = cpt;
 			if (!(format = ft_parse(format, &spec[cpt])))
 				return (-1);
-			ft_get_param(ap, spec[cpt], count);
-			cpt++;
+			ft_get_param(ap, spec[cpt], count, &param[cpt]);
 		}
+		cpt++;
 	}
+	ft_print_all(plain_str, param, spec, count);
 	va_end(ap);
-	ft_delspec(&spec, count);
+	ft_printf_closure(&spec, &plain_str, &param, count);
 	return (666);
 }

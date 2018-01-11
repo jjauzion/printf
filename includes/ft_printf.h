@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/08 14:15:48 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:15:17 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ typedef union		u_variable
 int					ft_printf(const char *format, ...);
 const char			*ft_parse(const char *format, t_spec *spec);
 int					ft_count_specifier(const char *str);
-void				ft_get_param(va_list ap, t_spec spec, int count);
+void				ft_get_param(va_list ap, t_spec spec, int count, char **param);
 void				ft_padding(char *arg, char option, char sign, int width);
 char				*ft_add_precision(char **nbr, t_spec spec);
 char				*ft_generate_field(char **arg, t_spec spec);
+int					ft_print_all(char **plain_str, char **param, t_spec *spec, int nb_param);
 
 char				ft_get_sign(char *arg, t_spec spec);
 void				ft_shift_string(char *arg, char c, char option, int width);

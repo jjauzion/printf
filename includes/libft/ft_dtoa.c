@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 18:25:59 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/07 18:27:11 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:40:09 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char			*ft_dtoa(double nbr, int precision)
 	n = (int)nbr;
 	mynum = ft_itoa(n);
 	len = ft_strlen(mynum);
-	mynum = (char *)ft_realloc((void **)&mynum, len, precision + 2);
+	mynum = (char *)ft_realloc((void **)&mynum, len + 1, precision + 2);
 	mynum[len] = '.';
 	real = ABS((nbr - (double)n));
 	i = -1;

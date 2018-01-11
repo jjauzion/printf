@@ -6,9 +6,20 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 18:25:20 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/20 19:13:18 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:40:37 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	Realloc memory to "src":
+**	A fresh memory space is allocated of size "len" + "size"
+**	Byte from 0 to len + 1 (A CHANGER !!!!) from "src" are copied with ft_memcpy 
+**	to the new memory space allocated.
+**	Original "src" pointer is freed.
+**
+**	Return :
+**	A pointer to the new allocated memory space is returned.
+*/
 
 #include "libft.h"
 
@@ -18,7 +29,7 @@ void		*ft_realloc(void **src, size_t len, size_t size)
 
 	if (!(dst = ft_memalloc(len + size)))
 		return (NULL);
-	dst = ft_memcpy(dst, *src, len + 1);
+	dst = ft_memcpy(dst, *src, len);
 	free(*src);
 	*src = NULL;
 	return (dst);

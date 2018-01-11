@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 14:41:25 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:41:44 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,10 +202,14 @@ else
 	printf("\n--> Test 13 : test %%\n");
 	printf("13.1 printf:\t%%5d %%d OK?\n");
 	ft_printf("13.1 ft_printf:\t%%5d %%d OK?\n");
+	printf("13.2 printf:\t%%5d %%d OK?\n");
 
 	printf("\n--> Test xx : test bug\n");
 	ft_printf("string with nothing special ; just plain text :)\n");
-	ft_printf("wrong specifier : %r \n");
+	ft_printf("%c%d%s", '|', 7, " Uniquement des specifier|\n");
+//	ft_printf("%s%c%d%ls", "Uniquement des specifier.", ' ', 7, L"c'est pas si compliqué\n");
+
+//	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 

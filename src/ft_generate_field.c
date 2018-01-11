@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 16:55:21 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/10 19:19:45 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:41:27 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_generate_field(char **arg, t_spec spec)
 	char	sign;
 	int		width;
 
-	len = ft_strlen(*arg);
 	sign = ft_get_sign(*arg, spec);
 	if (sign == '-')
 		ft_shift_string(*arg, '\0', 'l', 0);
@@ -26,9 +25,10 @@ char	*ft_generate_field(char **arg, t_spec spec)
 		*arg = ft_hashtag_attribute(arg, spec);
 	if (!*arg)
 		return (NULL);
+	len = ft_strlen(*arg);
 	width = ft_width(*arg, spec, sign);
 //realloc only if width != len ?
-	if (!(*arg = (char *)ft_realloc((void **)arg, len, width - len + 1)))
+	if (!(*arg = (char *)ft_realloc((void **)arg, len + 1, width - len + 1)))
 		return (NULL);
 	if (ft_strchr(spec.attribute, '-'))
 		ft_padding(*arg, '-', sign, width);
