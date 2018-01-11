@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 16:15:17 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 18:16:02 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "libft.h"
 # include <stdarg.h>
 
+typedef union		u_field
+{
+	char			*s;
+	int				i[];
+}					t_field;
+
 typedef struct		s_specifier
 {
 	int				arg_id;
@@ -24,6 +30,7 @@ typedef struct		s_specifier
 	int				precision;
 	char			*l_modifier;
 	char			c_specifier;
+	t_field			field;
 }					t_spec;
 
 typedef struct		s_type

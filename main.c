@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 17:41:44 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/11 18:08:38 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,8 +196,8 @@ else
 	printf("13.2 printf:\t|%S| ; |%25S| ; |%-25S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 	printf("13.3 printf:\t|%ls| ; |%.2ls| ; |%-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 //	printf("13.4 printf:\t|%0ls| ; |%#25ls| ; |%0-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	printf("13.5 printf:\t|%-5C| ; |%7lc|\n", 945, L'只');
-	printf("13.6 printf:\t|%-5C| ; |%7lc|\n", 945, L'只');
+	printf("13.5 printf:\t|%-7C| ; |%7lc|\n", 945, L'只');
+	printf("13.6 printf:\t|%2$-7C| ; |%2$7lc|\n", 945, L'只');
 
 	printf("\n--> Test 13 : test %%\n");
 	printf("13.1 printf:\t%%5d %%d OK?\n");
@@ -207,6 +207,7 @@ else
 	printf("\n--> Test xx : test bug\n");
 	ft_printf("string with nothing special ; just plain text :)\n");
 	ft_printf("%c%d%s", '|', 7, " Uniquement des specifier|\n");
+	ft_printf("test ac plusieur arg enchaine <%c%d%s> alors?", '|', 7, " tut tut|");
 //	ft_printf("%s%c%d%ls", "Uniquement des specifier.", ' ', 7, L"c'est pas si compliqué\n");
 
 //	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
