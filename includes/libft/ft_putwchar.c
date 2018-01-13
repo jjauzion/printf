@@ -6,37 +6,13 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 18:51:15 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/10 18:40:19 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/13 19:33:17 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_count_bit(unsigned int var)
-{
-	int		count;
-
-	count = 0;
-	while (var)
-	{
-		var = var >> 1;
-		count++;
-	}
-	return (count);
-}
-
-int			ft_bit2oct(int nb)
-{
-	if (nb <= 7)
-		return (1);
-	if (nb <= 11)
-		return (2);
-	if (nb <= 16)
-		return (3);
-	return (4);
-}
-
-void		ft_apply_mask(int c, unsigned char *wc, int nb_octet)
+static void		ft_apply_mask(wchar_t c, unsigned char *wc, int nb_octet)
 {
 	int		i;
 
@@ -54,9 +30,8 @@ void		ft_apply_mask(int c, unsigned char *wc, int nb_octet)
 		wc[3] = 0xF0 | (c & 0x7);
 }
 
-void		ft_putwchar(int c)
+void		ft_putwchar(wchar_t c)
 {
-	int				active_bit;
 	int				nb_octet;
 	unsigned char	*wc;
 	int				i;
@@ -67,8 +42,7 @@ void		ft_putwchar(int c)
 	while (++i < 4)
 		wc[i] = '\0';
 	setlocale(LC_ALL, "en_US.UTF-8");
-	active_bit = ft_count_bit(c);
-	nb_octet = ft_bit2oct(active_bit);
+	nb_octet = ft_getnbofutf8byte(c);
 	if (nb_octet == 1)
 	{
 		write(1, &c, 1);

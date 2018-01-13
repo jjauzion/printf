@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:42:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 20:03:43 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/13 22:36:29 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,66 +42,80 @@ void		int_base_arg(va_list ap, t_spec *spec)
 	t_var	var;
 
 	spec->field = NULL;
+	var.u = (unsigned int)va_arg(ap, int);
+	if (var.u == 0)
+		spec->attribute = ft_str_del_char(&spec->attribute, '#');
 	if (spec->c_specifier == 'o')
-	{
-		var.u = (unsigned int)va_arg(ap, int);
 		spec->field = ft_uitoa_base(var.u, 8);
-		ft_add_precision(spec);
-	}
 	else if (spec->c_specifier == 'x')
-	{
-		var.u = (unsigned int)va_arg(ap, int);
 		spec->field = ft_uitoa_base(var.u, 16);
-		ft_add_precision(spec);
-	}
 	else if (spec->c_specifier == 'X')
 	{
-		var.u = (unsigned int)va_arg(ap, int);
 		spec->field = ft_uitoa_base(var.u, 16);
 		spec->field = ft_strremapi(spec->field, &ft_toupper);
-		ft_add_precision(spec);
+	}
+	ft_add_precision(spec);
+	ft_generate_field(spec);
+}
+
+void		sc_arg(va_list ap, t_spec *spec)
+{
+	t_var	var;
+
+	spec->field = NULL;
+	if (spec->c_specifier == 's')
+	{
+		var.s = (char*)va_arg(ap, char*);
+		if (spec->precision >= 0)
+			spec->field = ft_strsub(var.s, 0, spec->precision);
+		else
+			spec->field = ft_strdup(var.s);
+	}
+	if (spec->c_specifier == 'c')
+	{
+		var.c = (char)va_arg(ap, int);
+		spec->field = ft_strcnew(1, var.c);
 	}
 	ft_generate_field(spec);
 }
-/*
-char		*s_arg(va_list ap, t_spec spec)
+
+void		wSC_arg(va_list ap, t_spec *spec)
 {
 	t_var	var;
-	char	*res;
+	wchar_t	*tmp;
 
-	res = NULL;
-	if (spec.c_specifier == 's')
+	spec->field = NULL;
+	if (spec->c_specifier == 'S')
 	{
-		var.s = (char*)va_arg(ap, char*);
-		if (spec.precision >= 0)
-			res = ft_strsub(var.s, 0, spec.precision);
+		var.ws = (wchar_t*)va_arg(ap, wchar_t*);
+		if (spec->precision >= 0)
+		{
+/*			if (!(var.s = ft_wstr2str(var.ws)))
+				return ;
+			spec->field = ft_strsub(var.s, 0, spec->precision);
+			ft_strdel(&var.s);														*/
+			if (!(tmp = ft_memalloc(spec->precision + 1)))
+				return ;
+			ft_memcpy((void*)tmp, (const void*)var.ws, spec->precision);
+			tmp[spec->precision] = '\0';
+			spec->field = ft_wstr2str(tmp);
+			free(tmp);
+			tmp = NULL;
+		}
 		else
-			res = ft_strdup(var.s);
+			spec->field = ft_wstr2str(var.ws);
 	}
-	res = ft_generate_field(&res, spec);
-	return (res);
+	if (spec->c_specifier == 'C')
+	{
+		var.wc = (wchar_t)va_arg(ap, wchar_t);
+		spec->field = ft_wstr2str(ft_wstrcnew(1, var.wc));
+	}
+ft_putstr("------------------\n");
+ft_putstr(spec->field);
+ft_putstr("\n------------------\n");
+	ft_generate_wfield(spec);
 }
 
-char		*c_arg(va_list ap, t_spec spec)
-{
-	t_var	var;
-	char	*res;
-
-	res = NULL;
-	if (spec.c_specifier == 'c')
-	{
-		var.c = (char)va_arg(ap, int);
-		res = ft_strcnew(1, var.c);
-	}
-	if (spec.c_specifier == 'C')
-	{
-		var.i = (int)va_arg(ap, int);
-		res = ft_strcnew(1, var.c);
-	}
-	res = ft_generate_field(&res, spec);
-	return (res);
-}
-*/
 void		pct_arg(va_list ap, t_spec *spec)
 {
 	(void)ap;

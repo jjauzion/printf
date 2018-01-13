@@ -6,34 +6,50 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 16:55:21 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 19:56:29 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/13 14:07:06 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_get_sign_len(char sign)
+{
+	if (sign)
+		if (sign == 'x')
+			return (2);
+		else
+			return (1);
+	else
+		return (0);
+}
 
 void	ft_generate_field(t_spec *spec)
 {
 	int		len;
 	char	sign;
 	int		width;
+	int		sign_len;
 
 	sign = ft_get_sign(*spec);
+	sign_len = ft_get_sign_len(sign);
 	if (sign == '-')
 		ft_shift_string(spec->field, '\0', 'l', 0);
 	if (ft_strchr(spec->attribute, '#'))
-		ft_hashtag_attribute(spec);
+		ft_apply_ohashtag(spec);
 	if (!spec->field)
 		return ;
 	len = ft_strlen(spec->field);
-	width = ft_width(*spec, sign);
-//realloc only if width != len ?
+	width = ft_width(*spec, sign_len);
+	//realloc only if width != len ?
 	if (!(spec->field = (char *)ft_realloc((void **)&spec->field, len + 1, width - len + 1)))
 		return ;
 	if (ft_strchr(spec->attribute, '-'))
-		ft_padding(spec->field, '-', sign, width);
+		ft_padding(spec->field, '-', sign_len, width);
 	else if (ft_strchr(spec->attribute, '0'))
-		ft_padding(spec->field, '0', sign, width);
+		ft_padding(spec->field, '0', sign_len, width);
 	else
-		ft_padding(spec->field, ' ', sign, width);
+		ft_padding(spec->field, ' ', sign_len, width);
+	ft_apply_sign(spec->field, sign, width);
+	if (ft_strchr(spec->attribute, '#'))
+		ft_apply_0xhashtag(spec, width);
 }

@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwstr.c                                       :+:      :+:    :+:   */
+/*   ft_wstr2str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/10 17:35:28 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 20:46:24 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/13 19:59:43 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/13 22:14:00 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+**	Convert a wchar_t *str to a char *str formatted according to UTF8 standard.
+**	The function allocate a fresh string and returned a pointer to this string.
+*/
+
 #include "libft.h"
 
-void	ft_putwstr(wchar_t *str)
+char	*ft_wstr2str(wchar_t *src)
 {
-	if (!str)
-		return ;
-	while (*str)
+	char	*ret;
+	char	*tmp;
+
+	tmp = ft_strnew(0);
+	if (!src || !tmp)
+		return (NULL);
+	ret = NULL;
+	while (*src)
 	{
-		ft_putwchar(*str);
-		str++;
+		ret = ft_strjoin(tmp, ft_uni2utf8(*src));
+		free(tmp);
+		tmp = ret;
+		src++;
 	}
+	return (ret);
 }

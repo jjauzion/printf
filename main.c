@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 20:04:11 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/13 22:23:36 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main ()
 {
 
 /* TEST FLOAT */
-/*	printf("\n\n-------------TEST DTOA-------------\n");
+	printf("\n\n-------------TEST DTOA-------------\n");
 	double	testd;
 	float	testf;
 	char	*tests;
@@ -115,6 +115,8 @@ int		main ()
 	ft_printf("6.1 ft_printf:\t|%2.0d| ; |%2.2d| ; |%2.3d| ; |%5.3d|\n", 2, 2, 2, 2);
 	printf("6.2 printf:\t|%-2.0d| ; |%-2.2d| ; |%-2.3d| ; |%-5.3d|\n", 2, 2, 2, 2);
 	ft_printf("6.2 ft_printf:\t|%-2.0d| ; |%-2.2d| ; |%-2.3d| ; |%-5.3d|\n", 2, 2, 2, 2);
+	printf("6.3 printf:\t|%03.0d| ; |%03.2d| ; |%0+4.4d|\n", 2, 2, 2);
+	ft_printf("6.3 ft_printf:\t|%03.0d| ; |%03.2d| ; |%0+4.4d|\n", 2, 2, 2);
 
 	printf("\n--> Test 07 : test string\n");
 	printf("7.1 printf:\t|%s| ; |%-s|\n", "chaine de test", "-s");
@@ -151,6 +153,16 @@ int		main ()
 	ft_printf("8.9 ft_printf:\t|%#15x| ; |%#-15x|\n", 45612, 45612);
 	printf("8.10 printf:\t|%2.6X| ; |%0.6X| ; |%0.X| ; |%010.X|\n", 128641, 128641, 128641, 128641);
 	ft_printf("8.10 ft_printf:\t|%2.6X| ; |%0.6X| ; |%0.X| ; |%010.X|\n", 128641, 128641, 128641, 128641);
+	printf("8.11 printf:\t|%#20.8X| ; |%-#20.8X| ; |%#-20.2X| ; |%0#20.10X|\n", 128641, 128641, 128641, 128641);
+	ft_printf("8.11 ft_printf:\t|%#20.8X| ; |%-#20.8X| ; |%#-20.2X| ; |%0#20.10X|\n", 128641, 128641, 128641, 128641);
+	printf("8.12 printf:\t|%010X| ; |%0#10X|; |%010.2X| ; |%010.1X| ; |%010.5X|\n", 17, 17, 17, 17, 17);
+	ft_printf("8.12 ft_printf:\t|%010X| ; |%0#10X|; |%010.2X| ; |%010.1X| ; |%010.5X|\n", 17, 17, 17, 17, 17);
+	printf("8.13 printf:\t|%04X| ; |%04.1X| ; |%0#4X| ; |%X|\n", 10, 10, 10, 4294967295);
+	ft_printf("8.13 ft_printf:\t|%04X| ; |%04.1X| ; |%0#4X| ; |%X|\n", 10, 10, 10, 4294967295);
+	printf("8.14 printf:\t|%#+05X| ; |%#+05.2X| ; |%#+05.7X|\n", 10, 10, 10);
+	ft_printf("8.14 ft_printf:\t|%#+05X| ; |%#+05.2X| ; |%#+05.7X|\n", 10, 10, 10);
+	printf("8.15 printf:\t|%#3X| ; |%#X| ; |%#-3X| ; |%#03X|\n", 20, 0, 0, 0);
+	ft_printf("8.15 ft_printf:\t|%#3X| ; |%#X| ; |%#-3X| ; |%#03X|\n", 20, 0, 0, 0);
 
 	printf("\n--> Test 09 : test octal\n");
 	printf("9.1 printf:\t|%o| ; |%o| ; |%o|\n", 12, 2, 0);
@@ -173,6 +185,14 @@ int		main ()
 	ft_printf("9.9 ft_printf:\t|%#15o| ; |%#-15o|\n", 45612, 45612);
 	printf("9.10 printf:\t|%2.8o| ; |%0.8o| ; |%0.o| ; |%010.o|\n", 128641, 128641, 128641, 128641);
 	ft_printf("9.10 ft_printf:\t|%2.8o| ; |%0.8o| ; |%0.o| ; |%010.o|\n", 128641, 128641, 128641, 128641);
+	printf("9.11 printf:\t|%#20.8o| ; |%-#20.8o| ; |%#-20.2o| ; |%0#20.10o|\n", 128641, 128641, 128641, 128641);
+	ft_printf("9.11 ft_printf:\t|%#20.8o| ; |%-#20.8o| ; |%#-20.2o| ; |%0#20.10o|\n", 128641, 128641, 128641, 128641);
+	printf("9.12 printf:\t|%010o| ; |%0#10o|; |%010.2o| ; |%010.1o| ; |%010.5o|\n", 17, 17, 17, 17, 17);
+	ft_printf("9.12 ft_printf:\t|%010o| ; |%0#10o|; |%010.2o| ; |%010.1o| ; |%010.5o|\n", 17, 17, 17, 17, 17);
+	printf("9.13 printf:\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
+	ft_printf("9.13 ft_printf:\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
+	printf("9.15 printf:\t|%#3o| ; |%#o| ; |%#-3o| ; |%#03o|\n", 20, 0, 0, 0);
+	ft_printf("9.15 ft_printf:\t|%#3o| ; |%#o| ; |%#-3o| ; |%#03o|\n", 20, 0, 0, 0);
 
 	printf("\n--> Test 10 : test char\n");
 	printf("10.1 printf:\t|%c| ; |%-c|\n", 'a', '0');
@@ -191,14 +211,23 @@ if (l == NULL)
 	    printf("Locale not set\n"); 
 else
 	    printf("Locale set to %s\n", l); 
-	printf("13.1 printf:\t%C\n", 945);
-//	ft_printf("13.1 ft_printf:\t%C\n", 945);
-	printf("13.2 printf:\t|%S| ; |%25S| ; |%-25S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	printf("13.3 printf:\t|%ls| ; |%.2ls| ; |%-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-//	printf("13.4 printf:\t|%0ls| ; |%#25ls| ; |%0-20ls|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	printf("13.5 printf:\t|%-7C| ; |%7lc|\n", 945, L'只');
-	printf("13.6 printf:\t|%2$-7C| ; |%1$7lc|\n", 945, L'只');
-	printf("13.7 printf:\t|%2$-7C| ; |%2$7lc|\n", 945, L'只');
+	printf("12.1 printf:\t%C\n", 945);
+	ft_printf("12.1 ft_printf:\t%C\n", 945);
+	printf("12.2 printf:\t|%S| ; |%25S| ; |%-25S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	ft_printf("12.2 ft_printf:\t|%S| ; |%25S| ; |%-25S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	printf("12.3 printf:\t|%S| ; |%.2S| ; |%-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	ft_printf("12.3 ft_printf:\t|%S| ; |%.2S| ; |%-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	printf("12.4 printf:\t|%0S| ; |%#025S| ; |%0-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	ft_printf("12.4 ft_printf:\t|%0S| ; |%#025S| ; |%0-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	printf("12.5 printf:\t|%-5C| ; |%5lc|; |%5lc|\n", 945, L'只', L'α');
+	ft_printf("12.5 ft_printf:\t|%-5C| ; |%5lc|; |%5lc|\n", 945, L'只', L'α');
+	printf("12.6 printf:\t|%2$-7C| ; |%1$7lc|\n", 945, L'只');
+	ft_printf("12.6 ft_printf:\t|%2$-7C| ; |%1$7lc|\n", 945, L'只');
+	printf("12.7 printf:\t|%.1S| ; |%.5S| ; |%.6S| ; |%.20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	ft_printf("12.7 ft_printf:\t|%.1S| ; |%.5S| ; |%.6S| ; |%.20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	printf("12.8 printf:\t|%.8S| ; |%.5S| ; |%.6S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	ft_printf("12.8 ft_printf:\t|%.8S| ; |%.5S| ; |%.6S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+//	printf("12.7 printf:\t|%2$-7C| ; |%2$7lc|\n", 945, L'只');
 
 	printf("\n--> Test 13 : test %%\n");
 	printf("13.1 printf:\t%%5d %%d OK?\n");
@@ -212,14 +241,12 @@ else
 //	ft_printf("%s%c%d%ls", "Uniquement des specifier.", ' ', 7, L"c'est pas si compliqué\n");
 
 //	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
-*/
+
 	printf("\n-------------END TEST PRINTF-------------\n");
 
-	printf("2.0 printf:\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
-	ft_printf("2.0 ft_printf:\t|%5d| ; |%05d| ; |%-5d|\n", 2, 2, 2);
+	printf("12.3 printf:\t|%S| ; |%05.2S| ; |%-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	ft_printf("12.3 ft_printf:\t|%S| ; |%05.2S| ; |%-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 
-	printf("8.1 printf:\t|%x| ; |%X|\n", 12, 12);
-	ft_printf("8.1 ft_printf:\t|%x| ; |%X|\n", 12, 12);
 	while (1)
 	{}
 

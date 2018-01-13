@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 18:51:04 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/12 11:58:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,8 @@ int				ft_printf(const char *format, ...)
 			spec[cpt].arg_id = cpt;
 			if (!(format = ft_parse(format, &spec[cpt])))
 				return (-1);
-			ft_get_param(ap, spec, cpt);
+			if (ft_get_param(ap, spec, cpt))
+				return (-1);
 		}
 		cpt++;
 	}

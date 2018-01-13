@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:35:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 19:37:03 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/13 14:23:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	ft_get_sign(t_spec spec)
 	char	sign;
 
 	sign = '\0';
-	if (ft_strchr("cCpsSoOuUxX", spec.c_specifier))
+	if (ft_strchr("cCpsSuUO", spec.c_specifier))
 		return (sign);
 	if (ft_strchr(spec.attribute, ' '))
 		sign = ' ';
@@ -25,6 +25,8 @@ char	ft_get_sign(t_spec spec)
 		sign = '+';
 	if (spec.field[0] == '-')
 		sign = '-';
+	if (ft_strchr(spec.attribute, '#') && ft_strchr("xX", spec.c_specifier))
+		sign = 'x';
 	return (sign);
 }
 
@@ -56,7 +58,7 @@ void	ft_apply_sign(char *arg, char sign, int width)
 {
 	int		i;
 
-	if (!sign)
+	if (!sign || sign == 'x')
 		return ;
 	i = 0;
 	while (!ft_isdigit(arg[i]) && arg[i])
@@ -67,12 +69,12 @@ void	ft_apply_sign(char *arg, char sign, int width)
 		arg[i - 1] = sign;
 }
 
-int		ft_width(t_spec spec, char sign)
+int		ft_width(t_spec spec, int sign_len)
 {
 	int		len;
 
 	len = ft_strlen(spec.field);
-	len = (sign) ? len + 1 : len;
+	len = len + sign_len;
 	if (spec.width > len)
 		return (spec.width);
 	else

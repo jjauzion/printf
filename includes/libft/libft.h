@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 18:36:25 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/13 21:12:33 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <wchar.h>
 # include <locale.h>
 
 # define ABS(Value) (Value < 0) ? -Value : Value
@@ -43,6 +44,7 @@ char				*ft_strncat(char *s1, const char *s2, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
+char				*ft_strnchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr
 (const char *str, const char *needle, size_t len);
@@ -53,6 +55,7 @@ void				ft_putchar(char c);
 void				ft_putnbr(int n);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
+int					ft_ishexa(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
@@ -89,6 +92,16 @@ void				ft_lstadd(t_list **alst, t_list *n);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+wchar_t				*ft_wstrcnew(size_t size, wchar_t c);
+void				ft_putwchar(wchar_t c);
+int					ft_getnbofutf8byte(wchar_t c);
+char				*ft_uni2utf8(wchar_t c);
+char				*ft_wstr2str(wchar_t *src);
+void				ft_putwstr(wchar_t *str);
+size_t				ft_wstrlen(wchar_t const *s);
+wchar_t				*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len);
+wchar_t				*ft_wstrdup(wchar_t const *s1);
+
 char				*ft_strext(char **s, size_t len, size_t size);
 char				*ft_strrev(char *str);
 int					ft_islower(int c);
@@ -104,7 +117,5 @@ double				ft_round_up(double nbr, int precision);
 long long int		ft_power(int nbr, int power);
 char				*ft_str_del_char(char **str, char c);
 int					ft_count_cinstr(const char *str, char c);
-void				ft_putwchar(int c);
-void				ft_putwstr(int *str);
 
 #endif

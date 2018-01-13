@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specifier.h                                        :+:      :+:    :+:   */
+/*   ft_getnbofutf8byte.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 17:24:09 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/13 19:26:10 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/13 19:30:43 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPECIFIER_H
-# define SPECIFIER_H 
+#include "libft.h"
 
-t_type g_type[] =
+static int			ft_bit2oct(int nb)
 {
-	{"bdiuf", int_arg},
-	{"oxX", int_base_arg},
-	{ "sc", sc_arg },
-	{ "SC", wSC_arg },
-/*	{ "DOU", dou_arg },
-	{ "S", ws_arg },
-	{ "p", p_arg },
-*/	{ "%", pct_arg},
-	{ " ", usage}
-};
+	if (nb <= 7)
+		return (1);
+	if (nb <= 11)
+		return (2);
+	if (nb <= 16)
+		return (3);
+	return (4);
+}
 
-#endif
+int			ft_getnbofutf8byte(wchar_t var)
+{
+	int		active_bits;
+
+	active_bits = 0;
+	while (var)
+	{
+		var = var >> 1;
+		active_bits++;
+	}
+	return (ft_bit2oct(active_bits));
+}

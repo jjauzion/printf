@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_padding.c                                       :+:      :+:    :+:   */
+/*   ft_generate_wfield.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/08 11:10:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 14:06:00 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/13 17:01:28 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/13 21:31:54 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_padding(char *arg, char option, int sign_len, int width)
+void	ft_generate_wfield(t_spec *spec)
 {
 	int		len;
-	char	c;
-	int		nb2pad;
+	int		width;
 
-	if (!arg || !(option == ' ' || option == '0' || option == '-'))
+	len = ft_strlen(spec->field);
+	width = ft_width(*spec, 0);
+	//realloc only if width != len ?
+	if (!(spec->field = (char *)ft_realloc((void **)&spec->field, len + 1, width - len + 1)))
 		return ;
-	len = ft_strlen(arg);
-	c = (option == '-') ? ' ' : option;
-	nb2pad = width;
-	if (option != '-')
-	{
-		if (option == '0')
-			nb2pad = nb2pad - sign_len;
-		arg = ft_strrev(arg);
-	}
-	while (len < nb2pad)
-		arg[len++] = c;
-	if (option != '-')
-		arg = ft_strrev(arg);
+	if (ft_strchr(spec->attribute, '-'))
+		ft_padding(spec->field, '-', 0, width);
+	else if (ft_strchr(spec->attribute, '0'))
+		ft_padding(spec->field, '0', 0, width);
+	else
+		ft_padding(spec->field, ' ', 0, width);
 }

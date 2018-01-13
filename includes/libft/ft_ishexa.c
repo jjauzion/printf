@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specifier.h                                        :+:      :+:    :+:   */
+/*   ft_ishexa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 17:24:09 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/13 14:20:49 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/13 14:21:07 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPECIFIER_H
-# define SPECIFIER_H 
+#include "libft.h"
 
-t_type g_type[] =
+int	ft_ishexa(int c)
 {
-	{"bdiuf", int_arg},
-	{"oxX", int_base_arg},
-	{ "sc", sc_arg },
-	{ "SC", wSC_arg },
-/*	{ "DOU", dou_arg },
-	{ "S", ws_arg },
-	{ "p", p_arg },
-*/	{ "%", pct_arg},
-	{ " ", usage}
-};
-
-#endif
+	c = ft_toupper(c);
+	if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F'))
+		return (1);
+	return (0);
+}

@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testmain.c                                         :+:      :+:    :+:   */
+/*   ft_wstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/10 18:42:24 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/10 18:42:43 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/13 17:17:10 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/13 17:31:46 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		main(void)
+size_t	ft_wstrlen(wchar_t const *s)
 {
-		ft_putwstr(L"test \x3B1 ok\n");
-		ft_putwstr(L"我是一只猫。\n");
+	size_t	len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }
