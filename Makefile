@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 16:49:48 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/13 21:15:20 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/14 12:41:40 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = src/ft_printf.c src/ft_parse.c src/ft_count_specifier.c src/ft_get_param.
 	   src/ft_generate_field.c src/ft_parse_fct.c src/ft_apply_hashtag.c\
 	   src/ft_add_precision.c src/ft_field_fct.c src/ft_get_arg.c\
 	   src/ft_padding.c src/ft_print_all.c\
-	   src/ft_generate_wfield.c\
+	   src/ft_generate_wfield.c src/ft_clean_utf8str.c\
 	   main.c
 
 OBJS = $(SRCS:.c=.o)

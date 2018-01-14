@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 21:30:55 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/14 12:43:51 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void				ft_generate_field(t_spec *spec);
 int					ft_print_all(char **plain_str, t_spec *spec, int nb_param);
 
 void				ft_generate_wfield(t_spec *spec);
+void				ft_clean_utf8str(char *str);
 
 char				ft_get_sign(t_spec spec);
 void				ft_shift_string(char *arg, char c, char option, int width);

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:01:59 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/08 12:18:39 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/14 12:04:27 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (!(ret = (char *)malloc(sizeof(char) * (len + 1))))
+	if (!(ret = (char *)ft_memalloc(sizeof(char) * (len + 1))))
 		return (NULL);
+	if (start > ft_strlen(s))
+		return (ret);
 	i = 0;
-	while (i < len)
+	while (s[i + start] && i < len)
 	{
 		ret[i] = s[i + start];
 		i++;

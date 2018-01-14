@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/12 11:58:40 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/14 14:52:17 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,8 @@ int				ft_printf(const char *format, ...)
 		}
 		cpt++;
 	}
-	ft_print_all(plain_str, spec, count);
+	i = ft_print_all(plain_str, spec, count);
 	va_end(ap);
 	ft_printf_closure(&spec, &plain_str, count);
-	return (666);
+	return (i);
 }

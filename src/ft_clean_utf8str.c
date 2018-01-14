@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specifier.h                                        :+:      :+:    :+:   */
+/*   ft_clean_utf8str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/14 15:54:46 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/14 12:44:50 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/14 13:22:12 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPECIFIER_H
-# define SPECIFIER_H 
+#include "ft_printf.h"
 
-t_type g_type[] =
+void		ft_clean_utf8str(char *str)
 {
-	{ "diuf", int_arg},
-	{ "oxX", int_base_arg},
-	{ "sc", sc_arg },
-	{ "SC", wSC_arg },
-/*	{ "DOU", dou_arg },
-	{ "p", p_arg },
-*/	{ "%", pct_arg},
-	{ " ", usage}
-};
+	int i;
+	int	count;
 
-#endif
+	i = ft_strlen(str) - 1;
+	if (!(str[i] & 0x80))
+		return ;
+	count = 0;
+	while ((str[i] & 0xC0) == 0x80)
+	{
+		i--;
+		count++;
+	}
+	if (((str[i] & 0xF0) == 0xF0) && count == 3)
+		return ;
+	if (((str[i] & 0xF0) == 0xE0) && count == 2)
+		return ;
+	if (((str[i] & 0xF0) == 0xC0) && count == 1)
+		return ;
+	str[i] = '\0';
+}

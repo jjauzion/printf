@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:42:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 22:36:29 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/14 15:03:39 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void		sc_arg(va_list ap, t_spec *spec)
 void		wSC_arg(va_list ap, t_spec *spec)
 {
 	t_var	var;
-	wchar_t	*tmp;
+	char	*tmp;
+	wchar_t	*wtmp;
 
 	spec->field = NULL;
 	if (spec->c_specifier == 'S')
@@ -90,17 +91,11 @@ void		wSC_arg(va_list ap, t_spec *spec)
 		var.ws = (wchar_t*)va_arg(ap, wchar_t*);
 		if (spec->precision >= 0)
 		{
-/*			if (!(var.s = ft_wstr2str(var.ws)))
+			if (!(tmp = ft_wstr2str(var.ws)))
 				return ;
-			spec->field = ft_strsub(var.s, 0, spec->precision);
-			ft_strdel(&var.s);														*/
-			if (!(tmp = ft_memalloc(spec->precision + 1)))
-				return ;
-			ft_memcpy((void*)tmp, (const void*)var.ws, spec->precision);
-			tmp[spec->precision] = '\0';
-			spec->field = ft_wstr2str(tmp);
-			free(tmp);
-			tmp = NULL;
+			spec->field = ft_strsub(tmp, 0, spec->precision);
+			ft_strdel(&tmp);
+			ft_clean_utf8str(spec->field);
 		}
 		else
 			spec->field = ft_wstr2str(var.ws);
@@ -108,11 +103,11 @@ void		wSC_arg(va_list ap, t_spec *spec)
 	if (spec->c_specifier == 'C')
 	{
 		var.wc = (wchar_t)va_arg(ap, wchar_t);
-		spec->field = ft_wstr2str(ft_wstrcnew(1, var.wc));
+		wtmp = ft_wstrcnew(1, var.wc);
+		spec->field = ft_wstr2str(wtmp);
+		free(wtmp);
+		wtmp = NULL;
 	}
-ft_putstr("------------------\n");
-ft_putstr(spec->field);
-ft_putstr("\n------------------\n");
 	ft_generate_wfield(spec);
 }
 
