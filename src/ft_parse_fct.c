@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:47:29 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/08 14:16:13 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/15 15:32:51 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,22 +83,4 @@ char		*ft_get_lmodifier(const char **format)
 	}
 	ft_strdel(&valid_modifier);
 	return (modifier);
-}
-
-char		ft_get_cspecifier(const char **format)
-{
-	char		*valid_specifier;
-	char		specifier;
-	char		*ptr;
-
-	valid_specifier = ft_strdup("diouxXDOUeEfFgGaAcCsSPn%");
-	ptr = (char*)valid_specifier;
-	if (!(ptr = ft_strchr(valid_specifier, (int)(**format))))
-	{
-		ft_strdel(&valid_specifier);
-		return (0);
-	}
-	specifier = *ptr;
-	ft_strdel(&valid_specifier);
-	return (specifier);
 }

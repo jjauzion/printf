@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:33:10 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/08 13:33:24 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/15 15:30:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ const char	*ft_parse(const char *format, t_spec *spec)
 	spec->width = tmp;
 	spec->precision = ft_get_precision(&format);
 	spec->l_modifier = ft_get_lmodifier(&format);
-	if (!(spec->c_specifier = ft_get_cspecifier(&format)))
-		return (NULL);
+	spec->c_specifier = *format;
 	if (ft_strchr("fFgGeE", spec->c_specifier) && (spec->precision < 0))
 		spec->precision = 6;
 	if (ft_strchr("diouxXDOU", spec->c_specifier)

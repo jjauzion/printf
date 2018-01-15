@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/14 15:28:38 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/15 15:39:15 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -338,6 +338,10 @@ else
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 	ret = printf("%s%c%d%S", "Uniquement des specifier.", ' ', 7, L" 猫 c'est pas si compliqué\n");
 	retft = ft_printf("%s%c%d%S", "Uniquement des specifier.", ' ', 7, L" 猫 c'est pas si compliqué\n");
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("just a little trick %%r \n");
+	retft = ft_printf("just a little trick %%r \n");
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 

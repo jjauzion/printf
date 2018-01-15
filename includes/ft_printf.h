@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/14 12:43:51 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/15 15:33:21 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void				ft_shift_string(char *arg, char c, char option, int width);
 void				ft_apply_sign(char *arg, char sign, int width);
 int					ft_width(t_spec spec, int sign_len);
 void				ft_padding(char *arg, char option, int sign_len, int width);
-char				ft_get_cspecifier(const char **format);
 char				*ft_get_lmodifier(const char **format);
 int					ft_get_precision(const char **format);
 char				*ft_get_attribute(const char **format);
