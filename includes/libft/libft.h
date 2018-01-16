@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 21:12:33 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/15 17:18:34 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
+char				*ft_imtoa(intmax_t n);
+char				*ft_uitoa(unsigned int n);
+char				*ft_uitoa_base(unsigned int n, unsigned int base);
+char				*ft_dtoa(double nbr, int precision);
 void				ft_putstr(const char *s);
 void				ft_putendl(const char *s);
 void				ft_putchar_fd(char c, int fd);
@@ -109,10 +113,7 @@ int					ft_isupper(int c);
 char				*ft_strcapitalize(char *str);
 char				*ft_strcnew(size_t size, char c);
 int					ft_sqrt(int nb, char *option);
-char				*ft_uitoa(unsigned int n);
-char				*ft_uitoa_base(unsigned int n, unsigned int base);
 void				*ft_realloc(void **src, size_t len, size_t size);
-char				*ft_dtoa(double nbr, int precision);
 double				ft_round_up(double nbr, int precision);
 long long int		ft_power(int nbr, int power);
 char				*ft_str_del_char(char **str, char c);

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/15 15:33:21 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/15 16:51:15 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ typedef struct		s_type
 
 typedef union		u_variable
 {
-	short			xs;
 	int				i;
+	short int		si;
+	intmax_t		im;
+	long int		li;
+	long long int	lli;
+	size_t			st;
 	unsigned int	u;
-	long			l;
 	double			d;
 	float			f;
 	char			c;
@@ -77,5 +80,6 @@ void				sc_arg(va_list ap, t_spec *spec);
 void				wSC_arg(va_list ap, t_spec *spec);
 void				pct_arg(va_list ap, t_spec *spec);
 void				usage(va_list ap, t_spec *spec);
+void				float_arg(va_list ap, t_spec *spec);
 
 #endif
