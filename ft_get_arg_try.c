@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:42:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/15 17:46:05 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/16 16:58:47 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,48 +28,24 @@ void		float_arg(va_list ap, t_spec *spec)
 void		int_arg(va_list ap, t_spec *spec)
 {
 	t_var		var;
-	void		*ptr;
-	intmax_t	*tmp;
 
 	var.im = 0;
-	ptr = &var;
-	tmp = ptr;
 	spec->field = NULL;
 	if (ft_strequ(spec->l_modifier, "hh"))
-	{
 		var.c = (char)va_arg(ap, int);
-		spec->field = ft_imtoa(var.c);
-	}
 	else if (ft_strequ(spec->l_modifier, "h"))
-	{
 		var.si = (char)va_arg(ap, int);
-		spec->field = ft_imtoa(var.si);
-	}
 	else if (ft_strequ(spec->l_modifier, "j"))
-	{
 		var.im = va_arg(ap, intmax_t);
-		spec->field = ft_imtoa(var.im);
-	}
 	else if (ft_strequ(spec->l_modifier, "l"))
-	{
 		var.li = va_arg(ap, long int);
-		spec->field = ft_imtoa(var.li);
-	}
 	else if (ft_strequ(spec->l_modifier, "ll"))
-	{
 		var.lli = va_arg(ap, long long int);
-		spec->field = ft_imtoa(var.lli);
-	}
 	else if (ft_strequ(spec->l_modifier, "z"))
-	{
 		var.st = va_arg(ap, size_t);
-		spec->field = ft_imtoa(var.st);
-	}
 	else
-	{
 		var.i = (int)va_arg(ap, int);
-		spec->field = ft_imtoa(var.i);
-	}
+	spec->field = ft_imtoa((intmax_t)var);
 	ft_add_precision(spec);
 	ft_generate_field(spec);
 }

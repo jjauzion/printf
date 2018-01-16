@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specifier.h                                        :+:      :+:    :+:   */
+/*   testcast.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:54:50 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/16 17:25:16 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/16 17:31:17 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPECIFIER_H
-# define SPECIFIER_H 
+#include <stdio.h>
+#include <stdlib.h>
 
-t_type g_type[] =
+int main ()
 {
-	{ "di", int_arg},
-	{ "ouxXDOU", uint_arg},
-/*	{ "oxX", int_base_arg},
-	{ "sc", sc_arg },
-	{ "SC", wSC_arg },
-	{ "f", float_arg },
-	{ "DOU", dou_arg },
-	{ "p", p_arg },
-	{ "%", pct_arg},
-*/	{ " ", usage}
-};
+	intmax_t	im;
 
-#endif
+	im = 2147483647;
+	im = 32769;
+	printf("(intmax_t) = %jd\n", im);
+	im = (short)im;
+	printf("(short int) = %jd\n", im);
+	return (1);
+}

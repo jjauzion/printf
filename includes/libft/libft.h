@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/15 17:18:34 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:57:46 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
 char				*ft_imtoa(intmax_t n);
 char				*ft_uitoa(unsigned int n);
-char				*ft_uitoa_base(unsigned int n, unsigned int base);
+char				*ft_uitoa_base(uintmax_t n, uintmax_t base);
 char				*ft_dtoa(double nbr, int precision);
 void				ft_putstr(const char *s);
 void				ft_putendl(const char *s);

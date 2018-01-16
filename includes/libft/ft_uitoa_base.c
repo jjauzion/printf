@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 17:20:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/15 16:56:57 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:58:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char		*ft_obase(unsigned int base)
 	return (obase);
 }
 
-char			*ft_uitoa_base(unsigned int value, unsigned int base)
+char			*ft_uitoa_base(uintmax_t value, uintmax_t base)
 {
 	char	*obase;
 	char	*res;

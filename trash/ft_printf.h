@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:58:43 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:41:07 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ typedef struct		s_specifier
 	char			*field;
 }					t_spec;
 
+typedef struct		s_type
+{
+	char			*type;
+	void			(*fct)(va_list ap, t_spec *spec);
+}					t_type;
+
 typedef union		u_variable
 {
 	intmax_t		im;
-	uintmax_t		uim;
 	long double		ld;
-	char			c;
-	char			*s;
 
 	int				i;
 	short int		si;
@@ -43,15 +46,11 @@ typedef union		u_variable
 	unsigned int	u;
 	double			d;
 	float			f;
+	char			c;
+	char			*s;
 	wchar_t			wc;
 	wchar_t			*ws;
 }					t_var;
-
-typedef struct		s_type
-{
-	char			*type;
-	void			(*fct)(t_var var, t_spec *spec);
-}					t_type;
 
 int					ft_printf(const char *format, ...);
 const char			*ft_parse(const char *format, t_spec *spec);
@@ -60,7 +59,6 @@ int					ft_get_param(va_list ap, t_spec *spec, int cpt);
 void				ft_add_precision(t_spec *spec);
 void				ft_generate_field(t_spec *spec);
 int					ft_print_all(char **plain_str, t_spec *spec, int nb_param);
-t_var				ft_get_arg(va_list ap, t_spec *spec);
 
 void				ft_generate_wfield(t_spec *spec);
 void				ft_clean_utf8str(char *str);
@@ -78,13 +76,12 @@ void				ft_hashtag_attribute(t_spec *spec);
 void				ft_apply_ohashtag(t_spec *spec);
 void				ft_apply_0xhashtag(t_spec *spec, int width);
 
-void				usage(t_var var, t_spec *spec);
-void				int_arg(t_var var, t_spec *spec);
-void				uint_arg(t_var var, t_spec *spec);
-/*void				int_base_arg(va_list ap, t_spec *spec);
+void				int_arg(va_list ap, t_spec *spec);
+void				int_base_arg(va_list ap, t_spec *spec);
 void				sc_arg(va_list ap, t_spec *spec);
 void				wSC_arg(va_list ap, t_spec *spec);
 void				pct_arg(va_list ap, t_spec *spec);
-void				float_arg(va_list ap, t_spec *spec);	*/
+void				usage(va_list ap, t_spec *spec);
+void				float_arg(va_list ap, t_spec *spec);
 
 #endif
