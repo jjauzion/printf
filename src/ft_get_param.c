@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:26:10 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/17 11:45:50 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,13 @@ int		ft_get_param(va_list ap, t_spec *spec, int cpt)
 		return (0);
 }
 
-void	usage(t_var var, t_spec *spec)
+void	ft_pct_arg(t_var var, t_spec *spec)
+{
+	(void)var;
+	spec->field = ft_strdup("%");
+}
+
+void	ft_usage(t_var var, t_spec *spec)
 {
 	(void)var;
 	ft_putstr("\n---------------------------\nError: '%");

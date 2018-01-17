@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_param.c                                     :+:      :+:    :+:   */
+/*   float_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/11 19:05:49 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/17 11:48:23 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/17 11:55:13 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "specifier.h"
 
-void	ft_get_param(va_list ap, t_spec *spec, int cpt)
+void		ft_float_arg(t_var var, t_spec *spec)
 {
-	int		i;
+	long double	arg;
 
-	i = 0;
-	while (!ft_strchr(g_type[i].type, (int)spec[cpt].c_specifier))
-		i++;
-	g_type[i].fct(ap, spec, cpt);
+	spec->field = NULL;
+	if (ft_strequ(spec->l_modifier, "l"))
+		arg = var.ld;
+	else
+		arg = (double)var.ld;
+	spec->field = ft_dtoa(var.ld, spec->precision);
+	ft_generate_field(spec);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:57:46 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/17 11:59:37 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char				*ft_itoa(int n);
 char				*ft_imtoa(intmax_t n);
 char				*ft_uitoa(unsigned int n);
 char				*ft_uitoa_base(uintmax_t n, uintmax_t base);
-char				*ft_dtoa(double nbr, int precision);
+char				*ft_dtoa(long double nbr, int precision);
 void				ft_putstr(const char *s);
 void				ft_putendl(const char *s);
 void				ft_putchar_fd(char c, int fd);
@@ -114,7 +114,7 @@ char				*ft_strcapitalize(char *str);
 char				*ft_strcnew(size_t size, char c);
 int					ft_sqrt(int nb, char *option);
 void				*ft_realloc(void **src, size_t len, size_t size);
-double				ft_round_up(double nbr, int precision);
+long double			ft_round_up(long double nbr, int precision);
 long long int		ft_power(int nbr, int power);
 char				*ft_str_del_char(char **str, char c);
 int					ft_count_cinstr(const char *str, char c);

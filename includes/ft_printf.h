@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:58:43 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/17 11:50:44 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,14 @@ void				ft_hashtag_attribute(t_spec *spec);
 void				ft_apply_ohashtag(t_spec *spec);
 void				ft_apply_0xhashtag(t_spec *spec, int width);
 
-void				usage(t_var var, t_spec *spec);
-void				int_arg(t_var var, t_spec *spec);
-void				uint_arg(t_var var, t_spec *spec);
-/*void				int_base_arg(va_list ap, t_spec *spec);
-void				sc_arg(va_list ap, t_spec *spec);
-void				wSC_arg(va_list ap, t_spec *spec);
-void				pct_arg(va_list ap, t_spec *spec);
-void				float_arg(va_list ap, t_spec *spec);	*/
+void				ft_usage(t_var var, t_spec *spec);
+void				ft_int_arg(t_var var, t_spec *spec);
+void				ft_uint_arg(t_var var, t_spec *spec);
+void				ft_wstr_arg(t_var var, t_spec *spec);
+void				ft_str_arg(t_var var, t_spec *spec);
+void				ft_wchar_arg(t_var var, t_spec *spec);
+void				ft_char_arg(t_var var, t_spec *spec);
+void				ft_float_arg(t_var var, t_spec *spec);
+void				ft_pct_arg(t_var var, t_spec *spec);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:42:48 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:47:01 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/17 11:17:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ t_var	ft_get_arg(va_list ap, t_spec *spec)
 		var.ld = va_arg(ap, long double);
 	else if (ft_strchr("c", spec->c_specifier))
 		var.c = (char)va_arg(ap, int);
+	else if (ft_strchr("C", spec->c_specifier))
+		var.wc = va_arg(ap, wchar_t);
 	else if (ft_strchr("s", spec->c_specifier))
 		var.s = va_arg(ap, char*);
+	else if (ft_strchr("S", spec->c_specifier))
+		var.ws = va_arg(ap, wchar_t*);
 	else
 		var.im = 0;
 	return (var);

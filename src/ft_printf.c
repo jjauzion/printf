@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/14 14:52:17 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/17 11:45:44 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ static void		ft_delspec(t_spec **spec, int size)
 	i = -1;
 	while (++i < size)
 	{
-		if ((*spec)[i].attribute && (*spec)[i].l_modifier)
-		{
+		if ((*spec)[i].attribute)
 			ft_strdel(&((*spec)[i]).attribute);
+		if ((*spec)[i].l_modifier)
 			ft_strdel(&((*spec)[i]).l_modifier);
+		if ((*spec)[i].field)
 			ft_strdel(&((*spec)[i]).field);
-		}
 	}
 	free(*spec);
 }

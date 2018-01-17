@@ -1,37 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_arg.c                                          :+:      :+:    :+:   */
+/*   ft_uint_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/16 18:00:46 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:44:38 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/17 10:51:52 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/17 10:52:43 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	int_arg(t_var var, t_spec *spec)
+static int	ft_base(char spec)
 {
-	intmax_t	arg;
+	if (spec == 'o')
+		return (8);
+	else if (spec == 'x' || spec == 'X')
+		return (16);
+	else
+		return (10);
+}
 
+void	ft_uint_arg(t_var var, t_spec *spec)
+{
+	uintmax_t	arg;
+	int			base;
+
+	base = ft_base(spec->c_specifier);
 	spec->field = NULL;
 	if (ft_strequ(spec->l_modifier, "hh"))
-		arg = (char)var.im;
+		arg = (unsigned char)var.uim;
 	else if (ft_strequ(spec->l_modifier, "h"))
-		arg = (short)var.im;
+		arg = (short unsigned)var.uim;
 	else if (ft_strequ(spec->l_modifier, "j"))
-		arg = var.im;
+		arg = var.uim;
 	else if (ft_strequ(spec->l_modifier, "l"))
-		arg = (long int)var.im;
+		arg = (long unsigned int)var.uim;
 	else if (ft_strequ(spec->l_modifier, "ll"))
-		arg = (long long int)var.im;
+		arg = (unsigned long long int)var.uim;
 	else if (ft_strequ(spec->l_modifier, "z"))
-		arg = (size_t)var.im;
+		arg = (size_t)var.uim;
 	else
-		arg = (int)var.im;
-	spec->field = ft_imtoa(arg);
+		arg = (unsigned int)var.uim;
+	spec->field = ft_uitoa_base(arg, base);
 	ft_add_precision(spec);
 	ft_generate_field(spec);
 }

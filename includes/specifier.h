@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:54:50 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/17 11:50:16 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 t_type g_type[] =
 {
-	{ "di", int_arg},
-	{ "ouxXDOU", uint_arg},
-/*	{ "oxX", int_base_arg},
-	{ "sc", sc_arg },
-	{ "SC", wSC_arg },
-	{ "f", float_arg },
-	{ "DOU", dou_arg },
-	{ "p", p_arg },
-	{ "%", pct_arg},
-*/	{ " ", usage}
+	{ "di", ft_int_arg},
+	{ "ouxXDOU", ft_uint_arg},
+	{ "S", ft_wstr_arg},
+	{ "s", ft_str_arg},
+	{ "c", ft_char_arg},
+	{ "C", ft_wchar_arg},
+	{ "f", ft_float_arg },
+//	{ "p", p_arg },
+	{ "%", ft_pct_arg},
+	{ " ", ft_usage}
 };
 
 #endif
