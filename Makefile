@@ -5,52 +5,91 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/12/15 16:49:48 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/17 11:52:02 by jjauzion         ###   ########.fr        #
+#    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
+#    Updated: 2018/01/17 16:07:41 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = src/ft_printf.c src/ft_parse.c src/ft_count_specifier.c src/ft_get_param.c\
-	   src/ft_generate_field.c src/ft_parse_fct.c src/ft_apply_hashtag.c\
-	   src/ft_add_precision.c src/ft_field_fct.c src/ft_get_arg.c src/float_arg.c\
-	   src/ft_padding.c src/ft_print_all.c src/ft_int_arg.c src/ft_uint_arg.c\
-	   src/ft_generate_wfield.c src/ft_clean_utf8str.c src/char_arg_fct.c\
-	   main.c
+SRC_PATH = src/
 
-OBJS = $(SRCS:.c=.o)
+SRC_NAME = ft_printf.c \
+		   ft_parse.c \
+		   ft_count_specifier.c \
+		   ft_get_param.c \
+		   ft_generate_field.c \
+		   ft_parse_fct.c \
+		   ft_apply_hashtag.c \
+		   ft_add_precision.c \
+		   ft_field_fct.c \
+		   ft_get_arg.c \
+		   float_arg.c \
+		   ft_padding.c \
+		   ft_print_all.c \
+		   ft_int_arg.c \
+		   ft_uint_arg.c \
+		   ft_generate_wfield.c \
+		   ft_clean_utf8str.c \
+		   char_arg_fct.c \
+		   main.c
 
-INCL = -Iincludes -Iincludes/libft
+OBJ_PATH = obj/
 
-NAME = printf_test
+LIB_PATH = includes/libft/
+
+INC_PATH = includes/ \
+		   includes/libft/
+
+LDLIBS = -lft
+
+NAME = test_printf
+
+CC = gcc
 
 ifdef FLAG
 	ifeq ($(FLAG), no)
-		FLAGS =
+		CFLAGS =
+		DBFLAGS =
 	endif
 	ifeq ($(FLAG), debug)
-		FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+		CFLAGS = -Wall -Wextra -Werror
+		DBFLAGS = -g3 -fsanitize=address
 	endif
 else
-	FLAGS = -Wall -Wextra -Werror
+	CFLAGS = -Wall -Wextra -Werror
+	DBFLAGS =
 endif
 
-all: $(NAME)
+OBJ_NAME = $(SRC_NAME:.c=.o)
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+LDFLAGS = $(addprefix -L,$(LIB_PATH))
+CPPFLAGS = $(addprefix -I,$(INC_PATH))
 
-$(NAME): LIB $(OBJS)
-	gcc -o $(NAME) $(INCL) includes/libft/libft.a $(FLAGS) $(OBJS)
+all: LIB $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(DBFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
 
 LIB:
-	make -C includes/libft
+	make -C $(LIB_PATH) 
 
-%.o: %.c
-	gcc $(FLAGS) $(INCL) -c -o $@ $<
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	$(CC) $(CFLAGS) $(DBFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
-	make clean -C includes/libft
-	rm -f $(OBJS)
+	make clean -C $(LIB_PATH) 
+	rm -f $(OBJ)
+	@rmdir $(OBJ_PATH) 2> /dev/null/ || true
 
 fclean: clean
-	make fclean -C includes/libft
-	rm -f $(NAME)
+	make fclean -C $(LIB_PATH) 
+	rm -fv $(NAME)
 
 re: fclean all
+
+.PHONY: all, clean, fclean, re, LIB
+
+norme:
+	norminette $(SRC)
+	norminette $(INC_PATH)
