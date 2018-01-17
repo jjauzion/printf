@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/17 15:31:01 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/17 16:55:22 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ int		main ()
 	ft_printf("2.5 ft_printf:\t|%+5d| ; |%+05d| ; |%+-5d|\n", -2, -2, -2);
 	printf("2.6 printf:\t+d : |%+d| ;  +5d : |%+5d| ; +-5d : |%+-5d| ; +05d : |%+05d|\n", 0, 0, 0, 0);
 	ft_printf("2.6 ft_printf:\t+d : |%+d| ;  +5d : |%+5d| ; +-5d : |%+-5d| ; +05d : |%+05d|\n", 0, 0, 0, 0);
+	printf("2.7 printf:\t|% d|\n", 0);
+	ft_printf("2.7 ft_printf:\t|% d|\n", 0);
+	printf("2.8 printf:\t|%ld|\n", 0xff11ff11ff88);
+	ft_printf("2.8 printf:\t|%D|\n", 0xff11ff11ff88);
 
 	printf("\n--> Test 03 : simple %%i et %%u\n");
 	printf("printf:\n\tchaine de test %i suite %i\n", 2, -2);

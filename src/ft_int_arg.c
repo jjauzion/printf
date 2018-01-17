@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:28 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/17 10:53:02 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/17 16:52:08 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_int_arg(t_var var, t_spec *spec)
 		arg = (short)var.im;
 	else if (ft_strequ(spec->l_modifier, "j"))
 		arg = var.im;
-	else if (ft_strequ(spec->l_modifier, "l"))
+	else if (ft_strequ(spec->l_modifier, "l") || spec->c_specifier == 'D')
 		arg = (long int)var.im;
 	else if (ft_strequ(spec->l_modifier, "ll"))
 		arg = (long long int)var.im;

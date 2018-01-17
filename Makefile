@@ -6,9 +6,11 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/17 16:07:41 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/17 16:34:06 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+.PHONY: all, clean, fclean, re, LIB
 
 SRC_PATH = src/
 
@@ -29,8 +31,7 @@ SRC_NAME = ft_printf.c \
 		   ft_uint_arg.c \
 		   ft_generate_wfield.c \
 		   ft_clean_utf8str.c \
-		   char_arg_fct.c \
-		   main.c
+		   char_arg_fct.c
 
 OBJ_PATH = obj/
 
@@ -41,22 +42,19 @@ INC_PATH = includes/ \
 
 LDLIBS = -lft
 
-NAME = test_printf
+NAME = libftprintf.a
 
 CC = gcc
 
 ifdef FLAG
 	ifeq ($(FLAG), no)
 		CFLAGS =
-		DBFLAGS =
 	endif
 	ifeq ($(FLAG), debug)
 		CFLAGS = -Wall -Wextra -Werror
-		DBFLAGS = -g3 -fsanitize=address
 	endif
 else
 	CFLAGS = -Wall -Wextra -Werror
-	DBFLAGS =
 endif
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -64,18 +62,20 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 LDFLAGS = $(addprefix -L,$(LIB_PATH))
 CPPFLAGS = $(addprefix -I,$(INC_PATH))
+LIBFT_OBJ = $(wildcard $(LIB_PATH)*.o)
 
 all: LIB $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(DBFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+	ar rc $@ $^ $(LIBFT_OBJ)
+	ranlib $(NAME)
 
 LIB:
 	make -C $(LIB_PATH) 
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CFLAGS) $(DBFLAGS) $(CPPFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
 	make clean -C $(LIB_PATH) 
@@ -87,8 +87,6 @@ fclean: clean
 	rm -fv $(NAME)
 
 re: fclean all
-
-.PHONY: all, clean, fclean, re, LIB
 
 norme:
 	norminette $(SRC)

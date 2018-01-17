@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:02:24 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/15 17:19:09 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/17 16:37:22 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ $(NAME): $(OBJS)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -I../ -c -o $@ $<
 
 clean:
 	rm -f $(OBJS)
