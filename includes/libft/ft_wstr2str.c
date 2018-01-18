@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:59:43 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/14 13:33:38 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 19:32:13 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*ft_wstr2str(wchar_t *src)
 	tmp = ft_strnew(0);
 	if (!src || !tmp)
 		return (NULL);
-	ret = NULL;
+	if (!*src)
+		return (tmp);
 	while (*src)
 	{
 		ctmp = ft_uni2utf8(*src);

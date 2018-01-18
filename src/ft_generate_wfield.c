@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 17:01:28 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 21:31:54 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 20:33:08 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,17 @@ void	ft_generate_wfield(t_spec *spec)
 {
 	int		len;
 	int		width;
+	int		casbizareducnul;
 
+	casbizareducnul = 0;
 	len = ft_strlen(spec->field);
-	width = ft_width(*spec, 0);
+	width = ft_width(spec, 0);
+	if (ft_strchr("cC", spec->c_specifier) && spec->field[0] == '\0')
+	{
+		if (width > 0)
+			width--;
+		casbizareducnul = 1;
+	}
 	//realloc only if width != len ?
 	if (!(spec->field = (char *)ft_realloc((void **)&spec->field, len + 1, width - len + 1)))
 		return ;
@@ -28,4 +36,7 @@ void	ft_generate_wfield(t_spec *spec)
 		ft_padding(spec->field, '0', 0, width);
 	else
 		ft_padding(spec->field, ' ', 0, width);
+	if (casbizareducnul)
+		width++;
+	spec->width = width;
 }

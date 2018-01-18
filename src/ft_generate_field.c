@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 16:55:21 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 14:07:06 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 19:10:26 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	ft_generate_field(t_spec *spec)
 	char	sign;
 	int		width;
 	int		sign_len;
+	int		casbizareducnul;
 
+	casbizareducnul = 0;
 	sign = ft_get_sign(*spec);
 	sign_len = ft_get_sign_len(sign);
 	if (sign == '-')
@@ -39,7 +41,13 @@ void	ft_generate_field(t_spec *spec)
 	if (!spec->field)
 		return ;
 	len = ft_strlen(spec->field);
-	width = ft_width(*spec, sign_len);
+	width = ft_width(spec, sign_len);
+	if (spec->c_specifier == 'c' && spec->field[0] == '\0')
+	{
+		if (width > 0)
+			width--;
+		casbizareducnul = 1;
+	}
 	//realloc only if width != len ?
 	if (!(spec->field = (char *)ft_realloc((void **)&spec->field, len + 1, width - len + 1)))
 		return ;
@@ -52,4 +60,7 @@ void	ft_generate_field(t_spec *spec)
 	ft_apply_sign(spec->field, sign, width);
 	if (ft_strchr(spec->attribute, '#'))
 		ft_apply_0xhashtag(spec, width);
+	if (casbizareducnul)
+		width++;
+	spec->width = width;
 }

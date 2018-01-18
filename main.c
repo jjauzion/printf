@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 11:59:45 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 20:27:22 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,10 @@ int		main ()
 	ft_printf("7.5 ft_printf:\t|%-.12s| ; |%.3s|\n", "(-_-)'", "s#$-s");
 	printf("7.6 printf:\t|%-9.12s| ; |%9.3s| ; |%7.s| ; |%3s|\n", "(-_-)'", "s#$-s", "coucou", "coucou");
 	ft_printf("7.6 ft_printf:\t|%-9.12s| ; |%9.3s| ; |%7.s| ; |%3s|\n", "(-_-)'", "s#$-s", "coucou", "coucou");
+	ret = printf("7.7 |%s|\n", "\0a");
+	retft = ft_printf("7.7 |%s|\n", "\0a");
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
 	printf("\n--> Test 08 : test hexa\n");
 	printf("8.1 printf:\t|%x| ; |%X|\n", 12, 12);
@@ -147,6 +151,8 @@ int		main ()
 	ft_printf("8.12 ft_printf:\t|%010X| ; |%0#10X|; |%010.2X| ; |%010.1X| ; |%010.5X|\n", 17, 17, 17, 17, 17);
 	printf("8.15 printf:\t|%#3X| ; |%#X| ; |%#-3X| ; |%#03X|\n", 20, 0, 0, 0);
 	ft_printf("8.15 ft_printf:\t|%#3X| ; |%#X| ; |%#-3X| ; |%#03X|\n", 20, 0, 0, 0);
+	printf("8.17 printf:\t|%#.0o| ; |%#.0x| ; |%#05.0x| ; |%#+05x|\n", 0, 0, 0, 0);
+	ft_printf("8.17 ft_printf:\t|%#.0o| ; |%#.0x| ; |%#05.0x| ; |%#+05x|\n", 0, 0, 0, 0);
 /*	Undefined Behaviour */
 /*	printf("8.3 printf:\t|%x| ; |%X|\n", 0, -1);
 	ft_printf("8.3 ft_printf:\t|%x| ; |%X|\n", 0, -1);
@@ -197,6 +203,20 @@ int		main ()
 	printf("\n--> Test 10 : test char\n");
 	printf("10.1 printf:\t|%c| ; |%-c|\n", 'a', '0');
 	ft_printf("10.1 ft_printf:\t|%c| ; |%-c|\n", 'a', '0');
+	printf("10.4 printf:\t|%c| ; |%-c|\n", '\0', '\0');
+	ft_printf("10.4 ft_printf:\t|%c| ; |%-c|\n", '\0', '\0');
+	ret = printf("10.5 |%5c|\n", '\0');
+	retft = ft_printf("10.5 |%5c|\n", '\0');
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("10.6 |%-5c| ; |%-5c|\n", '\0', 'a');
+	retft = ft_printf("10.6 |%-5c| ; |%-5c|\n", '\0', 'a');
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("10.7 |%.5c|\n", '\0');
+	retft = ft_printf("10.7 |%.5c|\n", '\0');
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 /*	Undefined Behaviour */
 /*	printf("10.2 printf:\t|%4.5c| ; |%-5.3c|\n", 'a', 'b');
 	ft_printf("10.2 ft_printf:\t|%4.5c| ; |%-5.3c|\n", 'a', 'b');
@@ -222,6 +242,10 @@ else
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 	ret = printf("12.5 :\t|%-5C| ; |%5C|; |%5C|\n", 945, L'只', L'α');
 	retft = ft_printf("12.5 :\t|%-5C| ; |%5C|; |%5C|\n", 945, L'只', L'α');
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("12.12 :\t|%-5C|\n", L'\0');
+	retft = ft_printf("12.12 :\t|%-5C|\n", L'\0');
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 //	ret = printf("12.6 :\t|%2$-7C| ; |%1$7C|\n", 945, L'只');
@@ -349,8 +373,14 @@ else
 
 //	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
 
-	printf("1:toto |%#.0o| ; |%#.0x|\n", 0, 0);
-	ft_printf("2:toto |%#.0o| ; |%#.0x|\n", 0, 0);
+	ret = printf("12.13 :\t%lc\n", 0x4e6);
+	retft = ft_printf("12.13 :\t%lc\n", 0x4e6);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("12.14 :\t%C\n", 0x4e6);
+	retft = ft_printf("12.14 :\t%C\n", 0x4e6);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 

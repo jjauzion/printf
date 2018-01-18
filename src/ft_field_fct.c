@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:35:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/14 15:19:28 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 19:01:18 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ char	ft_get_sign(t_spec spec)
 	char	sign;
 
 	sign = '\0';
-	if (ft_strchr(spec.attribute, '#') && ft_strchr("xX", spec.c_specifier))
-		sign = 'x';
 	if (ft_strchr("cCpsSuUOoxX", spec.c_specifier))
+	{
+		if (ft_strchr(spec.attribute, '#') && ft_strchr("xX", spec.c_specifier))
+			sign = 'x';
 		return (sign);
+	}
 	if (ft_strchr(spec.attribute, ' '))
 		sign = ' ';
 	if (ft_strchr(spec.attribute, '+'))
@@ -69,14 +71,14 @@ void	ft_apply_sign(char *arg, char sign, int width)
 		arg[i - 1] = sign;
 }
 
-int		ft_width(t_spec spec, int sign_len)
+int		ft_width(t_spec *spec, int sign_len)
 {
 	int		len;
 
-	len = ft_strlen(spec.field);
+	len = ft_strlen(spec->field);
 	len = len + sign_len;
-	if (spec.width > len)
-		return (spec.width);
+	if (spec->width > len)
+		return (spec->width);
 	else
 		return (len);
 }

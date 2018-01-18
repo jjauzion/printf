@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:52 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 12:11:44 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 17:39:32 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_uint_arg(t_var var, t_spec *spec)
 		arg = (size_t)var.uim;
 	else
 		arg = (unsigned int)var.uim;
-//	if (arg == 0)
-//		spec->attribute = ft_str_del_char(&spec->attribute, '#');
+	if (arg == 0 && ft_strchr("xX", spec->c_specifier))
+		spec->attribute = ft_str_del_char(&spec->attribute, '#');
 	spec->field = ft_uitoa_base(arg, base);
 	if (spec->c_specifier == 'X')
 		spec->field = ft_strremapi(spec->field, &ft_toupper);

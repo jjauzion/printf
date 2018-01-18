@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:37:53 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 11:53:13 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 17:20:42 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void		ft_add_precision(t_spec *spec)
 	if (spec->precision < 0)
 		return ;
 	sign = (spec->field[0] == '-') ? 1 : 0;
-	len = ft_strlen(spec->field);
 	if (spec->field[0] == '0')
 		spec->field[0] = '\0';
 	len = (sign) ? ft_strlen(spec->field) - 1 : ft_strlen(spec->field);

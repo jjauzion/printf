@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/17 11:50:44 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 19:48:41 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void				ft_clean_utf8str(char *str);
 char				ft_get_sign(t_spec spec);
 void				ft_shift_string(char *arg, char c, char option, int width);
 void				ft_apply_sign(char *arg, char sign, int width);
-int					ft_width(t_spec spec, int sign_len);
+int					ft_width(t_spec *spec, int sign_len);
 void				ft_padding(char *arg, char option, int sign_len, int width);
 char				*ft_get_lmodifier(const char **format);
 int					ft_get_precision(const char **format);
@@ -81,9 +81,7 @@ void				ft_apply_0xhashtag(t_spec *spec, int width);
 void				ft_usage(t_var var, t_spec *spec);
 void				ft_int_arg(t_var var, t_spec *spec);
 void				ft_uint_arg(t_var var, t_spec *spec);
-void				ft_wstr_arg(t_var var, t_spec *spec);
 void				ft_str_arg(t_var var, t_spec *spec);
-void				ft_wchar_arg(t_var var, t_spec *spec);
 void				ft_char_arg(t_var var, t_spec *spec);
 void				ft_float_arg(t_var var, t_spec *spec);
 void				ft_pct_arg(t_var var, t_spec *spec);

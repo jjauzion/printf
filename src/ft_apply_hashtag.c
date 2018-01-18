@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:00:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 12:13:07 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 17:39:48 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,10 @@ void	ft_apply_ohashtag(t_spec *spec)
 	}
 }
 
-static int	ft_is_zero(char *field)
-{
-	int i;
-
-	i = -1;
-	while (field[++i])
-		if (field[i] != ' ' && field[i] != '0' && field[i] != '+')
-			return (0);
-	return (1);
-}
-
 void	ft_apply_0xhashtag(t_spec *spec, int width)
 {
 	int		i;
 
-	if (ft_is_zero(spec->field))
-		return ;
 	if (spec->c_specifier == 'x' || spec->c_specifier == 'X')
 	{
 		i = 0;
