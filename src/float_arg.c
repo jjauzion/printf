@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 11:48:23 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/17 11:55:13 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 11:54:27 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_float_arg(t_var var, t_spec *spec)
 	long double	arg;
 
 	spec->field = NULL;
-	if (ft_strequ(spec->l_modifier, "l"))
+	if (ft_strequ(spec->l_modifier, "L"))
 		arg = var.ld;
 	else
 		arg = (double)var.ld;

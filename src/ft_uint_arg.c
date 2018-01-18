@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:52 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/17 10:52:43 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 12:11:44 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_base(char spec)
 {
-	if (spec == 'o')
+	if (spec == 'o' || spec == 'O')
 		return (8);
 	else if (spec == 'x' || spec == 'X')
 		return (16);
@@ -35,7 +35,7 @@ void	ft_uint_arg(t_var var, t_spec *spec)
 		arg = (short unsigned)var.uim;
 	else if (ft_strequ(spec->l_modifier, "j"))
 		arg = var.uim;
-	else if (ft_strequ(spec->l_modifier, "l"))
+	else if (ft_strequ(spec->l_modifier, "l") || ft_strchr("OU", spec->c_specifier))
 		arg = (long unsigned int)var.uim;
 	else if (ft_strequ(spec->l_modifier, "ll"))
 		arg = (unsigned long long int)var.uim;
@@ -43,7 +43,11 @@ void	ft_uint_arg(t_var var, t_spec *spec)
 		arg = (size_t)var.uim;
 	else
 		arg = (unsigned int)var.uim;
+//	if (arg == 0)
+//		spec->attribute = ft_str_del_char(&spec->attribute, '#');
 	spec->field = ft_uitoa_base(arg, base);
+	if (spec->c_specifier == 'X')
+		spec->field = ft_strremapi(spec->field, &ft_toupper);
 	ft_add_precision(spec);
 	ft_generate_field(spec);
 }

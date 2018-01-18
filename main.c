@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/17 16:55:22 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/18 11:59:45 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,8 @@ int		main ()
 	ft_printf("9.12 ft_printf:\t|%010o| ; |%0#10o|; |%010.2o| ; |%010.1o| ; |%010.5o|\n", 17, 17, 17, 17, 17);
 	printf("9.15 printf:\t|%#3o| ; |%#o| ; |%#-3o| ; |%#03o|\n", 20, 0, 0, 0);
 	ft_printf("9.15 ft_printf:\t|%#3o| ; |%#o| ; |%#-3o| ; |%#03o|\n", 20, 0, 0, 0);
+	printf("9.16 printf:\t|%.0o| ; |%.o| ; |%.4o|\n", 0, 0, 0);
+	ft_printf("9.16 ft_printf:\t|%.0o| ; |%.o| ; |%.4o|\n", 0, 0, 0);
 /*	Undefined Behaviour */
 /*	printf("9.4 printf:\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
 	ft_printf("9.4 ft_printf:\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
@@ -346,6 +348,9 @@ else
 //	printf("4567 |%10]5d| plip\n", 12);	
 
 //	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
+
+	printf("1:toto |%#.0o| ; |%#.0x|\n", 0, 0);
+	ft_printf("2:toto |%#.0o| ; |%#.0x|\n", 0, 0);
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 
