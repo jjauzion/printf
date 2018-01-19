@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 18:51:15 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 19:33:17 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/19 20:01:27 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ static void		ft_apply_mask(wchar_t c, unsigned char *wc, int nb_octet)
 		wc[3] = 0xF0 | (c & 0x7);
 }
 
-void		ft_putwchar(wchar_t c)
+int			ft_putwchar(wchar_t c)
 {
 	int				nb_octet;
 	unsigned char	*wc;
 	int				i;
+	int				ret;
 
+	ret = 0;
 	if (!(wc = (unsigned char*)malloc(sizeof(char) * 4)))
-		return ;
+		return (ret);
 	i = 0;
 	while (++i < 4)
 		wc[i] = '\0';
@@ -46,11 +48,17 @@ void		ft_putwchar(wchar_t c)
 	if (nb_octet == 1)
 	{
 		write(1, &c, 1);
-		return ;
+		ret++;
+		free(wc);
+		return (ret);
 	}
 	ft_apply_mask(c, wc, nb_octet);
-	i = 4;
+	i = nb_octet;
 	while (--i >= 0)
+	{
 		write(1, &(wc[i]), 1);
+		ret++;
+	}
 	free(wc);
+	return (ret);
 }

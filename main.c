@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 20:27:22 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/19 19:50:38 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,14 @@ else
 	retft = ft_printf("12.12 :\t|%-5C|\n", L'\0');
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("12.13 :%-c mais c'est nul !!\n", '\0');
+	retft = ft_printf("12.13 :%-c mais c'est nul !!\n", '\0');
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("12.14 :hello ca%-4c %1c va %10c%-c ??\n", '\0', 'v',(char)564, 0);
+	retft = ft_printf("12.14 :hello ca%-4c %1c va %10c%-c ??\n", '\0', 'v',(char)564, 0);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 //	ret = printf("12.6 :\t|%2$-7C| ; |%1$7C|\n", 945, L'只');
 //	retft = ft_printf("12.6 :\t|%2$-7C| ; |%1$7C|\n", 945, L'只');
 //	if (ret != retft)
@@ -360,8 +368,8 @@ else
 	retft = ft_printf("xx.3 test ac plusieur arg enchaine <%c%d%s> alors?\n", '|', 7, " tut tut|");
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("xx.4 %s%c%d%S", "Uniquement des specifier.", ' ', 7, L" 猫 c'est pas si compliqué\n");
-	retft = ft_printf("xx.4 %s%c%d%S", "Uniquement des specifier.", ' ', 7, L" 猫 c'est pas si compliqué\n");
+	ret = printf("xx.4 %s%2c%d%S", "Uniquement des specifier.", ' ', 7, L" 猫 c'est pas si compliqué\n");
+	retft = ft_printf("xx.4 %s%2c%d%S", "Uniquement des specifier.", ' ', 7, L" 猫 c'est pas si compliqué\n");
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 	ret = printf("xx.5 just a little trick %%r \n");
@@ -373,14 +381,12 @@ else
 
 //	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
 
-	ret = printf("12.13 :\t%lc\n", 0x4e6);
-	retft = ft_printf("12.13 :\t%lc\n", 0x4e6);
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("12.14 :\t%C\n", 0x4e6);
-	retft = ft_printf("12.14 :\t%C\n", 0x4e6);
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+
+/*	printf("\n\nprintf : |\n");
+	ret = printf("%c|\n", -21);
+	printf("ft_printf : |\n");
+	retft = ft_printf("%c|\n", -21);
+	printf("---> ret = %d ; retft = %d <---\n\n", ret, retft);*/
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 

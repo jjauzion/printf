@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 19:48:41 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/19 17:52:31 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_specifier
 	char			*l_modifier;
 	char			c_specifier;
 	char			*field;
+	wchar_t			v_char;
 }					t_spec;
 
 typedef union		u_variable

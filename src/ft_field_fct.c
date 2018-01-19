@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 15:35:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 19:01:18 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/19 19:35:17 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int		ft_width(t_spec *spec, int sign_len)
 {
 	int		len;
 
+	if (ft_strchr("Cc", spec->c_specifier))
+		spec->width -= ft_getnbofutf8byte(spec->v_char);
 	len = ft_strlen(spec->field);
 	len = len + sign_len;
 	if (spec->width > len)
