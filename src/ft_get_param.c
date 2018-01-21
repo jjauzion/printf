@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 19:13:40 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/21 17:48:03 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,26 @@ int		ft_get_param(va_list ap, t_spec *spec, int cpt)
 	i = 0;
 	while (!ft_strchr(g_type[i].type, (int)spec[cpt].c_specifier) && g_type[i].type[0] != ' ')
 		i++;
-	g_type[i].fct(var, &spec[cpt]);
-	if (g_type[i].type[0] == ' ')
+	if (g_type[i].fct(var, &spec[cpt]))
 		return (1);
 	else
 		return (0);
 }
 
-void	ft_pct_arg(t_var var, t_spec *spec)
+int		ft_pct_arg(t_var var, t_spec *spec)
 {
 	(void)var;
 	spec->field = ft_strdup("%");
 	spec->width = 1;
+	return (0);
 }
 
-void	ft_usage(t_var var, t_spec *spec)
+int		ft_usage(t_var var, t_spec *spec)
 {
 	(void)var;
 	ft_putstr("\n---------------------------\nError: '%");
 	ft_putchar(spec->c_specifier);
 	ft_putendl("' is not a valid specifier");
 	ft_putendl("---------------------------\n");
+	return (1);
 }

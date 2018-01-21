@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/19 19:50:38 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/21 18:33:28 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,8 @@ int		main ()
 //	printf("11.1 printf:\t|%hf|\n", 2147483647.);
 
 	printf("\n--> Test 12 : test UNICODE\n");
-char* l = setlocale(LC_ALL, "en_US.UTF-8"); 
+
+char* l = setlocale(LC_ALL, ""); 
 if (l == NULL) 
 	    printf("Locale not set\n"); 
 else
@@ -382,11 +383,40 @@ else
 //	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
 
 
-/*	printf("\n\nprintf : |\n");
+	printf("\n\nprintf : |\n");
 	ret = printf("%c|\n", -21);
 	printf("ft_printf : |\n");
 	retft = ft_printf("%c|\n", -21);
-	printf("---> ret = %d ; retft = %d <---\n\n", ret, retft);*/
+	printf("---> ret = %d ; retft = %d <---\n\n", ret, retft);
+
+	printf("\n\nprintf : |\n");
+	ret = printf("%C|\n", (wint_t)-2);
+	printf("ft_printf : |\n");
+	retft = ft_printf("%C|\n", (wint_t)-2);
+	printf("---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	printf("v = %d\n", (wint_t)-2);
+
+	printf("\n\nprintf : |\n");
+	ret = printf("%C|\n", 0xbffe);
+	printf("ft_printf : |\n");
+	retft = ft_printf("%C|\n", 0xbffe);
+	printf("---> ret = %d ; retft = %d <---\n\n", ret, retft);
+
+	printf("\n\nprintf : |\n");
+	ret = printf("%C", 254);
+	printf("ft_printf : |\n");
+	retft = ft_printf("%C", 254);
+	printf("---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	
+	printf("\n->\n");
+	ret = printf("%lc", 254);
+	printf("\n---> ret = %d\n", ret);
+
+	printf("\n\nprintf : |\n");
+	ret = printf("%s", NULL);
+	printf("ft_printf : |\n");
+	retft = ft_printf("%s", NULL);
+	printf("---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 

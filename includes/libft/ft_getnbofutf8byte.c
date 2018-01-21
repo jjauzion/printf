@@ -6,9 +6,15 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:26:10 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/19 19:39:20 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/21 16:16:33 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	Calculate the number of bytes required to format the wchar_t given in input
+**	to the utf8 format.
+**	In case var is negative the function return 1.
+*/
 
 #include "libft.h"
 
@@ -23,10 +29,12 @@ static int			ft_bit2oct(int nb)
 	return (4);
 }
 
-int			ft_getnbofutf8byte(uintmax_t var)
+int			ft_getnbofutf8byte(wchar_t var)
 {
 	int		active_bits;
 
+	if (var < 0)
+		return (1);
 	active_bits = 0;
 	while (var)
 	{

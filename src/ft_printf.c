@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/17 11:45:44 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/21 19:21:44 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static t_spec	*ft_init_spec(int size)
 		spec[i].precision = -1;
 		spec[i].l_modifier = NULL;
 		spec[i].c_specifier = 0;
+		spec[i].v_char = 0;
 	}
 	return (spec);
 }

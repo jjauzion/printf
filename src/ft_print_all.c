@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 15:01:24 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/19 20:01:59 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/21 19:25:01 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int		ft_print_all(char **plain_str, t_spec *spec, int nb_param)
 {
-	int		i;
-	int		ret;
+	int				i;
+	int				ret;
+	unsigned char	tmp;
 
 	(void)spec;	
 	i = -1;
@@ -34,5 +35,6 @@ int		ft_print_all(char **plain_str, t_spec *spec, int nb_param)
 	}
 	ft_putstr(plain_str[i]);
 	ret += ft_strlen(plain_str[i]);
+	tmp = spec->v_char;
 	return (ret);
 }

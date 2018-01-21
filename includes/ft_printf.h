@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/19 17:52:31 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/21 16:35:35 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef union		u_variable
 typedef struct		s_type
 {
 	char			*type;
-	void			(*fct)(t_var var, t_spec *spec);
+	int				(*fct)(t_var var, t_spec *spec);
 }					t_type;
 
 int					ft_printf(const char *format, ...);
@@ -79,12 +79,12 @@ void				ft_hashtag_attribute(t_spec *spec);
 void				ft_apply_ohashtag(t_spec *spec);
 void				ft_apply_0xhashtag(t_spec *spec, int width);
 
-void				ft_usage(t_var var, t_spec *spec);
-void				ft_int_arg(t_var var, t_spec *spec);
-void				ft_uint_arg(t_var var, t_spec *spec);
-void				ft_str_arg(t_var var, t_spec *spec);
-void				ft_char_arg(t_var var, t_spec *spec);
-void				ft_float_arg(t_var var, t_spec *spec);
-void				ft_pct_arg(t_var var, t_spec *spec);
+int					ft_usage(t_var var, t_spec *spec);
+int					ft_int_arg(t_var var, t_spec *spec);
+int					ft_uint_arg(t_var var, t_spec *spec);
+int					ft_str_arg(t_var var, t_spec *spec);
+int					ft_char_arg(t_var var, t_spec *spec);
+int					ft_float_arg(t_var var, t_spec *spec);
+int					ft_pct_arg(t_var var, t_spec *spec);
 
 #endif

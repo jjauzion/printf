@@ -6,13 +6,13 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:28 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 10:33:50 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/21 16:30:58 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_int_arg(t_var var, t_spec *spec)
+int		ft_int_arg(t_var var, t_spec *spec)
 {
 	intmax_t	arg;
 
@@ -34,4 +34,5 @@ void	ft_int_arg(t_var var, t_spec *spec)
 	spec->field = ft_imtoa(arg);
 	ft_add_precision(spec);
 	ft_generate_field(spec);
+	return (0);
 }

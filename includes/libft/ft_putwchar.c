@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 18:51:15 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/19 20:01:27 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/21 17:03:06 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,19 @@ int			ft_putwchar(wchar_t c)
 	int				i;
 	int				ret;
 
+	if (c < 0)
+	{
+		write(1, &c, 1);
+		return (1);
+	}
+	if (c > 0x10FFFF || (c >= 0xD800 && c <= 0xDFFF))
+		return (-1);
 	ret = 0;
 	if (!(wc = (unsigned char*)malloc(sizeof(char) * 4)))
-		return (ret);
+		return (-1);
 	i = 0;
 	while (++i < 4)
 		wc[i] = '\0';
-	setlocale(LC_ALL, "en_US.UTF-8");
 	nb_octet = ft_getnbofutf8byte(c);
 	if (nb_octet == 1)
 	{
