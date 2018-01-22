@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 17:42:38 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/22 19:18:38 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int				ft_printf(const char *format, ...)
 	spec = ft_init_spec(count);
 	cpt = 0;
 	count = 0;
+	i = 0;
 	while (*format && i >= 0)
 	{
 		i = 0;

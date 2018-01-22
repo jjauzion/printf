@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 10:18:54 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/22 19:23:17 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,20 +153,7 @@ int		main ()
 	ft_printf("8.15 ft_printf:\t|%#3X| ; |%#X| ; |%#-3X| ; |%#03X|\n", 20, 0, 0, 0);
 	printf("8.17 printf:\t|%#.0o| ; |%#.0x| ; |%#05.0x| ; |%#+05x|\n", 0, 0, 0, 0);
 	ft_printf("8.17 ft_printf:\t|%#.0o| ; |%#.0x| ; |%#05.0x| ; |%#+05x|\n", 0, 0, 0, 0);
-/*	Undefined Behaviour */
-/*	printf("8.3 printf:\t|%x| ; |%X|\n", 0, -1);
-	ft_printf("8.3 ft_printf:\t|%x| ; |%X|\n", 0, -1);
-	printf("8.4 printf:\t|%X| ; |%X| ; |%X|\n", 4294967295, -1, -2);
-	ft_printf("8.4 ft_printf:\t|%X| ; |%X| ; |%X|\n", 4294967295, -1, -2);
-	printf("8.7 printf:\t|%-15x| ; |%+1x|\n", 45612, 45612);
-	ft_printf("8.7 ft_printf:\t|%-15x| ; |%+1x|\n", 45612, 45612);
-	printf("8.8 printf:\t|%015x| ; |%0-15x|\n", 45612, 45612);
-	ft_printf("8.8 ft_printf:\t|%015x| ; |%0-15x|\n", 45612, 45612);
-	printf("8.13 printf:\t|%04X| ; |%04.1X| ; |%0#4X| ; |%X|\n", 10, 10, 10, 4294967295);
-	ft_printf("8.13 ft_printf:\t|%04X| ; |%04.1X| ; |%0#4X| ; |%X|\n", 10, 10, 10, 4294967295);
-	printf("8.14 printf:\t|%#+05X| ; |%#+05.2X| ; |%#+05.7X|\n", 10, 10, 10);
-	ft_printf("8.14 ft_printf:\t|%#+05X| ; |%#+05.2X| ; |%#+05.7X|\n", 10, 10, 10);
-*/
+
 	printf("\n--> Test 09 : test octal\n");
 	printf("9.1 printf:\t|%o| ; |%o| ; |%o|\n", 12, 2, 0);
 	ft_printf("9.1 ft_printf:\t|%o| ; |%o| ; |%o|\n", 12, 2, 0);
@@ -190,16 +177,7 @@ int		main ()
 	ft_printf("9.15 ft_printf:\t|%#3o| ; |%#o| ; |%#-3o| ; |%#03o|\n", 20, 0, 0, 0);
 	printf("9.16 printf:\t|%.0o| ; |%.o| ; |%.4o|\n", 0, 0, 0);
 	ft_printf("9.16 ft_printf:\t|%.0o| ; |%.o| ; |%.4o|\n", 0, 0, 0);
-/*	Undefined Behaviour */
-/*	printf("9.4 printf:\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
-	ft_printf("9.4 ft_printf:\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
-	printf("9.7 printf:\t|%-15o| ; |%+1o|\n", 45612, 45612);
-	ft_printf("9.7 ft_printf:\t|%-15o| ; |%+1o|\n", 45612, 45612);
-	printf("9.8 printf:\t|%015o| ; |%0-15o|\n", 45612, 45612);
-	ft_printf("9.8 ft_printf:\t|%015o| ; |%0-15o|\n", 45612, 45612);
-	printf("9.13 printf:\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
-	ft_printf("9.13 ft_printf:\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
-*/
+
 	printf("\n--> Test 10 : test char\n");
 	printf("10.1 printf:\t|%c| ; |%-c|\n", 'a', '0');
 	ft_printf("10.1 ft_printf:\t|%c| ; |%-c|\n", 'a', '0');
@@ -217,12 +195,7 @@ int		main ()
 	retft = ft_printf("10.7 |%.5c|\n", '\0');
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-/*	Undefined Behaviour */
-/*	printf("10.2 printf:\t|%4.5c| ; |%-5.3c|\n", 'a', 'b');
-	ft_printf("10.2 ft_printf:\t|%4.5c| ; |%-5.3c|\n", 'a', 'b');
-	printf("10.3 printf:\t|%04.5c| ; |%0c|\n", 'a', 'b');
-	ft_printf("10.3 ft_printf:\t|%04.5c| ; |%0c|\n", 'a', 'b');
-*/
+
 	printf("\n--> Test 11 : test length modifier\n");
 //	printf("11.1 printf:\t|%hf|\n", 2147483647.);
 
@@ -261,36 +234,7 @@ else
 //	retft = ft_printf("12.6 :\t|%2$-7C| ; |%1$7C|\n", 945, L'只');
 //	if (ret != retft)
 //		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-/*	Undefined Behaviour */
-/*	ret = printf("12.3 :\t|%S| ; |%.2S| ; |%-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	retft = ft_printf("12.3 :\t|%S| ; |%.2S| ; |%-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("12.4 :\t|%0S| ; |%#025S| ; |%0-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	retft = ft_printf("12.4 :\t|%0S| ; |%#025S| ; |%0-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("12.7 :\t|%.1S| ; |%.5S| ; |%.6S| ; |%.20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	retft = ft_printf("12.7 :\t|%.1S| ; |%.5S| ; |%.6S| ; |%.20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("12.8 :\t|%.8S| ; |%.5S| ; |%.6S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
-	retft = ft_printf("12.8 :\t|%.8S| ; |%.5S| ; |%.6S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("12.9 :\t|%5.2S| ; |%-5.2S| ; |%05.2S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
-	retft = ft_printf("12.9 :\t|%5.2S| ; |%-5.2S| ; |%05.2S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("12.10 :\t|%5.3S| ; |%-5.3S| ; |%05.3S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
-	retft = ft_printf("12.10 :\t|%5.3S| ; |%-5.3S| ; |%05.3S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("12.11 :\t|%.10S| ; |%5.10S| ; |%015.10S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
-	retft = ft_printf("12.11 :\t|%.10S| ; |%5.10S| ; |%015.10S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-*/
+
 	printf("\n--> Test 13 : test %%\n");
 	ret = printf("13.1 :\t%%5d %%d OK?\n");
 	retft = ft_printf("13.1 :\t%%5d %%d OK?\n");
@@ -338,25 +282,86 @@ else
 	retft = ft_printf("14.15 :\t|%#3o| ; |%#o| ; |%#-3o| ; |%#03o|\n", 20, 0, 0, 0);
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-/* Undefinded behavior */
-/*	ret = printf("14.4 :\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
-	retft = ft_printf("14.4 :\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
+
+	printf("\n--> Test 15 : test valeur retour\n");
+	ret = printf("15.1 :\t|%p| ; |%50p| ; |%-50.20p|\n", &ret, &ret, &ret);
+	retft = ft_printf("15.1 :\t|%p| ; |%50p| ; |%-50.20p|\n", &ret, &ret, &ret);
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("14.7 :\t|%-15o| ; |%+1o|\n", 45612, 45612);
-	retft = ft_printf("14.7 :\t|%-15o| ; |%+1o|\n", 45612, 45612);
+
+	printf("\n--> Test 15 : undefined behaviour\n");
+	printf("15.8.3 :\t|%x| ; |%X|\n", 0, -1);
+	ft_printf("15.8.3 :\t|%x| ; |%X|\n", 0, -1);
+	printf("15.8.4 :\t|%X| ; |%X| ; |%X|\n", 4294967295, -1, -2);
+	ft_printf("15.8.4 :\t|%X| ; |%X| ; |%X|\n", 4294967295, -1, -2);
+	printf("15.8.7 :\t|%-15x| ; |%+1x|\n", 45612, 45612);
+	ft_printf("15.8.7 :\t|%-15x| ; |%+1x|\n", 45612, 45612);
+	printf("15.8.8 :\t|%015x| ; |%0-15x|\n", 45612, 45612);
+	ft_printf("15.8.8 :\t|%015x| ; |%0-15x|\n", 45612, 45612);
+	printf("15.8.13 :\t|%04X| ; |%04.1X| ; |%0#4X| ; |%X|\n", 10, 10, 10, 4294967295);
+	ft_printf("15.8.13 :\t|%04X| ; |%04.1X| ; |%0#4X| ; |%X|\n", 10, 10, 10, 4294967295);
+	printf("15.8.14 :\t|%#+05X| ; |%#+05.2X| ; |%#+05.7X|\n", 10, 10, 10);
+	ft_printf("15.8.14 :\t|%#+05X| ; |%#+05.2X| ; |%#+05.7X|\n", 10, 10, 10);
+	printf("15.9.4 :\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
+	ft_printf("15.9.4 :\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
+	printf("15.9.7 :\t|%-15o| ; |%+1o|\n", 45612, 45612);
+	ft_printf("15.9.7 :\t|%-15o| ; |%+1o|\n", 45612, 45612);
+	printf("15.9.8 :\t|%015o| ; |%0-15o|\n", 45612, 45612);
+	ft_printf("15.9.8 :\t|%015o| ; |%0-15o|\n", 45612, 45612);
+	printf("15.9.13 :\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
+	ft_printf("15.9.13 :\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
+	printf("15.10.2 :\t|%4.5c| ; |%-5.3c|\n", 'a', 'b');
+	ft_printf("15.10.2 :\t|%4.5c| ; |%-5.3c|\n", 'a', 'b');
+	printf("15.10.3 :\t|%04.5c| ; |%0c|\n", 'a', 'b');
+	ft_printf("15.10.3 :\t|%04.5c| ; |%0c|\n", 'a', 'b');
+	ret = printf("15.12.3 :\t|%S| ; |%.2S| ; |%-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	retft = ft_printf("15.12.3 :\t|%S| ; |%.2S| ; |%-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("14.8 :\t|%015o| ; |%0-15o|\n", 45612, 45612);
-	retft = ft_printf("14.8 :\t|%015o| ; |%0-15o|\n", 45612, 45612);
+	ret = printf("15.12.4 :\t|%0S| ; |%#025S| ; |%0-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	retft = ft_printf("15.12.4 :\t|%0S| ; |%#025S| ; |%0-20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-	ret = printf("14.13 :\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
-	retft = ft_printf("14.13 :\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
+	ret = printf("15.12.7 :\t|%.1S| ; |%.5S| ; |%.6S| ; |%.20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
+	retft = ft_printf("15.12.7 :\t|%.1S| ; |%.5S| ; |%.6S| ; |%.20S|\n", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。", L"我是一只猫。");
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-*/
-	printf("\n--> Test xx : test bug\n");
+	ret = printf("15.12.8 :\t|%.8S| ; |%.5S| ; |%.6S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	retft = ft_printf("15.12.8 :\t|%.8S| ; |%.5S| ; |%.6S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("15.12.9 :\t|%5.2S| ; |%-5.2S| ; |%05.2S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	retft = ft_printf("15.12.9 :\t|%5.2S| ; |%-5.2S| ; |%05.2S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("15.12.10 :\t|%5.3S| ; |%-5.3S| ; |%05.3S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	retft = ft_printf("15.12.10 :\t|%5.3S| ; |%-5.3S| ; |%05.3S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("15.12.11 :\t|%.10S| ; |%5.10S| ; |%015.10S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	retft = ft_printf("15.12.11 :\t|%.10S| ; |%5.10S| ; |%015.10S|\n", L"u我2αi", L"u我2αi", L"u我2αi");
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("15.14.4 :\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
+	retft = ft_printf("15.14.4 :\t|%o| ; |%o| ; |%o|\n", 4294967295, -1, -2);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("15.14.7 :\t|%-15o| ; |%+1o|\n", 45612, 45612);
+	retft = ft_printf("15.14.7 :\t|%-15o| ; |%+1o|\n", 45612, 45612);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("15.14.8 :\t|%015o| ; |%0-15o|\n", 45612, 45612);
+	retft = ft_printf("15.14.8 :\t|%015o| ; |%0-15o|\n", 45612, 45612);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	ret = printf("15.14.13 :\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
+	retft = ft_printf("15.14.13 :\t|%04o| ; |%0#4o| ; |%o|\n", 10, 10, 4294967295);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+
+
+
+	printf("\n--> Test xx : test all\n");
 	ret = printf("xx.1 string with nothing special ; just plain text :)\n");
 	retft = ft_printf("xx.1 string with nothing special ; just plain text :)\n");
 	if (ret != retft)
@@ -380,17 +385,39 @@ else
 //	printf("4567 |%-10]5d| plip\n", 12);
 //	printf("4567 |%10]5d| plip\n", 12);	
 
-//	ft_printf("wrong specifier : %r \n"); //leaks avec ce test a corriger ?
-
-
-	setlocale(LC_ALL, "");
-	printf("\n\nprintf : |\n");
-	//ret = printf("%8C et coco %C titi %lc", 3250, 0x11ffff, 'a');
-	ret = printf("%8C et coco %C", 3250, 0x11ffff);
-	printf("|\nft_printf : |\n");
-	//retft = ft_printf("%8C et coco %C titi %lc", 3250, 0x11ffff, 'a');
-	retft = ft_printf("%8C et coco %C", 3250, 0x11ffff);
-	printf("|\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	printf("\n--> Test yy : seg fault\n");
+	printf("\n>>Test 01:\n");
+	ft_printf("wrong specifier : %r \n");
+	printf("\n>>Test 02:\n");
+	ret = printf("");
+	retft = ft_printf("");
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	printf("\n>>Test 03:\n");
+	ret = printf("danger ! %lhlhl++--d danger over.\n", 10);
+	retft = ft_printf("danger ! %lhlhl++--d danger over.\n", 10);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	printf("\n>>Test 04:\n");
+	ret = printf("%l+010d\n", 10);
+	retft = ft_printf("%l+010d\n", 10);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	printf("\n>>Test 05:\n");
+	ret = printf("%d\n", 10, 25);
+	retft = ft_printf("%d\n", 10, 25);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+	printf("\n>>Test 06:\n");
+	ret = printf("%d\n", "str");
+	retft = ft_printf("%d\n", "str");
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+/*	printf("\n>>Test 07:\n");
+	ret = printf("%s\n", 10);
+	retft = ft_printf("%s\n", 10);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);*/
 
 	printf("\n-------------END TEST PRINTF-------------\n");
 

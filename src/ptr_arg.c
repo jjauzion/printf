@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specifier.h                                        :+:      :+:    :+:   */
+/*   ptr_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 18:17:14 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/22 18:02:00 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/22 18:22:20 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPECIFIER_H
-# define SPECIFIER_H 
+#include "ft_printf.h"
 
-t_type g_type[] =
+int		ft_ptr_arg(t_var var, t_spec *spec)
 {
-	{ "dDi", ft_int_arg},
-	{ "oOuUxX", ft_uint_arg},
-	{ "sS", ft_str_arg},
-	{ "cC", ft_char_arg},
-	{ "p", ft_ptr_arg},
-	{ "f", ft_float_arg },
-	{ "%", ft_pct_arg},
-	{ " ", ft_usage}
-};
-
-#endif
+	char	*tmp;
+	
+	spec->field = ft_uitoa_base(var.uim, 16);
+	ft_add_precision(spec);
+	tmp = spec->field;
+	spec->field = ft_strjoin("0x", tmp);
+	ft_strdel(&tmp);
+	ft_generate_wfield(spec);
+	return (0);
+}

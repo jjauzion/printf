@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/17 16:34:06 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/22 18:19:43 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC_NAME = ft_printf.c \
 		   ft_uint_arg.c \
 		   ft_generate_wfield.c \
 		   ft_clean_utf8str.c \
-		   char_arg_fct.c
+		   char_arg_fct.c \
+		   ptr_arg.c
 
 OBJ_PATH = obj/
 

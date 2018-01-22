@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specifier.h                                        :+:      :+:    :+:   */
+/*   addresstest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 18:17:14 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/22 17:50:16 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/22 18:27:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPECIFIER_H
-# define SPECIFIER_H 
+#include "ft_printf.h"
+#include <stdio.h>
 
-t_type g_type[] =
+int main ()
 {
-	{ "dDi", ft_int_arg},
-	{ "oOuUxX", ft_uint_arg},
-	{ "sS", ft_str_arg},
-	{ "cC", ft_char_arg},
-	{ "p", ft_ptr_arg},
-	{ "f", ft_float_arg },
-	{ "%", ft_pct_arg},
-	{ " ", ft_usage}
-};
+	char		*c;
+	size_t		test;
+	char		*str;
+	uintmax_t	uim;
 
-#endif
+	c = ft_strnew(2);
+	printf("@c = |%-50.20p|\n", c);
+	ft_printf("@c = |%-50.20p|\n", c);
+
+	while (1);
+	{}
+	return (0);
+}

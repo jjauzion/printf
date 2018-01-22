@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/21 16:35:35 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:17:41 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int					ft_int_arg(t_var var, t_spec *spec);
 int					ft_uint_arg(t_var var, t_spec *spec);
 int					ft_str_arg(t_var var, t_spec *spec);
 int					ft_char_arg(t_var var, t_spec *spec);
+int					ft_ptr_arg(t_var var, t_spec *spec);
 int					ft_float_arg(t_var var, t_spec *spec);
 int					ft_pct_arg(t_var var, t_spec *spec);
 
