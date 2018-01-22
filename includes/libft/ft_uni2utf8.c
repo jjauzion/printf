@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:46:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 20:39:26 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/22 12:24:30 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,19 @@ char	*ft_uni2utf8(wchar_t c)
 	int		nb_octet;
 	int		i;
 
+	if ((c >= 0xD800 && c <= 0xDFFF) || c > 0x10FFFF || c < 0)
+		return (NULL);
 	nb_octet = ft_getnbofutf8byte(c);
+	if (MB_CUR_MAX < nb_octet)
+	{
+		if (c > 127 && c < 256)
+		{
+			c = (char)c;
+			nb_octet = 1;
+		}
+		else
+			return (NULL);
+	}
 	if (!(ret = ft_strnew(nb_octet)))
 		return (NULL);
 	if (nb_octet == 1)

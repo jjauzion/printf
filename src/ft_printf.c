@@ -6,33 +6,11 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/21 19:21:44 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:42:38 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void			ft_print_spec(t_spec spec)
-{
-	ft_putstr("arg id = ");
-	ft_putnbr(spec.arg_id);
-	ft_putstr("\n");
-	ft_putstr("attribute = ");
-	ft_putstr(spec.attribute);
-	ft_putstr("\n");
-	ft_putstr("width = ");
-	ft_putnbr(spec.width);
-	ft_putstr("\n");
-	ft_putstr("preci = ");
-	ft_putnbr(spec.precision);
-	ft_putstr("\n");
-	ft_putstr("modifier = ");
-	ft_putstr(spec.l_modifier);
-	ft_putstr("\n");
-	ft_putstr("specifier = ");
-	ft_putchar(spec.c_specifier);
-	ft_putstr("\n");
-}
 
 static t_spec	*ft_init_spec(int size)
 {
@@ -62,11 +40,11 @@ static void		ft_delspec(t_spec **spec, int size)
 	while (++i < size)
 	{
 		if ((*spec)[i].attribute)
-			ft_strdel(&((*spec)[i]).attribute);
+			ft_strdel(&(((*spec)[i]).attribute));
 		if ((*spec)[i].l_modifier)
-			ft_strdel(&((*spec)[i]).l_modifier);
+			ft_strdel(&(((*spec)[i]).l_modifier));
 		if ((*spec)[i].field)
-			ft_strdel(&((*spec)[i]).field);
+			ft_strdel(&(((*spec)[i]).field));
 	}
 	free(*spec);
 }
@@ -107,7 +85,8 @@ int				ft_printf(const char *format, ...)
 	}
 	spec = ft_init_spec(count);
 	cpt = 0;
-	while (*format)
+	count = 0;
+	while (*format && i >= 0)
 	{
 		i = 0;
 		while (*format && *format != '%')
@@ -122,12 +101,13 @@ int				ft_printf(const char *format, ...)
 			if (!(format = ft_parse(format, &spec[cpt])))
 				return (-1);
 			if (ft_get_param(ap, spec, cpt))
-				return (-1);
+				i = -1;
+			count++;
 		}
 		cpt++;
 	}
-	i = ft_print_all(plain_str, spec, count);
+	cpt = ft_print_all(plain_str, spec, count);
 	va_end(ap);
 	ft_printf_closure(&spec, &plain_str, count);
-	return (i);
+	return (cpt);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 18:11:49 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/21 19:15:45 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:35:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,30 @@ int main()
 	int		ret;
 	int		retft;
 	int		max;
-	char	c;
 	int		i;
+	wchar_t	s[4];
+	char	*str;
 
-//	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "");
 	max = MB_CUR_MAX;
 	printf("max = %d\n", max);
+/*
+	s[0] = 0x53;
+	s[1] = 0x3abc;
+	s[2] = 0x81000;
+	s[3] = '\0';
 
-	ret = printf("%C mais rien", 0xbffe);
-	printf("\n--------\nret = %d\n---------\n", ret);
-
-	retft = ft_printf("%C", 0xbffe);
-	printf("\n--------\nretft = %d\n---------\n", retft);
-
-	c = 254;
-	ret = printf("%c et rien?", c);
-	printf("\n--------\nret = %d\n---------\n", ret);
-
-	retft = ft_printf("%c et rien?", c);
-	printf("\n--------\nretft = %d\n---------\n", retft);
-
-	i = (unsigned char)c;
-	printf("i = %d\n", i);
+	printf("\n\nprintf : ->\n");
+	ret = printf("%.ls", s);
+	printf("|\nft_printf : ->\n");
+	retft = ft_printf("%.ls", s);
+	printf("|\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
+*/
+	printf("\n\nprintf : |\n");
+	ret = printf("%20.ld et %.4hhi !", 0x11ffaa147, (signed char)-8);
+	printf("|\nft_printf : |\n");
+	retft = ft_printf("%20.ld et %.4hhi !", 0x11ffaa147, (signed char)-8);
+	printf("|\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
 	return (0);
 }

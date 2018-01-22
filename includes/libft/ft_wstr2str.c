@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:59:43 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/18 19:32:13 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/22 15:38:33 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,30 @@
 
 #include "libft.h"
 
-char	*ft_wstr2str(wchar_t *src)
+char	*ft_wstr2str(wchar_t *src, int size)
 {
 	char	*ret;
 	char	*tmp;
 	char	*ctmp;
 
-	tmp = ft_strnew(0);
-	if (!src || !tmp)
+	ret = ft_strnew(0);
+	if (!src || !ret)
 		return (NULL);
 	if (!*src)
-		return (tmp);
-	while (*src)
+		return (ret);
+	while (*src && size)
 	{
-		ctmp = ft_uni2utf8(*src);
-		ret = ft_strjoin(tmp, ctmp);
+		if (!(ctmp = ft_uni2utf8(*src)))
+		{
+			free(ret);
+			return (NULL);
+		}
+		tmp = ft_strjoin(ret, ctmp);
 		free(ctmp);
-		free(tmp);
-		tmp = ret;
+		free(ret);
+		ret = tmp;
 		src++;
+		size--;
 	}
 	return (ret);
 }

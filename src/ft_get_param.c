@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/21 17:48:03 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:31:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_pct_arg(t_var var, t_spec *spec)
 {
 	(void)var;
 	spec->field = ft_strdup("%");
-	spec->width = 1;
+	ft_generate_wfield(spec);
 	return (0);
 }
 
