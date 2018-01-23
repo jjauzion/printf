@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 18:17:41 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 14:56:57 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 # include "libft.h"
 # include <stdarg.h>
+# include <stddef.h>
+
+# define SPEC_CHAR " +-#*$'$0123456789.hlLjtz"
+
+typedef struct		s_color
+{
+	char			*code;
+	char			*ansi;
+}					t_color;
 
 typedef struct		s_specifier
 {
@@ -55,13 +64,14 @@ typedef struct		s_type
 }					t_type;
 
 int					ft_printf(const char *format, ...);
-const char			*ft_parse(const char *format, t_spec *spec);
+const char			*ft_parse(va_list ap, const char *format, t_spec *spec);
 int					ft_count_specifier(const char *str);
 int					ft_get_param(va_list ap, t_spec *spec, int cpt);
 void				ft_add_precision(t_spec *spec);
 void				ft_generate_field(t_spec *spec);
 int					ft_print_all(char **plain_str, t_spec *spec, int nb_param);
 t_var				ft_get_arg(va_list ap, t_spec *spec);
+void				ft_color(const char **format);
 
 void				ft_generate_wfield(t_spec *spec);
 void				ft_clean_utf8str(char *str);
@@ -72,7 +82,7 @@ void				ft_apply_sign(char *arg, char sign, int width);
 int					ft_width(t_spec *spec, int sign_len);
 void				ft_padding(char *arg, char option, int sign_len, int width);
 char				*ft_get_lmodifier(const char **format);
-int					ft_get_precision(const char **format);
+int					ft_get_precision(va_list ap, const char **format);
 char				*ft_get_attribute(const char **format);
 int					ft_get_digit(const char **str);
 void				ft_hashtag_attribute(t_spec *spec);

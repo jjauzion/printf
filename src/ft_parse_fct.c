@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:47:29 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/15 15:32:51 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 10:33:07 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,21 @@ char		*ft_get_attribute(const char **format)
 	return (attribute);
 }
 
-int			ft_get_precision(const char **format)
+int			ft_get_precision(va_list ap, const char **format)
 {
+	int	precision;
+
 	if (**format != '.')
 		return (-1);
 	(*format)++;
-	return (ft_get_digit(format));
+	if (**format == '*')
+	{
+		precision = va_arg(ap, int);
+		(*format)++;
+	}
+	else
+		precision = ft_get_digit(format);
+	return (precision);
 }
 
 char		*ft_get_lmodifier(const char **format)

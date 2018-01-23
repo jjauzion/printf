@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:28 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/21 16:30:58 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 11:27:20 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		ft_int_arg(t_var var, t_spec *spec)
 		arg = (long long int)var.im;
 	else if (ft_strequ(spec->l_modifier, "z"))
 		arg = (size_t)var.im;
+	else if (ft_strequ(spec->l_modifier, "t"))
+		arg = (ptrdiff_t)var.im;
 	else
 		arg = (int)var.im;
 	spec->field = ft_imtoa(arg);

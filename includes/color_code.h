@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_specifier.c                               :+:      :+:    :+:   */
+/*   color_code.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 17:15:45 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 09:51:50 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/01/23 12:46:21 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/23 12:56:08 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef COLOR_CODE_H
+# define COLOR_CODE_H
 
-int		ft_count_specifier(const char *str)
+t_color color_table[] =
 {
-	int	count;
-	int	i;
-	int	len;
+	{"blue", "\x1b[34m"},
+	{"red", "\x1b[31m"},
+	{"eoc", "\x1b[0m"},
+	{"", "not a code"}
+};
 
-	len = ft_strlen(str);
-	i = 0;
-	count = 0;
-	while (i <= len)
-	{
-		while (i <= len && str[i] != '%')
-			i++;
-		if (str[i] == '%')
-		{
-			count++;
-			i++;
-			while (ft_strchr(SPEC_CHAR, str[i]))
-				i++;
-			i++;
-		}
-	}
-	return (count);
-}
+#endif

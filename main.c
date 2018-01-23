@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 19:23:17 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 09:50:21 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,12 +283,6 @@ else
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
-	printf("\n--> Test 15 : test valeur retour\n");
-	ret = printf("15.1 :\t|%p| ; |%50p| ; |%-50.20p|\n", &ret, &ret, &ret);
-	retft = ft_printf("15.1 :\t|%p| ; |%50p| ; |%-50.20p|\n", &ret, &ret, &ret);
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-
 	printf("\n--> Test 15 : undefined behaviour\n");
 	printf("15.8.3 :\t|%x| ; |%X|\n", 0, -1);
 	ft_printf("15.8.3 :\t|%x| ; |%X|\n", 0, -1);
@@ -359,7 +353,11 @@ else
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
-
+	printf("\n--> Test 16 : test %%p\n");
+	ret = printf("16.1 :\t|%p| ; |%50p| ; |%-50.20p|\n", &ret, &ret, &ret);
+	retft = ft_printf("16.1 :\t|%p| ; |%50p| ; |%-50.20p|\n", &ret, &ret, &ret);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
 	printf("\n--> Test xx : test all\n");
 	ret = printf("xx.1 string with nothing special ; just plain text :)\n");

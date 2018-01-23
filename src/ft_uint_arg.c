@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:52 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/21 16:31:20 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 11:26:46 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int		ft_uint_arg(t_var var, t_spec *spec)
 		arg = (unsigned long long int)var.uim;
 	else if (ft_strequ(spec->l_modifier, "z"))
 		arg = (size_t)var.uim;
+	else if (ft_strequ(spec->l_modifier, "t"))
+		arg = (ptrdiff_t)var.uim;
 	else
 		arg = (unsigned int)var.uim;
 	if (arg == 0 && ft_strchr("xX", spec->c_specifier))

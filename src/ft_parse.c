@@ -6,31 +6,46 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:33:10 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/17 11:56:01 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 11:11:54 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-const char	*ft_parse(const char *format, t_spec *spec)
+static int	ft_get_value(va_list ap, const char **format)
+{
+	int	value;
+
+	if (**format == '*')
+	{
+		value = va_arg(ap, int);
+		(*format)++;
+	}
+	else
+		value = ft_get_digit(format);
+	return (value);
+}
+
+const char	*ft_parse(va_list ap, const char *format, t_spec *spec)
 {
 	int		tmp;
 
 	format++;
 	spec->attribute = ft_get_attribute(&format);
-	tmp = ft_get_digit(&format);
+	tmp = ft_get_value(ap, &format);
 	if (spec->attribute[0] == '\0')
 	{
 		if (*format == '$')
 		{
 			spec->arg_id = tmp;
 			format++;
+			ft_strdel(&spec->attribute);
 			spec->attribute = ft_get_attribute(&format);
-			tmp = ft_get_digit(&format);
+			tmp = ft_get_value(ap, &format);
 		}
 	}
 	spec->width = tmp;
-	spec->precision = ft_get_precision(&format);
+	spec->precision = ft_get_precision(ap, &format);
 	spec->l_modifier = ft_get_lmodifier(&format);
 	spec->c_specifier = *format;
 	if (ft_strchr("fFgGeE", spec->c_specifier) && (spec->precision < 0))

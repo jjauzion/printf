@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 19:18:38 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 14:56:25 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int				ft_printf(const char *format, ...)
 	cpt = -1;
 	while (++cpt < count + 1)
 	{
-		if (!(plain_str[cpt] = ft_strnew(ft_strlen(format))))
+		if (!(plain_str[cpt] = ft_strnew(ft_strlen(format) + ft_count_cinstr(format, '{') * 8)))
 			return (-1);
 	}
 	spec = ft_init_spec(count);
@@ -92,6 +92,7 @@ int				ft_printf(const char *format, ...)
 		i = 0;
 		while (*format && *format != '%')
 		{
+//			i = ft_color(plain_str[cpt], i, &format);
 			plain_str[cpt][i] = *format;
 			format++;
 			i++;
@@ -99,7 +100,7 @@ int				ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			spec[cpt].arg_id = cpt;
-			if (!(format = ft_parse(format, &spec[cpt])))
+			if (!(format = ft_parse(ap, format, &spec[cpt])))
 				return (-1);
 			if (ft_get_param(ap, spec, cpt))
 				i = -1;
