@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 14:56:57 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 17:29:13 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void				ft_add_precision(t_spec *spec);
 void				ft_generate_field(t_spec *spec);
 int					ft_print_all(char **plain_str, t_spec *spec, int nb_param);
 t_var				ft_get_arg(va_list ap, t_spec *spec);
-void				ft_color(const char **format);
+int					ft_color(const char **str);
+int					ft_print_current(char *plain_str, t_spec *spec, int ret);
 
 void				ft_generate_wfield(t_spec *spec);
 void				ft_clean_utf8str(char *str);

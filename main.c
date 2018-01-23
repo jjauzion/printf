@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 09:50:21 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 18:19:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,10 @@ int		main ()
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
 	printf("\n--> Test 11 : test length modifier\n");
-//	printf("11.1 printf:\t|%hf|\n", 2147483647.);
+	ret = printf("11.1 %-10s: |%hU|\n", "printf ", 4294967296);
+	retft = ft_printf("11.1 %-10s: |%hU|\n", "ft_printf ", 4294967296);
+	if (ret != retft)
+		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
 	printf("\n--> Test 12 : test UNICODE\n");
 

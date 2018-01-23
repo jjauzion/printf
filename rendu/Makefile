@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/23 12:56:41 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/23 19:13:15 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,13 @@ SRC_NAME = ft_printf.c \
 		   ft_get_arg.c \
 		   float_arg.c \
 		   ft_padding.c \
-		   ft_print_all.c \
 		   ft_int_arg.c \
 		   ft_uint_arg.c \
 		   ft_generate_wfield.c \
 		   ft_clean_utf8str.c \
 		   char_arg_fct.c \
 		   ptr_arg.c \
+		   ft_print_current.c \
 		   ft_color.c
 
 OBJ_PATH = obj/

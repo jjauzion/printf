@@ -6,18 +6,20 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 10:24:24 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 15:22:40 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 18:01:14 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <locale.h>
 
 int		main()
 {
 	int		ret;
 	int		retft;
 
+	setlocale(LC_ALL, "");
 	printf("\n--> Test 1 : precision *\n");
 	ret = printf("1.1 %-12s|%.*d|\n", "printf :", 10, 2);
 	retft = ft_printf("1.1 %-12s|%.*d|\n", "ft_printf :", 10, 2);
@@ -68,36 +70,28 @@ int		main()
 	if (ret != retft)
 		printf("\n/!\\ Erreur Valeur retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
-	printf("\n--> Test 4 : attribut '\n");
-	ret = printf("4.1 %-12s|%'.3f|\n", "printf :", 2147483.647);
-	retft = ft_printf("4.1 %-12s|%'.3f|\n", "ft_printf :", 2147483.647);
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-
-	printf("\n--> Test 5 : attribut '\n");
-	ret = printf("5.1 %-12s|%'.3f|\n", "printf :", 2147483.647);
-	retft = ft_printf("5.1 %-12s|%td|\n", "ft_printf :", 10);
-	if (ret != retft)
-		printf("\n/!\\ Erreur Valeur retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
-/*
-	ft_printf("couleur {blue}bleu{eoc} couleur {red}rouge{eoc} voilou :)\n");
-
-	char *test;
-	test = ft_strdup("{red}");
-	ft_color(&test);
-	ft_putstr("ouuuuuuuiii\n");
-	test = ft_strdup("{eoc}");
-	ft_color(&test);
-	ft_putstr("test0");
-	ft_putstr("\x1b[32mtest1\033[0m");
-	ft_putstr("test2");
-	ft_putstr("\x1b[93;41m");
-	ft_putstr("test3");
-	ft_putstr("test4");
-	ft_putstr("\033[0m");
-	ft_putstr("test5");
-	printf("\n\n*------------*\n");
-	printf("aa\x1b[94myolo\x1b[0mbb\n");
-	ft_printf("aa\x1b[94myolo\x1b[0mbb\n");
-*/
+	printf("\n--> Test 4 : couleur\n");
+	retft = ft_printf("4.1 : force {blue}bleu{eoc} force {red}rouge{eoc} voilou :)\n");
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.2 : {yellow}%s{eoc}\n", "yellow");
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.3 : {green}%s puis |%*.3d|{eoc} voilou :)\n", "green", 5, 5);
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.4 : {greeen}%s puis |%*.3d|{eOc} voilou :)\n", "green", 5, 5);
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.5 : {eoc}{eoc} voilou :)\n");
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.6 : {red}{green} voilou{yellow}{eoc} :)\n");
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.7 : {red}{green}%.*s%lc%d{eoc} voilou :)\n", 2, "12345", L'米', 5);
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.8 : {{{{%.*s%lc%d{{ }}}%d{{magenta}voilou{eoc}} :)\n", 1, "12", L'米', 5, 0);
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.9 : ");
+	retft += ft_printf("{eoc}");
+	retft += ft_printf("\n");
+	printf("retft = %d\n", retft);
+	retft = ft_printf("4.10 : vide apres ca ret 0 attendu -->");
+	retft = ft_printf("");
+	printf("\nretft = %d\n", retft);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 14:56:25 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 17:55:31 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,10 @@ static void		ft_delspec(t_spec **spec, int size)
 	free(*spec);
 }
 
-static void		ft_printf_closure(t_spec **spec, char ***plain_str, int nb_param)
+static void		ft_printf_closure(t_spec **spec, char **plain_str, int nb_param)
 {
-	int	i;
-
 	ft_delspec(spec, nb_param);
-	i = -1;
-	while (++i < nb_param)
-	{
-		ft_strdel(&(*plain_str)[i]);
-	}
-	ft_strdel(&(*plain_str)[i]);
-	free(*plain_str);
+	ft_strdel(plain_str);
 }
 
 int				ft_printf(const char *format, ...)
@@ -69,47 +61,57 @@ int				ft_printf(const char *format, ...)
 	int		cpt;
 	va_list	ap;
 	int		count;
-	char	**plain_str;
+	char	*plain_str;
 	int		i;
+	int		ret;
+	int		iscolor;
 
 	va_start(ap, format);
 	count = ft_count_specifier(format);
-	plain_str = (char**)malloc(sizeof(char*) * (count + 1));
-	if (!plain_str)
+	if (!(plain_str = ft_strnew(ft_strlen(format))))
 		return (-1);
-	cpt = -1;
-	while (++cpt < count + 1)
-	{
-		if (!(plain_str[cpt] = ft_strnew(ft_strlen(format) + ft_count_cinstr(format, '{') * 8)))
-			return (-1);
-	}
 	spec = ft_init_spec(count);
 	cpt = 0;
 	count = 0;
 	i = 0;
+	ret = 0;
 	while (*format && i >= 0)
 	{
 		i = 0;
-		while (*format && *format != '%')
+		iscolor = 1;
+		if (*format == '{')
 		{
-//			i = ft_color(plain_str[cpt], i, &format);
-			plain_str[cpt][i] = *format;
+			plain_str[i] = '\0';
+			ret = ft_print_current(plain_str, NULL, ret);
+			i = 0;
+			iscolor = ft_color(&format);
+		}
+		while (*format && *format != '%' && (*format != '{' || !iscolor))
+		{
+			iscolor = 1;
+			plain_str[i] = *format;
 			format++;
 			i++;
 		}
+		plain_str[i] = '\0';
 		if (*format == '%')
 		{
 			spec[cpt].arg_id = cpt;
 			if (!(format = ft_parse(ap, format, &spec[cpt])))
 				return (-1);
-			if (ft_get_param(ap, spec, cpt))
-				i = -1;
 			count++;
+			if (ft_get_param(ap, spec, cpt))
+			{
+				ft_printf_closure(&spec, &plain_str, count);
+				return (-1);
+			}
+			ret = ft_print_current(plain_str, &spec[cpt], ret);
+			cpt++;
 		}
-		cpt++;
+		else
+			ret = ft_print_current(plain_str, NULL, ret);
 	}
-	cpt = ft_print_all(plain_str, spec, count);
 	va_end(ap);
 	ft_printf_closure(&spec, &plain_str, count);
-	return (cpt);
+	return (ret);
 }

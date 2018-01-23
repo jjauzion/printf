@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 12:46:21 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 12:56:08 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 16:48:50 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 t_color color_table[] =
 {
-	{"blue", "\x1b[34m"},
+	{"black", "\x1b[30m"},
 	{"red", "\x1b[31m"},
+	{"green", "\x1b[32m"},
+	{"yellow", "\x1b[33m"},
+	{"blue", "\x1b[34m"},
+	{"magenta", "\x1b[35m"},
+	{"cyan", "\x1b[36m"},
+	{"white", "\x1b[37m"},
+	{"brightblue", "\x1b[94m"},
 	{"eoc", "\x1b[0m"},
 	{"", "not a code"}
 };

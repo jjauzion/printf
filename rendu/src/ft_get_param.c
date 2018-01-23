@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 19:14:01 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/23 19:11:22 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,7 @@ int		ft_pct_arg(t_var var, t_spec *spec)
 int		ft_usage(t_var var, t_spec *spec)
 {
 	(void)var;
-	ft_putstr("\n----------------------------------------\nError: '%");
-	ft_putchar(spec->c_specifier);
-	ft_putendl("' is not a valid specifier");
-	ft_putendl("-----------------------------------------\n");
-	spec->width = -1;
-	spec->field = ft_strnew(0);
-	return (1);
+	spec->field = ft_strcnew(1, spec->c_specifier);
+	ft_generate_wfield(spec);
+	return (0);
 }

@@ -1,26 +1,27 @@
 #include "ft_printf.h"
 #include "color_code.h"
 
-void	ft_color(const char **format)
+int		ft_color(const char **str)
 {
 	int		i;
 	int		j;
 	char	*code;
 
-	if (**format != '{')
-		return ;
+	if (**str != '{')
+		return (0);
 	i = 0;
-	while ((*format)[i] && (*format)[i] != '}')
+	while ((*str)[i] && (*str)[i] != '}')
 		i++;
-	if (!(*format)[i] || i == 0)
-		return ;
-	code = ft_strsub(*format, 1, i - 1);
+	if (!(*str)[i] || i == 0)
+		return (0);
+	code = ft_strsub(*str, 1, i - 1);
 	j = 0;
 	while (!ft_strequ(code, color_table[j].code) && !ft_strequ("", color_table[j].code))
 		j++;
 	if (ft_strequ("", color_table[j].code))
-		return ;
+		return (0);
 	ft_putstr(color_table[j].ansi);
-	*format += i + 1;
+	*str += i + 1;
 	ft_strdel(&code);
+	return (1);
 }
