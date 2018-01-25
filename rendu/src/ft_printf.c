@@ -6,22 +6,11 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 20:17:14 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 20:27:02 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void		ft_init_spec(t_spec *spec)
-{
-	spec->attribute = NULL;
-	spec->l_modifier = NULL;
-	spec->field = NULL;
-	spec->width = -1;
-	spec->precision = -1;
-	spec->c_specifier = 0;
-	spec->v_char = 0;
-}
 
 static void		ft_delspec(t_spec *spec)
 {
@@ -50,7 +39,8 @@ static int		ft_plain_str(const char **format, int *iscolor, char *plain_str)
 	return (i);
 }
 
-static int		ft_check_color(const char **format, int *iscolor, char *plain_str, int *i)
+static int		ft_check_color(const char **format, int *iscolor,
+		char *plain_str, int *i)
 {
 	int	ret;
 
@@ -66,7 +56,8 @@ static int		ft_check_color(const char **format, int *iscolor, char *plain_str, i
 	return (ret);
 }
 
-static int		ft_loop(const char *format, t_spec *spec, char *plain_str, va_list ap)
+static int		ft_loop(const char *format, t_spec *spec,
+		char *plain_str, va_list ap)
 {
 	int		i;
 	int		ret;
@@ -103,7 +94,13 @@ int				ft_printf(const char *format, ...)
 	va_start(ap, format);
 	if (!(plain_str = ft_strnew(ft_strlen(format))))
 		return (-1);
-	ft_init_spec(&spec);
+	spec.attribute = NULL;
+	spec.l_modifier = NULL;
+	spec.field = NULL;
+	spec.width = -1;
+	spec.precision = -1;
+	spec.c_specifier = 0;
+	spec.v_char = 0;
 	ret = ft_loop(format, &spec, plain_str, ap);
 	ft_strdel(&plain_str);
 	va_end(ap);
