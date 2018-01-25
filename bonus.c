@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 10:24:24 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 18:01:14 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 18:33:24 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,6 @@ int		main()
 	retft = ft_printf("4.10 : vide apres ca ret 0 attendu -->");
 	retft = ft_printf("");
 	printf("\nretft = %d\n", retft);
+	while (1)
+	{}
 }

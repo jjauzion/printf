@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 11:12:55 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 15:22:42 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <locale.h>
 
 # define ABS(Value) (Value < 0) ? -Value : Value
+# define WRONG_UTF8(c) ((c >= 0xD800 && c <= 0xDFFF) || c > 0x10FFFF || c < 0)
 
 typedef struct		s_list
 {

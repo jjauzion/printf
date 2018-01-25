@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_color.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/25 15:28:29 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/01/25 15:29:17 by jjauzion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "color_code.h"
 
@@ -16,7 +28,8 @@ int		ft_color(const char **str)
 		return (0);
 	code = ft_strsub(*str, 1, i - 1);
 	j = 0;
-	while (!ft_strequ(code, color_table[j].code) && !ft_strequ("", color_table[j].code))
+	while (!ft_strequ(code, color_table[j].code) &&
+			!ft_strequ("", color_table[j].code))
 		j++;
 	if (ft_strequ("", color_table[j].code))
 		return (0);

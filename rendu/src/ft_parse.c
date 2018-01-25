@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:33:10 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 13:32:00 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 18:50:16 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,20 @@ static int	ft_check_width(t_spec *spec, int value)
 const char	*ft_parse(va_list ap, const char *format, t_spec *spec)
 {
 	int		tmp;
+	int		arg_id;
 
 	format++;
 	spec->attribute = ft_get_attribute(&format);
 	tmp = ft_get_value(ap, &format);
 	if (spec->attribute[0] == '\0')
-	{
 		if (*format == '$')
 		{
-			spec->arg_id = tmp;
+			arg_id = tmp;
 			format++;
 			ft_strdel(&spec->attribute);
 			spec->attribute = ft_get_attribute(&format);
 			tmp = ft_get_value(ap, &format);
 		}
-	}
 	spec->width = ft_check_width(spec, tmp);
 	spec->precision = ft_get_precision(ap, &format);
 	spec->l_modifier = ft_get_lmodifier(&format);
@@ -68,7 +67,7 @@ const char	*ft_parse(va_list ap, const char *format, t_spec *spec)
 	if (ft_strchr("fFgGeE", spec->c_specifier) && (spec->precision < 0))
 		spec->precision = 6;
 	if (ft_strchr("diouxXDOU", spec->c_specifier)
-		   	&& ft_strchr(spec->attribute, '0') && spec->precision >= 0)
+			&& ft_strchr(spec->attribute, '0') && spec->precision >= 0)
 		spec->attribute = ft_str_del_char(&spec->attribute, '0');
 	format = (*format) ? format + 1 : format;
 	return (format);

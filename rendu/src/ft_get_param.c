@@ -6,23 +6,24 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:55:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 12:09:18 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 19:34:01 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "specifier.h"
 
-int		ft_get_param(va_list ap, t_spec *spec, int cpt)
+int		ft_get_param(va_list ap, t_spec *spec)
 {
 	int		i;
 	t_var	var;
 
-	var = ft_get_arg(ap, &spec[cpt]);
+	var = ft_get_arg(ap, spec);
 	i = 0;
-	while (!ft_strchr(g_type[i].type, (int)spec[cpt].c_specifier) && g_type[i].type[0] != ' ')
+	while (!ft_strchr(g_type[i].type, (int)spec->c_specifier) &&
+			g_type[i].type[0] != ' ')
 		i++;
-	if (g_type[i].fct(var, &spec[cpt]))
+	if (g_type[i].fct(var, spec))
 		return (1);
 	else
 		return (0);

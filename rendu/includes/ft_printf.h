@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 15:39:06 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 11:17:38 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 18:49:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct		s_color
 
 typedef struct		s_specifier
 {
-	int				arg_id;
 	char			*attribute;
 	int				width;
 	int				precision;
@@ -66,7 +65,7 @@ typedef struct		s_type
 int					ft_printf(const char *format, ...);
 const char			*ft_parse(va_list ap, const char *format, t_spec *spec);
 int					ft_count_specifier(const char *str);
-int					ft_get_param(va_list ap, t_spec *spec, int cpt);
+int					ft_get_param(va_list ap, t_spec *spec);
 void				ft_add_precision(t_spec *spec);
 void				ft_generate_field(t_spec *spec);
 int					ft_print_all(char **plain_str, t_spec *spec, int nb_param);
