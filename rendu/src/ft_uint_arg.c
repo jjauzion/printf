@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:52 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 11:26:46 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 13:01:14 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int		ft_uint_arg(t_var var, t_spec *spec)
 
 	base = ft_base(spec->c_specifier);
 	spec->field = NULL;
-	if (ft_strequ(spec->l_modifier, "hh"))
+	if (ft_strequ(spec->l_modifier, "l") || ft_strchr("OU", spec->c_specifier))
+		arg = (long unsigned int)var.uim;
+	else if (ft_strequ(spec->l_modifier, "hh"))
 		arg = (unsigned char)var.uim;
 	else if (ft_strequ(spec->l_modifier, "h"))
 		arg = (short unsigned)var.uim;
 	else if (ft_strequ(spec->l_modifier, "j"))
 		arg = var.uim;
-	else if (ft_strequ(spec->l_modifier, "l") || ft_strchr("OU", spec->c_specifier))
-		arg = (long unsigned int)var.uim;
 	else if (ft_strequ(spec->l_modifier, "ll"))
 		arg = (unsigned long long int)var.uim;
 	else if (ft_strequ(spec->l_modifier, "z"))

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 18:17:14 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 11:16:00 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_type g_type[] =
 	{ "sS", ft_str_arg},
 	{ "cC", ft_char_arg},
 	{ "p", ft_ptr_arg},
-	{ "f", ft_float_arg },
 	{ "%", ft_pct_arg},
 	{ " ", ft_usage}
 };

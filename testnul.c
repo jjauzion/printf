@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 18:11:49 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 17:35:40 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 13:51:57 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int main()
 	printf("|\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 */
 	printf("\n\nprintf : |\n");
-	ret = printf("%20.ld et %.4hhi !", 0x11ffaa147, (signed char)-8);
+	ret = printf("%s", NULL);
 	printf("|\nft_printf : |\n");
-	retft = ft_printf("%20.ld et %.4hhi !", 0x11ffaa147, (signed char)-8);
+	retft = ft_printf("%s", NULL);
 	printf("|\n---> ret = %d ; retft = %d <---\n\n", ret, retft);
 
 	return (0);

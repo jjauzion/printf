@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:28 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 11:27:20 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 12:59:22 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int		ft_int_arg(t_var var, t_spec *spec)
 	intmax_t	arg;
 
 	spec->field = NULL;
-	if (ft_strequ(spec->l_modifier, "hh"))
+	if (ft_strequ(spec->l_modifier, "l") || spec->c_specifier == 'D')
+		arg = (long int)var.im;
+	else if (ft_strequ(spec->l_modifier, "hh"))
 		arg = (char)var.im;
 	else if (ft_strequ(spec->l_modifier, "h"))
 		arg = (short)var.im;
 	else if (ft_strequ(spec->l_modifier, "j"))
 		arg = var.im;
-	else if (ft_strequ(spec->l_modifier, "l") || spec->c_specifier == 'D')
-		arg = (long int)var.im;
 	else if (ft_strequ(spec->l_modifier, "ll"))
 		arg = (long long int)var.im;
 	else if (ft_strequ(spec->l_modifier, "z"))

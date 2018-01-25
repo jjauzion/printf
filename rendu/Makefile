@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/23 19:13:15 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/25 11:16:58 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRC_NAME = ft_printf.c \
 		   ft_add_precision.c \
 		   ft_field_fct.c \
 		   ft_get_arg.c \
-		   float_arg.c \
 		   ft_padding.c \
 		   ft_int_arg.c \
 		   ft_uint_arg.c \

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 18:02:00 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/22 18:22:20 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/25 13:17:29 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@ int		ft_ptr_arg(t_var var, t_spec *spec)
 	
 	spec->field = ft_uitoa_base(var.uim, 16);
 	ft_add_precision(spec);
-	tmp = spec->field;
-	spec->field = ft_strjoin("0x", tmp);
-	ft_strdel(&tmp);
-	ft_generate_wfield(spec);
+	if (!ft_strchr(spec->attribute, '#'))
+	{
+		tmp = spec->attribute;
+		spec->attribute = ft_strjoin("#", tmp);
+		ft_strdel(&tmp);
+	}
+	spec->c_specifier = 'x';
+	ft_generate_field(spec);
+	spec->c_specifier = 'p';
 	return (0);
 }
