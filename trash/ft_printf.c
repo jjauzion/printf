@@ -64,7 +64,7 @@ static int		ft_loop(const char *format, t_spec *spec,
 	int		iscolor;
 
 	ret = 0;
-	while (*format && ret >= 0)
+	while (*format)
 	{
 		i = 0;
 		iscolor = 1;
@@ -74,7 +74,10 @@ static int		ft_loop(const char *format, t_spec *spec,
 		{
 			format = ft_parse(ap, format, spec);
 			if (ft_get_param(ap, spec))
-				ret = -1;
+			{
+				ft_delspec(spec);
+				return (-1);
+			}
 			ret = ft_print_current(plain_str, spec, ret);
 		}
 		else

@@ -14,6 +14,8 @@
 
 int		ft_print_current(char *plain_str, t_spec *spec, int ret)
 {
+	if (ret < 0)
+		return (ret);
 	ft_putstr(plain_str);
 	ret += ft_strlen(plain_str);
 	if (!spec)
