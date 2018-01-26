@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 10:51:52 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 13:01:14 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/26 13:54:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_base(char spec)
 		return (10);
 }
 
-int		ft_uint_arg(t_var var, t_spec *spec)
+int			ft_uint_arg(t_var var, t_spec *spec)
 {
 	uintmax_t	arg;
 	int			base;
