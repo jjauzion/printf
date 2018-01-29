@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:27:07 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 20:27:02 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 09:29:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static int		ft_loop(const char *format, t_spec *spec,
 		i += ft_plain_str(&format, &iscolor, plain_str);
 		if (*format == '%')
 		{
+			format++;
 			format = ft_parse(ap, format, spec);
 			if (ft_get_param(ap, spec))
 				ret = -1;

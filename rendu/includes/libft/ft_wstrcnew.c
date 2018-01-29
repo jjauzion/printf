@@ -6,12 +6,12 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 17:02:32 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/13 18:00:39 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 10:10:35 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	Alloue (avec malloc(3)) et retourne une chaine de caractère wchar_t “fraiche”
+**	Alloue (avec malloc(3)) et retourne une chaine de caractère wchar_t
 **	La chaine est initialise avec 'size' characteres ’wchar_t c’
 **	et termine par un '\0'.
 **	Si l’allocation echoue, la fonction renvoie NULL.

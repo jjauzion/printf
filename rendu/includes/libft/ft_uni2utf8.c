@@ -6,30 +6,28 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:46:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 15:25:24 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 10:09:06 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	Take a wchar_t as input and convert it to 1, 2, 3 or 4 byte according to 
+**	Take a wchar_t as input and convert it to 1, 2, 3 or 4 byte according to
 **	the UTF-8 standard.
 **	The function allocate a fresh (with malloc(3)) string of char
 **	which might be 1, 2, 3 or 4 char lenght and terminated with '\0'.
 **
-**	Returns: 
+**	Returns:
 **	A pointer to this new string is returned.
 */
 
 #include "libft.h"
 
-char	*ft_uni2utf8(wchar_t c)
+static int	ft_get_octet(wchar_t c)
 {
-	char	*ret;
-	int		nb_octet;
-	int		i;
+	int	nb_octet;
 
 	if (WRONG_UTF8(c))
-		return (NULL);
+		return (-1);
 	nb_octet = ft_getnbofutf8byte(c);
 	if (MB_CUR_MAX < nb_octet)
 	{
@@ -39,15 +37,23 @@ char	*ft_uni2utf8(wchar_t c)
 			nb_octet = 1;
 		}
 		else
-			return (NULL);
+			return (-1);
 	}
+	return (nb_octet);
+}
+
+char		*ft_uni2utf8(wchar_t c)
+{
+	char	*ret;
+	int		nb_octet;
+	int		i;
+
+	if ((nb_octet = ft_get_octet(c)) < 0)
+		return (NULL);
 	if (!(ret = ft_strnew(nb_octet)))
 		return (NULL);
 	if (nb_octet == 1)
-	{
 		ret[0] = c;
-		return (ret);
-	}
 	i = nb_octet;
 	while (--i >= 1)
 	{

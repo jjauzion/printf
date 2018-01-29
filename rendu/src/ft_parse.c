@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 10:33:10 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/26 13:55:25 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 09:29:12 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ const char	*ft_parse(va_list ap, const char *format, t_spec *spec)
 	int		tmp;
 	int		arg_id;
 
-	format++;
 	spec->attribute = ft_get_attribute(&format);
 	tmp = ft_get_value(ap, &format);
 	if (spec->attribute[0] == '\0')

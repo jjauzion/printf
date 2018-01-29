@@ -6,12 +6,12 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 14:06:44 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 11:16:00 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 10:40:57 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPECIFIER_H
-# define SPECIFIER_H 
+# define SPECIFIER_H
 
 t_type g_type[] =
 {

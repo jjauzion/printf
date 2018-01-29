@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 15:22:42 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 10:39:29 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ char				*ft_uni2utf8(wchar_t c);
 char				*ft_wstr2str(wchar_t *src, int size);
 void				ft_putwstr(wchar_t *str);
 size_t				ft_wstrlen(wchar_t const *s);
-wchar_t				*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len);
+wchar_t				*ft_wstrsub
+(wchar_t const *s, unsigned int start, size_t len);
 wchar_t				*ft_wstrdup(wchar_t const *s1);
 
 char				*ft_strext(char **s, size_t len, size_t size);

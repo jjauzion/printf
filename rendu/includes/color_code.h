@@ -6,14 +6,14 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 12:46:21 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/23 16:48:50 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 10:42:06 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_CODE_H
 # define COLOR_CODE_H
 
-t_color color_table[] =
+t_color g_color_table[] =
 {
 	{"black", "\x1b[30m"},
 	{"red", "\x1b[31m"},
