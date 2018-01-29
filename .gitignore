@@ -1,6 +1,8 @@
 # My Files #
 ############
-/printf-unit-test/*
+/printf-unit-test
+/curquitest
+/moulitest
 
 # Compiled source #
 ###################

@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 09:46:11 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/20 11:48:16 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 19:02:34 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_get_size(int nbr)
 	int	size;
 
 	size = 1;
-	while (nbr > 10 || nbr < -10)
+	while (nbr >= 10 || nbr <= -10)
 	{
 		nbr = nbr / 10;
 		size++;

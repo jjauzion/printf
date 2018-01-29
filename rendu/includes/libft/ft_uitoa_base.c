@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 17:20:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/16 18:58:04 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/29 19:22:03 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			*ft_uitoa_base(uintmax_t value, uintmax_t base)
 	if (base < 2 || base > 16)
 		return (NULL);
 	obase = ft_obase(base);
-	if (!(res = ft_strnew(32)))
+	if (!(res = ft_strnew((sizeof(uintmax_t) * 8))))
 		return (NULL);
 	i = 0;
 	while (value >= base)
