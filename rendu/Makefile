@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/25 11:16:58 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/29 15:29:05 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,8 @@ LIBFT_OBJ = $(wildcard $(LIB_PATH)*.o)
 
 all: LIB $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $@ $^ $(LIBFT_OBJ)
+$(NAME): $(OBJ) $(LIBFT_OBJ)
+	ar rc $@ $^
 	ranlib $(NAME)
 
 LIB:
