@@ -6,14 +6,13 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/30 13:07:08 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/30 15:58:26 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, clean, fclean, re, LIB
 
-SRC_NAME1 = ft_printf.c \
-			ft_memset.c \
+SRC_NAME1 = ft_memset.c \
 			ft_bzero.c \
 			ft_memcpy.c \
 			ft_memccpy.c \
@@ -99,7 +98,8 @@ SRC_NAME1 = ft_printf.c \
 			ft_uni2utf8.c \
 			ft_imtoa.c \
 
-SRC_NAME2 =	ft_parse.c \
+SRC_NAME2 =	ft_printf.c \
+			ft_parse.c \
 			ft_count_specifier.c \
 			ft_get_param.c \
 			ft_generate_field.c \
@@ -118,19 +118,25 @@ SRC_NAME2 =	ft_parse.c \
 			ft_print_current.c \
 			ft_color.c
 
+INC_NAME1 = libft.h
+
+INC_NAME2 =	ft_printf.h \
+			specifier.h \
+			color_code.h
+
 SRC_PATH1 = 
 
-SRC_PATH2 = printf_fct/
+SRC_PATH2 = ft_printf/
 
-OBJ_PATH1 = obj/
+OBJ_PATH1 = .obj/
 
-OBJ_PATH2 = obj/printf_obj/
+OBJ_PATH2 = .obj/ft_printf_obj/
 
 LIB_PATH = 
 
-INC_PATH1 = . 
+INC_PATH1 = .
 
-INC_PATH2 = printf_fct/ 
+INC_PATH2 = ft_printf/
 
 LDLIBS = 
 
@@ -151,10 +157,14 @@ endif
 
 SRC = $(addprefix $(SRC_PATH1),$(SRC_NAME1)) \
 	  $(addprefix $(SRC_PATH2),$(SRC_NAME2))
+
 OBJ = $(addprefix $(OBJ_PATH1),$(SRC_NAME1:.c=.o)) \
 	  $(addprefix $(OBJ_PATH2),$(SRC_NAME2:.c=.o))
+
 LDFLAGS = $(addprefix -L,$(LIB_PATH))
-CPPFLAGS = $(addprefix -I,$(INC_PATH1)) $(addprefix -I,$(INC_PATH2))
+
+CPPFLAGS = $(addprefix -I,$(INC_PATH1)) \
+		   $(addprefix -I,$(INC_PATH2))
 
 all: $(NAME)
 
@@ -162,13 +172,14 @@ $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $(NAME)
 
-$(OBJ_PATH1)%.o: $(SRC_PATH1)%.c
+$(OBJ_PATH1)%.o: $(SRC_PATH1)%.c $(INC_NAME1)
 	@mkdir $(OBJ_PATH1) 2> /dev/null || true
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -c $< $(CPPFLAGS) -o $@
 
-$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c
+#$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c
+$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c $(addprefix $(INC_PATH2),$(INC_NAME2))
 	@mkdir $(OBJ_PATH2) 2> /dev/null || true
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -c $< $(CPPFLAGS) -o $@
 
 clean:
 	rm -f $(OBJ)
