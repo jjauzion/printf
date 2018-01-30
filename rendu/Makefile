@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/30 15:58:26 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/30 16:11:13 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -193,5 +193,5 @@ re: fclean all
 
 norme:
 	norminette $(SRC)
-	norminette $(INC_PATH1)
-	norminette $(INC_PATH2)
+	norminette $(wildcard *.h)
+	norminette $(wildcard $(INC_PATH2)*.h)
