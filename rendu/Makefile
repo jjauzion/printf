@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/30 16:11:13 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/01/30 16:22:47 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,10 +118,10 @@ SRC_NAME2 =	ft_printf.c \
 			ft_print_current.c \
 			ft_color.c
 
-INC_NAME1 = libft.h
+INC_NAME1 = ft_printf.h \
+			libft.h
 
-INC_NAME2 =	ft_printf.h \
-			specifier.h \
+INC_NAME2 =	specifier.h \
 			color_code.h
 
 SRC_PATH1 = 
@@ -161,6 +161,9 @@ SRC = $(addprefix $(SRC_PATH1),$(SRC_NAME1)) \
 OBJ = $(addprefix $(OBJ_PATH1),$(SRC_NAME1:.c=.o)) \
 	  $(addprefix $(OBJ_PATH2),$(SRC_NAME2:.c=.o))
 
+INC =  $(addprefix $(INC_PATH2),$(INC_NAME2)) \
+	   $(INC_NAME1)
+
 LDFLAGS = $(addprefix -L,$(LIB_PATH))
 
 CPPFLAGS = $(addprefix -I,$(INC_PATH1)) \
@@ -172,12 +175,11 @@ $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $(NAME)
 
-$(OBJ_PATH1)%.o: $(SRC_PATH1)%.c $(INC_NAME1)
+$(OBJ_PATH1)%.o: $(SRC_PATH1)%.c $(INC)
 	@mkdir $(OBJ_PATH1) 2> /dev/null || true
 	$(CC) $(CFLAGS) -c $< $(CPPFLAGS) -o $@
 
-#$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c
-$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c $(addprefix $(INC_PATH2),$(INC_NAME2))
+$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c $(INC)
 	@mkdir $(OBJ_PATH2) 2> /dev/null || true
 	$(CC) $(CFLAGS) -c $< $(CPPFLAGS) -o $@
 
@@ -193,5 +195,4 @@ re: fclean all
 
 norme:
 	norminette $(SRC)
-	norminette $(wildcard *.h)
-	norminette $(wildcard $(INC_PATH2)*.h)
+	norminette $(INC)
