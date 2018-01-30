@@ -6,12 +6,12 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/15 16:58:20 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/29 19:02:36 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/01/30 09:26:45 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 static int	ft_itoui(intmax_t n, uintmax_t *nbr)
 {
 	int	sign;
