@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_tab_max.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 11:25:00 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/11 18:34:28 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/02/08 17:47:14 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/02/12 15:06:45 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int		ft_tab_max(int *tab, int nb_elm)
 {
-	write(1, &c, 1);
+	int		i;
+	int		max;
+
+	if (!tab || nb_elm <= 0)
+		return (0);
+	max = tab[0];
+	i = 0;
+	while (++i < nb_elm)
+	{
+		if (max < tab[i])
+			max = tab[i];
+	}
+	return (max);
 }

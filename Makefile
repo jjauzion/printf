@@ -6,7 +6,7 @@
 #    By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/17 14:43:00 by jjauzion          #+#    #+#              #
-#    Updated: 2018/01/30 16:22:47 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/05/28 12:05:56 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_NAME1 = ft_memset.c \
 			ft_strstr.c \
 			ft_strnstr.c \
 			ft_atoi.c \
+			ft_atoim.c \
 			ft_putchar.c \
 			ft_putnbr.c \
 			ft_isalpha.c \
@@ -97,6 +98,15 @@ SRC_NAME1 = ft_memset.c \
 			ft_wstr2str.c \
 			ft_uni2utf8.c \
 			ft_imtoa.c \
+			ft_str_itercheck.c \
+			ft_isnumber.c \
+			ft_max.c \
+			ft_min.c \
+			ft_tab_mean.c \
+			ft_tab_min.c \
+			ft_tab_max.c \
+			get_next_line.c \
+			ft_print_mem.c
 
 SRC_NAME2 =	ft_printf.c \
 			ft_parse.c \
@@ -175,11 +185,11 @@ $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $(NAME)
 
-$(OBJ_PATH1)%.o: $(SRC_PATH1)%.c $(INC)
+$(OBJ_PATH1)%.o: $(SRC_PATH1)%.c $(INC) Makefile
 	@mkdir $(OBJ_PATH1) 2> /dev/null || true
 	$(CC) $(CFLAGS) -c $< $(CPPFLAGS) -o $@
 
-$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c $(INC)
+$(OBJ_PATH2)%.o: $(SRC_PATH2)%.c $(INC) Makefile
 	@mkdir $(OBJ_PATH2) 2> /dev/null || true
 	$(CC) $(CFLAGS) -c $< $(CPPFLAGS) -o $@
 

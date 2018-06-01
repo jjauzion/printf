@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/15 16:58:20 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/30 09:26:45 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/08 11:55:13 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_itoui(intmax_t n, uintmax_t *nbr)
 	return (sign);
 }
 
-static void	ft_apply_sign(int i, int sign, char *str)
+static void	ft_applysign(int i, int sign, char *str)
 {
 	if (sign < 0)
 	{
@@ -75,7 +75,7 @@ char		*ft_imtoa(intmax_t n)
 		i++;
 	}
 	str[i] = nbr % 10 + '0';
-	ft_apply_sign(i, sign, str);
+	ft_applysign(i, sign, str);
 	str = ft_strrev(str);
 	return (str);
 }

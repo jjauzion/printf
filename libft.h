@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 21:09:27 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/30 15:52:09 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/05/28 12:05:17 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <stdlib.h>
 # include <wchar.h>
 # include <locale.h>
+# include "get_next_line.h"
+# include <limits.h>
+# include <stdint.h>
+# include "ft_printf.h"
 
 # define ABS(Value) (Value < 0) ? -Value : Value
 # define WRONG_UTF8(c) ((c >= 0xD800 && c <= 0xDFFF) || c > 0x10FFFF || c < 0)
@@ -52,6 +56,7 @@ char				*ft_strnstr
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
+intmax_t			ft_atoim(const char *str);
 void				ft_putchar(char c);
 void				ft_putnbr(int n);
 int					ft_isalpha(int c);
@@ -59,6 +64,7 @@ int					ft_isdigit(int c);
 int					ft_ishexa(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
+int					ft_isnumber(char *str);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
@@ -68,6 +74,7 @@ char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
 void				ft_striter(char *s, void (*f)(char *));
+int					ft_str_itercheck(char *s, int (*f)(int));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strremap(char *s, char (*f)(char));
@@ -95,6 +102,12 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *n);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void				ft_print_mem(void *adr, size_t length);
+
+int					ft_tab_mean(int *tab, int nb_elm);
+int					ft_tab_min(int *tab, int nb_elm);
+int					ft_tab_max(int *tab, int nb_elm);
+int					ft_tab_itercheck(int *tab, int size, int (*f)(int));
 
 wchar_t				*ft_wstrcnew(size_t size, wchar_t c);
 int					ft_putwchar(wchar_t c);
@@ -118,5 +131,7 @@ void				*ft_realloc(void **src, size_t len, size_t size);
 long long int		ft_power(int nbr, int power);
 char				*ft_str_del_char(char **str, char c);
 int					ft_count_cinstr(const char *str, char c);
+int					ft_max(int a, int b);
+int					ft_min(int a, int b);
 
 #endif

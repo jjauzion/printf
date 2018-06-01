@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 11:25:00 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/11 18:34:28 by jjauzion         ###   ########.fr       */
+/*   Created: 2017/11/28 17:54:00 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/03/08 12:54:55 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	ft_putchar(char c)
+# include "libft.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+
+# define BUFF_SIZE 1000
+# define ERROR -1
+# define EOFF 0
+# define EOL 1
+
+typedef struct	s_file
 {
-	write(1, &c, 1);
-}
+	char			*buff;
+	int				fd;
+	int				ret;
+	int				index;
+	struct s_file	*next;
+}				t_file;
+
+int				get_next_line(const int fd, char **line);
+
+#endif

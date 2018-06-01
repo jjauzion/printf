@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_mem.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 11:25:00 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/11 18:34:28 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/05/28 12:02:58 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/05/28 12:04:14 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+void		ft_print_mem(void *adr, size_t length)
 {
-	write(1, &c, 1);
+	unsigned char	*byte_array;
+	size_t			i;
+
+	byte_array = adr;
+	i = 0;
+	while (i < length)
+	{
+		if (i % 2 == 0)
+			ft_printf(" ");
+		ft_printf("%02X", (unsigned)byte_array[i]);
+		i++;
+	}
 }

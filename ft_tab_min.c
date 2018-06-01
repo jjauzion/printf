@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_tab_min.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 11:25:00 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/02/11 18:34:28 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/02/01 18:24:27 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/02/12 15:07:25 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int		ft_tab_min(int *tab, int nb_elm)
 {
-	write(1, &c, 1);
+	int		i;
+	int		min;
+
+	if (!tab || nb_elm <= 0)
+		return (0);
+	min = tab[0];
+	i = 0;
+	while (++i < nb_elm)
+	{
+		if (min > tab[i])
+			min = tab[i];
+	}
+	return (min);
 }
