@@ -6,3 +6,5 @@ Usage:
 
 Output:
 - libftprintf.a
+
+Note: only tested on MacOS
