@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:33:34 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/01/25 11:18:56 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/06/27 10:21:22 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -390,9 +390,6 @@ else
 		printf("\n/!\\ Erreur Valeur de retour !! /!\\\n---> ret = %d ; retft = %d <---\n\n", ret, retft);*/
 
 	printf("\n-------------END TEST PRINTF-------------\n");
-
-	while (1)
-	{}
 
 	return (0);
 }
